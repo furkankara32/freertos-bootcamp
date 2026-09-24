@@ -1,0 +1,11 @@
+interface/.venv/
+interface/build/
+interface/dist/
+**/__pycache__/
+.pytest_cache/
+firmware/build/
+measurements/demo/
+*.pyc
+tests/output/
+tests/gui-output/
+analysis/demo_results/

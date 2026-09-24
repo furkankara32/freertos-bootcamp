@@ -57,6 +57,7 @@ void DMA1_Stream6_IRQHandler(void);
 void TIM3_IRQHandler(void);
 void USART2_IRQHandler(void);
 /* USER CODE BEGIN EFP */
+void EXTI0_IRQHandler(void);
 
 /* USER CODE END EFP */
 

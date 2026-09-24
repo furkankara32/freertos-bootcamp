@@ -1,0 +1,9 @@
+{
+  "source_sha": "7c6c83fbb21885d30aa82b25f9bd0821291346b4",
+  "git_dirty": true,
+  "config": "Release",
+  "optimization": "-Os",
+  "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+  "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1",
+  "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  27748\t    104\t  43248\t  71100\t  115bc\tD:\\freertos-bootcamp\\hafta-01\\firmware\\build\\Release\\Homework_001.elf\n"
+}

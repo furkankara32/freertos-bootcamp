@@ -1,0 +1,98 @@
+{
+  "rule": "latest hardware COMPLETE dump; accepted >=30; every accepted edge interval >=500000 us; one ELF; losses retained",
+  "runs": {
+    "S0": {
+      "folder": "measurements\\runs\\20260924T080709_050952Z_S0_run14",
+      "events_sha256": "cd5cf6fdcb4212a3c60f37583301ef7e5ebf5de6c3bebe4178bca8303053778a",
+      "accepted": 30,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    },
+    "S1": {
+      "folder": "measurements\\runs\\20260924T080829_482512Z_S1_run15",
+      "events_sha256": "68c23151c25b64c4ae54a1c49d6322ad8e586945cf3bbe9a5f55f8b8dc1ef501",
+      "accepted": 30,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    },
+    "S2": {
+      "folder": "measurements\\runs\\20260924T075549_283285Z_S2_run9",
+      "events_sha256": "bc390bcef4cee9f74571bad53a0ca6dcc6150a0987da9c5c4c1cab7994a73e3f",
+      "accepted": 30,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    },
+    "S3": {
+      "folder": "measurements\\runs\\20260924T075828_940369Z_S3_run10",
+      "events_sha256": "341ed250a47965cc029deeb5b0462fa565d6bb9cecdff74cbb2eb21f553dbe7c",
+      "accepted": 30,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    },
+    "S4": {
+      "folder": "measurements\\runs\\20260924T080003_166338Z_S4_run11",
+      "events_sha256": "b36e9d498dddd78b9d7949f3856b1afd6bef03de3d07634480bf903a75f1b9db",
+      "accepted": 30,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    },
+    "S5": {
+      "folder": "measurements\\runs\\20260924T080556_887281Z_S5_run13",
+      "events_sha256": "08a376c23ff5eb08c64838771271ff956873d0538827cf6d8123fb1926adb0fb",
+      "accepted": 45,
+      "elf_sha256": "1d808b630065538a1d4824aaf96ed170b7ad6a43cc7d453f0e1b6555c36486f1"
+    }
+  },
+  "excluded": [
+    {
+      "folder": "measurements\\runs\\20260924T074645_035091Z_S0_run1",
+      "reasons": [
+        "accepted < 30",
+        "accepted edge interval < 0.5 s"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T074931_884988Z_S1_run2",
+      "reasons": [
+        "accepted < 30"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T074939_841429Z_S2_run3",
+      "reasons": [
+        "accepted < 30"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T074947_916190Z_S3_run4",
+      "reasons": [
+        "accepted < 30"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T074955_927135Z_S4_run5",
+      "reasons": [
+        "accepted < 30"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T075004_433723Z_S5_run6",
+      "reasons": [
+        "accepted < 30"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T075123_085184Z_S0_run7",
+      "reasons": [
+        "accepted edge interval < 0.5 s"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T075315_145773Z_S1_run8",
+      "reasons": [
+        "accepted edge interval < 0.5 s"
+      ]
+    },
+    {
+      "folder": "measurements\\runs\\20260924T080232_491730Z_S5_run12",
+      "reasons": [
+        "accepted < 30"
+      ]
+    }
+  ]
+}

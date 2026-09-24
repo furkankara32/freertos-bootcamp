@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app.h"
 
 /* USER CODE END Includes */
 
@@ -51,21 +52,21 @@
 osThreadId_t UartTxTaskHandle;
 const osThreadAttr_t UartTxTask_attributes = {
   .name = "UartTxTask",
-  .stack_size = 128 * 4,
+  .stack_size = 768 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for TelemetryTask */
 osThreadId_t TelemetryTaskHandle;
 const osThreadAttr_t TelemetryTask_attributes = {
   .name = "TelemetryTask",
-  .stack_size = 128 * 4,
+  .stack_size = 768 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for ButtonTask */
 osThreadId_t ButtonTaskHandle;
 const osThreadAttr_t ButtonTask_attributes = {
   .name = "ButtonTask",
-  .stack_size = 128 * 4,
+  .stack_size = 768 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -103,6 +104,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
+  App_Init();
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
@@ -117,6 +119,10 @@ void MX_FREERTOS_Init(void) {
   ButtonTaskHandle = osThreadNew(StartButtonTask, NULL, &ButtonTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
+  configASSERT(UartTxTaskHandle && TelemetryTaskHandle && ButtonTaskHandle);
+  vTaskPrioritySet((TaskHandle_t)TelemetryTaskHandle, 3);
+  vTaskPrioritySet((TaskHandle_t)ButtonTaskHandle, 2);
+  vTaskPrioritySet((TaskHandle_t)UartTxTaskHandle, 1);
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
@@ -136,11 +142,8 @@ void MX_FREERTOS_Init(void) {
 void StartUartTxTask(void *argument)
 {
   /* USER CODE BEGIN StartUartTxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  (void)argument;
+  App_UartTask();
   /* USER CODE END StartUartTxTask */
 }
 
@@ -154,11 +157,8 @@ void StartUartTxTask(void *argument)
 void StartTelemetryTask(void *argument)
 {
   /* USER CODE BEGIN StartTelemetryTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  (void)argument;
+  App_TelemetryTask();
   /* USER CODE END StartTelemetryTask */
 }
 
@@ -172,11 +172,8 @@ void StartTelemetryTask(void *argument)
 void StartButtonTask(void *argument)
 {
   /* USER CODE BEGIN StartButtonTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  (void)argument;
+  App_ButtonTask();
   /* USER CODE END StartButtonTask */
 }
 
