@@ -1,5 +1,6 @@
 /* FreeRTOS Bootcamp: all timestamps are TIM5 microseconds, never host time. */
 #include "app.h"
+#include "app_config.h"
 #include "main.h"
 #include "tim.h"
 #include "usart.h"
@@ -32,6 +33,7 @@
 #define TX_DONE 1U
 #define TX_FAILED 2U
 #define TX_STOP 4U
+#define TX_WORK 8U
 
 enum Status { PENDING, OK, BUTTON_DROP, TX_DROP, TX_ERROR, TIMEOUT, OVERFLOW };
 static const char *const statuses[] = {"pending", "ok", "button_q_drop", "tx_drop", "tx_error", "timeout", "record_overflow"};
@@ -39,19 +41,19 @@ enum State { IDLE, CONFIGURED, WARMUP, RUNNING, DRAINING, COMPLETE, FAULT };
 enum Kind { TEL, BTN, CONTROL, BARRIER, DUMP };
 enum Counter { ACCEPTED, DEBOUNCE, BQ_DROP, BTX_DROP, TEL_DROP, UART_ERROR, TX_TIMEOUT,
     DRAIN_TIMEOUT, RECORD_OVERFLOW, UNRECORDED, TX_HWM, BQ_HWM, TEL_GENERATED,
-    TEL_ENQUEUED, TEL_COMPLETED, RX_ERROR, CONTROL_DROP, FORMAT_ERROR, PERIOD_OVERRUN, COUNTERS };
+    TEL_ENQUEUED, TEL_COMPLETED, RX_ERROR, CONTROL_DROP, FORMAT_ERROR, PERIOD_OVERRUN, BTN_HWM, COUNTERS };
 static const char *const counter_names[] = {
     "accepted", "debounce_reject", "button_q_drop", "btn_tx_drop", "tel_q_drop",
     "uart_tx_error", "tx_timeout", "drain_timeout", "record_overflow", "unrecorded_events",
-    "txq_hwm", "buttonq_hwm", "tel_generated", "tel_enqueued", "tel_completed",
-    "rx_error", "control_drop", "format_error", "period_overrun"};
+    "tel_txq_hwm", "buttonq_hwm", "tel_generated", "tel_enqueued", "tel_completed",
+    "rx_error", "control_drop", "format_error", "period_overrun", "btn_txq_hwm"};
 typedef struct { uint32_t id, t[5]; uint8_t mask, status; } Record;
 typedef struct { uint16_t index; uint8_t barrier; } ButtonEvent;
 typedef struct { uint8_t kind; uint16_t index; uint8_t bytes[FRAME]; } TxMsg;
 typedef struct { char bytes[64]; } Command;
 static Record records[RECORDS];
 static uint32_t counters[COUNTERS], snapshot[COUNTERS];
-static QueueHandle_t button_q, tx_q, control_q;
+static QueueHandle_t button_q, tx_q, btn_tx_q, tel_tx_q, control_q;
 static TaskHandle_t control_task, uart_task;
 static volatile enum State state = IDLE;
 static volatile uint8_t accepting, stopping, tx_active;
@@ -60,7 +62,9 @@ static uint32_t run_id, selected, scenario, record_count, last_press;
 static uint8_t first_press = 1, have_snapshot, sync_failed;
 static uint32_t run_start, run_stop, stop_start, sequence;
 static uint32_t tel_first, tel_last, period_min, period_max, period_sum, period_n;
-static uint32_t iterations, work_min, work_mean, work_max;
+static uint32_t iterations, work_min, work_mean, work_max, slices;
+static uint32_t cal_slice_max, slice_max, cpu_max, activation_max, cpu_n;
+static uint64_t cpu_sum;
 static volatile uint32_t work_sink;
 static const uint32_t periods[] = {0,100,20,10,10,10};
 static const uint32_t targets[] = {0,0,0,0,2000,5000};
@@ -105,13 +109,19 @@ static int wait_control(uint32_t ms)
         if (bits & CTRL_DONE) return !sync_failed;
     }
 }
+static BaseType_t submit_control(const TxMsg *m)
+{
+    BaseType_t sent=xQueueSend(tx_q,m,pdMS_TO_TICKS(1000));
+    if(sent==pdPASS && uart_task)xTaskNotify(uart_task,TX_WORK,eSetBits);
+    return sent;
+}
 static void clear_done(void) { (void)ulTaskNotifyValueClear(NULL, CTRL_DONE); sync_failed = 0; }
 static int control_frame(const char *text)
 {
     TxMsg m = {.kind=CONTROL, .index=NO_RECORD};
     if (!format(m.bytes, "%s", text)) return 0;
     clear_done();
-    if (xQueueSend(tx_q, &m, pdMS_TO_TICKS(1000)) != pdPASS) return 0;
+    if (submit_control(&m) != pdPASS) return 0;
     return wait_control(1500);
 }
 static void reply(const char *text)
@@ -131,15 +141,17 @@ static void reset_measurement(void)
     taskENTER_CRITICAL();
     memset(records,0,sizeof(records)); memset(counters,0,sizeof(counters));
     record_count=0; first_press=1; sequence=0;
+    cpu_sum=0;cpu_n=cpu_max=slice_max=activation_max=0;
     tel_first=tel_last=period_sum=period_n=period_max=0; period_min=UINT32_MAX;
     taskEXIT_CRITICAL();
 }
 void App_Init(void)
 {
     if (HAL_TIM_Base_Start(&htim5) != HAL_OK) Error_Handler();
-    button_q=xQueueCreate(8,sizeof(ButtonEvent)); tx_q=xQueueCreate(16,sizeof(TxMsg));
+    button_q=xQueueCreate(8,sizeof(ButtonEvent)); tx_q=xQueueCreate(4,sizeof(TxMsg));
+    btn_tx_q=xQueueCreate(8,sizeof(TxMsg));tel_tx_q=xQueueCreate(16,sizeof(TxMsg));
     control_q=xQueueCreate(4,sizeof(Command));
-    if (!button_q || !tx_q || !control_q) Error_Handler();
+    if (!button_q || !tx_q || !btn_tx_q || !tel_tx_q || !control_q) Error_Handler();
 }
 
 /* Called at EXTI0 entry after the hardware pending flag is cleared. */
@@ -178,7 +190,7 @@ void App_ButtonTask(void)
             TxMsg m={.kind=BARRIER,.index=NO_RECORD};
             /* Even after expiry the marker must reach the TX owner; expired data
              * is discarded there. It alone declares the hardware quiescent. */
-            if(xQueueSend(tx_q,&m,pdMS_TO_TICKS(1100))!=pdPASS) {
+            if(submit_control(&m)!=pdPASS) {
                 sync_failed=1; xTaskNotify(control_task,CTRL_DONE,eSetBits);
             }
             continue;
@@ -195,8 +207,11 @@ void App_ButtonTask(void)
         taskENTER_CRITICAL();
         if(records[i].status==PENDING) { records[i].t[2]=App_Now(); records[i].mask|=4; }
         else {taskEXIT_CRITICAL();continue;}
-        if(xQueueSend(tx_q,&m,0)!=pdPASS) { records[i].status=TX_DROP; ++counters[BTX_DROP]; }
-        else {UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;}
+        if(xQueueSend(btn_tx_q,&m,0)!=pdPASS) { records[i].status=TX_DROP; ++counters[BTX_DROP]; }
+        else {
+            UBaseType_t n=uxQueueMessagesWaiting(btn_tx_q);if(n>counters[BTN_HWM])counters[BTN_HWM]=n;
+            if(uart_task)xTaskNotify(uart_task,TX_WORK,eSetBits);
+        }
         taskEXIT_CRITICAL();
     }
 }
@@ -312,14 +327,23 @@ static int met_text(const char *key,const char *value)
 {return dump_line(NULL,"MET,%lu,%s,%s",(unsigned long)run_id,key,value);}
 static int dump_records(void)
 {
-    uint32_t ok=0,late=0,crc=UINT32_MAX;
-    for(unsigned i=0;i<record_count;i++)if(records[i].status==OK){++ok;if((uint32_t)(records[i].t[4]-records[i].t[0])>20000)++late;}
+    uint32_t ok=0,late=0,late10=0,crc=UINT32_MAX;
+    for(unsigned i=0;i<record_count;i++)if(records[i].status==OK){++ok;uint32_t r=records[i].t[4]-records[i].t[0];if(r>20000)++late;if(r>APP_DEADLINE_US)++late10;}
     if(!dump_line(NULL,"EXP,%lu,DUMPING,S%lu",(unsigned long)run_id,(unsigned long)scenario))return 0;
     if(!dump_line(NULL,"BEGIN,%lu,S%lu,%lu,%lu",(unsigned long)run_id,(unsigned long)scenario,(unsigned long)record_count,(unsigned long)snapshot[ACCEPTED]))return 0;
 #define MET(k,v) do {if(!met(k,v))return 0;}while(0)
     MET("sysclk_hz",SystemCoreClock);MET("timer_hz",1000000);MET("tick_hz",configTICK_RATE_HZ);
-    MET("baud",115200);MET("frame_bytes",64);MET("prio_tel",3);MET("prio_btn",2);MET("prio_tx",1);
-    MET("buttonq_len",8);MET("txq_len",16);MET("record_capacity",CAPACITY);
+    MET("baud",APP_BAUD);MET("frame_bytes",64);MET("prio_tel",3);MET("prio_btn",2);MET("prio_tx",1);
+    MET("buttonq_len",8);MET("btn_txq_len",8);MET("tel_txq_len",16);MET("record_capacity",CAPACITY);
+    MET("design_version",2);MET("deadline_us",APP_DEADLINE_US);
+    MET("uart_pclk_hz",HAL_RCC_GetPCLK1Freq());MET("uart_brr",USART2->BRR);
+    MET("baud_actual",HAL_RCC_GetPCLK1Freq()/USART2->BRR);
+    MET("baud_error_ppm",(uint32_t)(llabs((long long)(HAL_RCC_GetPCLK1Freq()/USART2->BRR)-APP_BAUD)*1000000/APP_BAUD));
+    if(!met_text("variant",APP_VARIANT)||!met_text("queue_policy","btn_first")||!met_text("work_mode",APP_SLICED?"sliced":"monolithic"))return 0;
+    MET("slice_target_us",slices?targets[scenario]/slices:0);MET("slice_count",slices);
+    MET("slice_gap_ticks",APP_SLICED&&slices>1?1:0);MET("cal_slice_max_us",cal_slice_max);
+    MET("cpu_work_mean_us",cpu_n?(uint32_t)(cpu_sum/cpu_n):0);MET("cpu_work_max_us",cpu_max);
+    MET("slice_max_us",slice_max);MET("activation_wall_max_us",activation_max);
     MET("telemetry_hz",periods[scenario]?1000/periods[scenario]:0);MET("period_ms",periods[scenario]);
     MET("work_target_us",targets[scenario]);MET("work_iters",iterations);
     MET("work_min_us",work_min);MET("work_mean_us",work_mean);MET("work_max_us",work_max);
@@ -336,7 +360,9 @@ static int dump_records(void)
     if(strlen(sha)==40){memcpy(sha_a,sha,20);memcpy(sha_b,sha+20,20);}else{strcpy(sha_a,"unknown");strcpy(sha_b,"unknown");}
     if(!met_text("fw_sha_a",sha_a)||!met_text("fw_sha_b",sha_b)||!met_text("build_config",APP_BUILD_CONFIG)||!met_text("opt_level",APP_OPT_LEVEL)||!met_text("kernel_version",tskKERNEL_VERSION_NUMBER)||!met_text("result",result))return 0;
     for(unsigned n=0;n<COUNTERS;n++)if(!dump_line(NULL,"SUM,%lu,%s,%lu",(unsigned long)run_id,counter_names[n],(unsigned long)snapshot[n]))return 0;
-    if(!dump_line(NULL,"SUM,%lu,ok,%lu",(unsigned long)run_id,(unsigned long)ok)||!dump_line(NULL,"SUM,%lu,late_completed,%lu",(unsigned long)run_id,(unsigned long)late))return 0;
+    if(!dump_line(NULL,"SUM,%lu,ok,%lu",(unsigned long)run_id,(unsigned long)ok)||
+       !dump_line(NULL,"SUM,%lu,late_10ms,%lu",(unsigned long)run_id,(unsigned long)late10)||
+       !dump_line(NULL,"SUM,%lu,late_20ms,%lu",(unsigned long)run_id,(unsigned long)late))return 0;
     for(unsigned i=0;i<record_count;i++) {
         Record *r=&records[i];char ts[5][11];
         for(unsigned j=0;j<5;j++) {if(r->mask&(1U<<j))snprintf(ts[j],11,"%lu",(unsigned long)r->t[j]);else strcpy(ts[j],"-");}
@@ -350,7 +376,15 @@ void App_UartTask(void)
 {
     uart_task=xTaskGetCurrentTaskHandle();
     for(;;) {
-        TxMsg m;if(xQueueReceive(tx_q,&m,portMAX_DELAY)!=pdPASS)continue;
+        TxMsg m;BaseType_t found;
+        /* Selection is atomic relative to Button task. Once selected, one TEL
+         * may block a later BTN; no frame is interrupted in flight. */
+        taskENTER_CRITICAL();
+        found=xQueueReceive(btn_tx_q,&m,0);
+        if(found!=pdPASS)found=xQueueReceive(tel_tx_q,&m,0);
+        if(found!=pdPASS)found=xQueueReceive(tx_q,&m,0);
+        taskEXIT_CRITICAL();
+        if(found!=pdPASS){uint32_t bits;xTaskNotifyWait(0,UINT32_MAX,&bits,portMAX_DELAY);continue;}
         if(m.kind==BARRIER) {xTaskNotify(control_task,CTRL_DONE,eSetBits);continue;}
         if(m.kind==DUMP) {sync_failed=!dump_records();xTaskNotify(control_task,CTRL_DONE,eSetBits);continue;}
         int success=transmit(m.bytes,m.index,m.kind==TEL||m.kind==BTN);
@@ -359,23 +393,42 @@ void App_UartTask(void)
     }
 }
 
-__attribute__((noinline)) static void workload(uint32_t n)
+/* Preserve the calculation state and iteration index across slice boundaries. */
+__attribute__((noinline)) static void workload(uint32_t n,uint32_t *x,uint32_t base)
 {
-    uint32_t x=work_sink+0x9e3779b9U;
-    for(uint32_t i=0;i<n;i++){x^=x<<13;x^=x>>17;x^=x<<5;x+=i;}
-    work_sink=x;
+    uint32_t v=*x;
+    for(uint32_t i=0;i<n;i++){v^=v<<13;v^=v>>17;v^=v<<5;v+=base+i;}
+    *x=v;
+}
+static uint32_t run_work(int block,uint32_t *maximum)
+{
+    if(!slices){*maximum=0;return 0;}
+    uint32_t total=0,offset=0,x=work_sink+0x9e3779b9U;*maximum=0;
+    for(uint32_t k=0;k<slices;k++){
+        uint32_t n=iterations/slices+(k<iterations%slices);
+        uint32_t start=App_Now();workload(n,&x,offset);uint32_t dt=App_Now()-start;
+        total+=dt;if(dt>*maximum)*maximum=dt;offset+=n;
+        if(block && k+1<slices)vTaskDelay(1);
+    }
+    work_sink=x;return total;
 }
 static void calibrate(uint32_t target)
 {
-    iterations=work_min=work_mean=work_max=0;if(!target)return;
+    iterations=work_min=work_mean=work_max=cal_slice_max=0;
+    slices=target?(APP_SLICED?target/1000:1):0;if(!target)return;
     iterations=1000;
     for(unsigned k=0;k<4;k++) {
-        uint32_t start=App_Now();workload(iterations);uint32_t dt=App_Now()-start;if(!dt)dt=1;
+        uint32_t maximum,dt=run_work(0,&maximum);if(!dt)dt=1;
         uint64_t next=(uint64_t)iterations*target/dt;
         iterations=(uint32_t)(next>10000000?10000000:next);if(!iterations)iterations=1;
     }
     uint64_t total=0;work_min=UINT32_MAX;
-    for(unsigned k=0;k<100;k++){uint32_t start=App_Now();workload(iterations);uint32_t dt=App_Now()-start;total+=dt;if(dt<work_min)work_min=dt;if(dt>work_max)work_max=dt;}
+    for(unsigned k=0;k<100;k++){
+        uint32_t maximum,dt=run_work(0,&maximum);total+=dt;
+        if(dt<work_min)work_min=dt;
+        if(dt>work_max)work_max=dt;
+        if(maximum>cal_slice_max)cal_slice_max=maximum;
+    }
     work_mean=(uint32_t)((total+50)/100);
 }
 static void telemetry(void)
@@ -386,12 +439,17 @@ static void telemetry(void)
         else tel_first=now;
         tel_last=now;count(TEL_GENERATED);
     }
-    workload(iterations);
+    uint32_t maximum,cpu=run_work(APP_SLICED,&maximum);
+    if(state==RUNNING){cpu_sum+=cpu;++cpu_n;if(cpu>cpu_max)cpu_max=cpu;if(maximum>slice_max)slice_max=maximum;}
     TxMsg m={.kind=TEL,.index=NO_RECORD};
     if(!format(m.bytes,"TEL,%lu,S%lu,%lu,%lu",(unsigned long)run_id,(unsigned long)scenario,(unsigned long)++sequence,(unsigned long)work_sink))return;
     taskENTER_CRITICAL();
-    if(xQueueSend(tx_q,&m,0)!=pdPASS){if(state==RUNNING)++counters[TEL_DROP];}
-    else if(state==RUNNING){++counters[TEL_ENQUEUED];UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;}
+    if(xQueueSend(tel_tx_q,&m,0)!=pdPASS){if(state==RUNNING)++counters[TEL_DROP];}
+    else {
+        if(state==RUNNING){++counters[TEL_ENQUEUED];UBaseType_t n=uxQueueMessagesWaiting(tel_tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;}
+        if(uart_task)xTaskNotify(uart_task,TX_WORK,eSetBits);
+    }
+    if(state==RUNNING){uint32_t wall=App_Now()-now;if(wall>activation_max)activation_max=wall;}
     taskEXIT_CRITICAL();
 }
 static int drain(void)
@@ -410,7 +468,7 @@ static int drain(void)
 static int start_dump(void)
 {
     TxMsg m={.kind=DUMP,.index=NO_RECORD};clear_done();
-    if(xQueueSend(tx_q,&m,pdMS_TO_TICKS(1000))!=pdPASS)return 0;
+    if(submit_control(&m)!=pdPASS)return 0;
     return wait_control(15000);
 }
 static void finish(uint32_t req,int cancelled)
@@ -449,7 +507,7 @@ static void command(Command *cmd)
     char ack[64];snprintf(ack,64,"ACK,%lu,%s,%lu",(unsigned long)req,verb,(unsigned long)(start?run_id+1:run_id));
     if(req){last_req=req;strcpy(last_command,original);strcpy(last_ack,ack);}
     if(hello) {
-        reply("SYS,RTOSLAT,FW03,PROTO2");reply(ack);
+        reply("SYS,RTOSLAT,FW2-" APP_VARIANT ",PROTO3");reply(ack);
         const char *name=state==RUNNING?"ARMED":state==WARMUP?"WARMUP":state==CONFIGURED?"CONFIGURED":state==COMPLETE?"DONE":"IDLE";
         char text[64];snprintf(text,64,"EXP,%lu,%s,S%lu",(unsigned long)run_id,name,(unsigned long)(state==CONFIGURED?selected:scenario));reply(text);return;
     }

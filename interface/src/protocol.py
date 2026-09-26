@@ -1,4 +1,4 @@
-"""PROTO2 framing, strict dump validation and MCU-only time arithmetic."""
+"""PROTO2/PROTO3 framing, strict dump validation and MCU-only time arithmetic."""
 from dataclasses import dataclass, field
 import re
 import zlib
@@ -10,6 +10,12 @@ SUM_KEYS = set('accepted ok late_completed debounce_reject button_q_drop btn_tx_
 MET_KEYS = set('sysclk_hz timer_hz tick_hz baud frame_bytes prio_tel prio_btn prio_tx buttonq_len txq_len record_capacity telemetry_hz period_ms work_target_us work_iters work_min_us work_mean_us work_max_us run_start_us run_stop_us tel_first_us tel_last_us period_min_us period_max_us period_sum_us period_n fw_sha_a fw_sha_b build_config opt_level kernel_version result'.split())
 TEXT_MET = {'fw_sha_a','fw_sha_b','build_config','opt_level','kernel_version','result'}
 OPTIONAL_NUM = {'work_min_us','work_mean_us','work_max_us','tel_first_us','tel_last_us','period_min_us','period_max_us'}
+
+V3_MET_KEYS = (MET_KEYS-{'txq_len'}) | set(('design_version variant deadline_us baud_actual uart_brr uart_pclk_hz baud_error_ppm '
+    'queue_policy btn_txq_len tel_txq_len work_mode slice_target_us slice_count slice_gap_ticks cal_slice_max_us '
+    'cpu_work_mean_us cpu_work_max_us slice_max_us activation_wall_max_us').split())
+V3_SUM_KEYS = (SUM_KEYS-{'txq_hwm','late_completed'}) | {'btn_txq_hwm','tel_txq_hwm','late_10ms','late_20ms'}
+TEXT_MET |= {'variant','queue_policy','work_mode'}
 
 class ProtocolError(ValueError): pass
 
@@ -64,11 +70,12 @@ class Dump:
     crc: int = 0
     half: tuple | None = None
     invalid: bool = False
+    protocol: str = "PROTO2"
 
     def validate(self, count, checksum):
         if self.invalid or self.half is not None or count!=self.expected or len(self.rows)!=count: raise ProtocolError('Eksik/bozuk dump')
         if checksum!=self.crc: raise ProtocolError('Dump CRC uyuşmuyor')
-        if not MET_KEYS<=self.metadata.keys() or not SUM_KEYS<=self.counters.keys(): raise ProtocolError('MET/SUM alanları eksik')
+        if not (V3_MET_KEYS if self.protocol=='PROTO3' else MET_KEYS)<=self.metadata.keys() or not (V3_SUM_KEYS if self.protocol=='PROTO3' else SUM_KEYS)<=self.counters.keys(): raise ProtocolError('MET/SUM alanları eksik')
         c=self.counters;m=self.metadata
         counts={s:sum(r['status']==s for r in self.rows) for s in STATUSES}
         if c['accepted']!=len(self.rows)+c['unrecorded_events'] or c['accepted']!=self.last_id: raise ProtocolError('Kabul/kayıt sayısı tutarsız')
@@ -76,10 +83,25 @@ class Dump:
         if not c['unrecorded_events'] and [r['event_id'] for r in self.rows]!=list(range(1,self.last_id+1)): raise ProtocolError('Olay kimliği kayıp')
         for key,status in [('ok','ok'),('button_q_drop','button_q_drop'),('btn_tx_drop','tx_drop'),('record_overflow','record_overflow')]:
             if c[key]!=counts[status]: raise ProtocolError(f'Sayaç uyuşmuyor: {key}')
-        if c['late_completed']!=sum(r['status']=='ok' and stages(r)['r_us']>20000 for r in self.rows): raise ProtocolError('Geç yanıt sayısı tutarsız')
+        for key,deadline in ([('late_10ms',10000),('late_20ms',20000)] if self.protocol=='PROTO3' else [('late_completed',20000)]):
+            if c[key]!=sum(r['status']=='ok' and stages(r)['r_us']>deadline for r in self.rows): raise ProtocolError('Geç yanıt sayısı tutarsız')
         fixed={'timer_hz':1000000,'tick_hz':1000,'baud':115200,'frame_bytes':64,'prio_tel':3,'prio_btn':2,'prio_tx':1,'buttonq_len':8,'txq_len':16,'record_capacity':128}
+        if self.protocol=='PROTO3':
+            fixed.pop('txq_len');fixed.pop('baud')
+            fixed.update(design_version=2,deadline_us=10000,btn_txq_len=8,tel_txq_len=16)
+            if m['variant'] not in {'Q','QW','QB','QWB'} or m['queue_policy']!='btn_first':raise ProtocolError('V2 varyant/kuyruk politikası geçersiz')
+            if m['baud']!=(460800 if m['variant'] in {'QB','QWB'} else 115200):raise ProtocolError('Varyant baud uyuşmuyor')
+            sliced=m['variant'] in {'QW','QWB'}
+            if m['work_mode']!=('sliced' if sliced else 'monolithic'):raise ProtocolError('İş profili uyuşmuyor')
+            target=[0,0,0,0,2000,5000][int(self.scenario[1])]
+            slices=(target//1000 if sliced else 1) if target else 0
+            if m['work_target_us']!=target or m['slice_count']!=slices or m['slice_gap_ticks']!=int(sliced and slices>1):raise ProtocolError('Dilim yapılandırması uyuşmuyor')
+            if m['slice_target_us']!=(target//slices if slices else 0):raise ProtocolError('Dilim hedefi uyuşmuyor')
+            if not m['uart_brr'] or m['baud_actual']!=m['uart_pclk_hz']//m['uart_brr']:raise ProtocolError('Gerçek baud tutarsız')
+            if m['baud_error_ppm']!=abs(m['baud_actual']-m['baud'])*1000000//m['baud']:raise ProtocolError('Baud hata hesabı tutarsız')
+            if c['btn_txq_hwm']>8 or c['tel_txq_hwm']>16:raise ProtocolError('Kuyruk HWM aralık dışında')
         if any(m[k]!=v for k,v in fixed.items()): raise ProtocolError('Deney sabitleri specs ile uyuşmuyor')
-        if c['txq_hwm']>16 or c['buttonq_hwm']>8: raise ProtocolError('Kuyruk HWM aralık dışında')
+        if (self.protocol=='PROTO2' and c['txq_hwm']>16) or c['buttonq_hwm']>8: raise ProtocolError('Kuyruk HWM aralık dışında')
         if m['result'] not in {'COMPLETE','INCOMPLETE','CANCELLED'}: raise ProtocolError('Koşu sonucu geçersiz')
         if c['tel_generated']!=c['tel_enqueued']+c['tel_q_drop'] or c['tel_completed']>c['tel_enqueued']: raise ProtocolError('TEL sayaçları tutarsız')
         n=c['tel_generated']
@@ -88,7 +110,7 @@ class Dump:
         return self
 
 class Protocol:
-    def __init__(self): self.dump=None
+    def __init__(self): self.dump=None;self.version="PROTO2";self.firmware=None
     def invalidate(self):
         if self.dump: self.dump.invalid=True
     def accept(self, raw):
@@ -104,15 +126,15 @@ class Protocol:
         if kind not in lengths or len(fields)!=lengths[kind]: raise ProtocolError('Bilinmeyen mesaj / alan sayısı')
         if kind=='BEGIN':
             if fields[2] not in {f'S{i}' for i in range(6)}: raise ProtocolError('Geçersiz senaryo')
-            self.dump=Dump(uint(fields[1]),fields[2],uint(fields[3],136),uint(fields[4]));return kind,self.dump
+            self.dump=Dump(uint(fields[1]),fields[2],uint(fields[3],136),uint(fields[4]),protocol=self.version);return kind,self.dump
         if kind in {'MET','SUM','M1','M2','END'}:
             d=self.dump
             if d is None or uint(fields[1])!=d.run: raise ProtocolError('Dump/run eşleşmiyor')
             if kind in {'MET','SUM'}:
                 key,value=fields[2:];dest=d.metadata if kind=='MET' else d.counters
-                if not key or len(key)>20 or len(value)>24 or key in dest: raise ProtocolError('Yinelenen/uzun MET/SUM alanı')
+                if not key or len(key)>24 or len(value)>24 or key in dest: raise ProtocolError('Yinelenen/uzun MET/SUM alanı')
                 if kind=='SUM':value=uint(value)
-                elif key in MET_KEYS-TEXT_MET: value=None if value=='-' and key in OPTIONAL_NUM else uint(value)
+                elif key in (MET_KEYS|V3_MET_KEYS)-TEXT_MET: value=None if value=='-' and key in OPTIONAL_NUM else uint(value)
                 dest[key]=value
             elif kind=='M1':
                 if d.half is not None: raise ProtocolError('M2 eksik')
@@ -132,7 +154,11 @@ class Protocol:
                 if not re.fullmatch('[0-9A-Fa-f]{8}',fields[3]):raise ProtocolError('CRC biçimi geçersiz')
                 result=d.validate(uint(fields[2]),int(fields[3],16));self.dump=None;return 'DUMP',result
             return kind,fields
-        if kind=='SYS' and fields!=['SYS','RTOSLAT','FW03','PROTO2']: raise ProtocolError('Firmware/protokol sürümü uyumsuz')
+        if kind=='SYS':
+            if fields==['SYS','RTOSLAT','FW03','PROTO2']:self.version='PROTO2'
+            elif fields[1]=='RTOSLAT' and fields[3]=='PROTO3' and fields[2] in {'FW2-Q','FW2-QW','FW2-QB','FW2-QWB'}:self.version='PROTO3'
+            else:raise ProtocolError('Firmware/protokol sürümü uyumsuz')
+            self.firmware=fields[2]
         if kind in {'EXP','TEL','BTN'}:
             uint(fields[1])
             scenario=fields[3] if kind=='EXP' else fields[2]

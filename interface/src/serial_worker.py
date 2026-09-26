@@ -13,17 +13,17 @@ class SerialWorker(QThread):
     received=Signal(str,object)
     problem=Signal(str)
     connected=Signal(bool)
-    def __init__(self, port, output, parent=None):
-        super().__init__(parent);self.port=port;self.output=Path(output);self.commands=SimpleQueue();self.halt=Event()
+    def __init__(self, port, output, parent=None, baud=460800, build_metadata=None):
+        super().__init__(parent);self.port=port;self.baud=baud;self.build_metadata=build_metadata;self.output=Path(output);self.commands=SimpleQueue();self.halt=Event()
     def send(self,text):self.commands.put(text)
     def stop(self):self.halt.set()
     def run(self):
         handle=None;raw_file=None;raw=bytearray();decoder=Decoder();protocol=Protocol()
-        demo=self.port=='DEMO';sim=Simulator() if demo else None
+        demo=self.port=='DEMO';sim=Simulator(version='PROTO3') if demo else None
         try:
             session=self.output/('demo' if demo else 'runs')/('connection_'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S_%fZ'))
             session.mkdir(parents=True,exist_ok=False);raw_file=(session/'serial_raw.partial.bin').open('wb')
-            if not demo:handle=serial.Serial(self.port,115200,timeout=.02,write_timeout=1,dsrdtr=False,rtscts=False)
+            if not demo:handle=serial.Serial(self.port,self.baud,timeout=.02,write_timeout=1,dsrdtr=False,rtscts=False)
             self.connected.emit(True)
             while not self.halt.is_set():
                 incoming=[]
@@ -48,7 +48,13 @@ class SerialWorker(QThread):
                         try:
                             kind,payload=protocol.accept(line)
                             if kind=='DUMP':
-                                folder=save_dump(payload,self.output,raw,demo,{'port':self.port,'connection_path':str(session)})
+                                extra={'port':self.port,'connection_baud':self.baud,'connection_path':str(session)}
+                                if self.build_metadata and not demo:
+                                    m=payload.metadata;b=self.build_metadata
+                                    if payload.protocol=='PROTO3' and (b.get('variant')!=m['variant'] or b.get('baud')!=m['baud']):
+                                        self.problem.emit('Seçilen build kart profiliyle uyuşmuyor; kayıt build kimliği olmadan korunuyor.')
+                                    else:extra.update(host_build=b,build_identity_source='operator-supplied flashed build metadata')
+                                folder=save_dump(payload,self.output,raw,demo,extra)
                                 raw_file.flush();self.received.emit('SAVED',(payload,str(folder)))
                             else:self.received.emit(kind,payload)
                         except ProtocolError as exc:self.problem.emit(str(exc))

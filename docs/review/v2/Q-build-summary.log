@@ -1,0 +1,7 @@
+ARM Release build PASS
+   text	   data	    bss	    dec	    hex	filename
+  29172	    104	  43296	  72572	  11b7c	D:\freertos-bootcamp\hafta-01\firmware\build\v2\Q\Release\Homework_001.elf
+
+D:\freertos-bootcamp\hafta-01\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:948:60: warning: unused parameter 'Banks' [-Wunused-parameter]
+D:\freertos-bootcamp\hafta-01\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:1027:74: warning: unused parameter 'Banks' [-Wunused-parameter]
+D:\freertos-bootcamp\hafta-01\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:1063:75: warning: unused parameter 'Banks' [-Wunused-parameter]

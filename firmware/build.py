@@ -8,6 +8,7 @@ PROJECT = ROOT / 'firmware/Homework_001'
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--config', choices=['Debug', 'Release'], default='Release')
+    ap.add_argument('--variant', choices=['Q','QW','QB','QWB'], default='QWB')
     ap.add_argument('--toolchain', help='Directory containing arm-none-eabi-gcc.exe')
     args = ap.parse_args()
     gcc = shutil.which('arm-none-eabi-gcc')
@@ -17,7 +18,7 @@ def main():
         choices = sorted(Path('C:/ST').glob('**/arm-none-eabi-gcc.exe'))
         if not choices: ap.error('ARM GCC bulunamadı; --toolchain <bin> kullanın')
         gcc = str(choices[-1])
-    out = ROOT/'firmware/build'/args.config
+    out = ROOT/'firmware/build/v2'/args.variant/args.config
     out.mkdir(parents=True, exist_ok=True)
     opt = '-Os' if args.config == 'Release' else '-O0'
     sha = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
@@ -38,7 +39,7 @@ def main():
         cmd=[gcc,*common,'-c',str(src),'-o',str(obj)]
         if src.suffix=='.c':
             cmd+=['-std=gnu11','-fstack-usage','-DSTM32F407xx','-DUSE_HAL_DRIVER',
-                f'-DAPP_GIT_SHA="{sha}"',f'-DAPP_BUILD_CONFIG="{args.config}"',f'-DAPP_OPT_LEVEL="{opt[1:]}"']
+                f'-DAPP_PROFILE={dict(Q=1,QW=2,QB=3,QWB=4)[args.variant]}',f'-DAPP_GIT_SHA="{sha}"',f'-DAPP_BUILD_CONFIG="{args.config}"',f'-DAPP_OPT_LEVEL="{opt[1:]}"']
             cmd += [f'-I{PROJECT/i}' for i in includes]
         r=subprocess.run(cmd,capture_output=True,text=True)
         return r.returncode, ' '.join(cmd)+'\n'+r.stdout+r.stderr
@@ -57,7 +58,7 @@ def main():
     size=subprocess.check_output([str(bindir/'arm-none-eabi-size.exe'),str(elf)],text=True)
     subprocess.run([str(bindir/'arm-none-eabi-objcopy.exe'),'-O','binary',str(elf),str(out/'Homework_001.bin')],check=True)
     version=subprocess.check_output([gcc,'--version'],text=True).splitlines()[0]
-    meta={'source_sha':sha,'git_dirty':dirty,'config':args.config,'optimization':opt,'gcc':version,
+    meta={'design_version':2,'variant':args.variant,'protocol':'PROTO3','baud':460800 if args.variant in {'QB','QWB'} else 115200,'source_sha':sha,'git_dirty':dirty,'config':args.config,'optimization':opt,'gcc':version,
           'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest(),'size':size}
     (out/'build.json').write_text(json.dumps(meta,indent=2))
     warnings=[line for line in log.splitlines() if 'warning:' in line]

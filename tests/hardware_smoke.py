@@ -11,9 +11,9 @@ from interface.src.protocol import Decoder,Protocol,ProtocolError
 from interface.src.storage import save_dump
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--port',required=True);ap.add_argument('--scenario',choices=[f'S{i}' for i in range(6)],default='S0');ap.add_argument('--seconds',type=float,default=15);ap.add_argument('--target',type=int,default=0);ap.add_argument('--formal',action='store_true');ap.add_argument('--output',type=Path,default=Path('measurements'));args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--port',required=True);ap.add_argument('--baud',type=int,choices=[115200,460800],default=460800);ap.add_argument('--build',type=Path,help='Metadata for the firmware actually flashed');ap.add_argument('--scenario',choices=[f'S{i}' for i in range(6)],default='S0');ap.add_argument('--seconds',type=float,default=15);ap.add_argument('--target',type=int,default=0);ap.add_argument('--formal',action='store_true');ap.add_argument('--output',type=Path,default=Path('measurements'));args=ap.parse_args()
     decoder=Decoder();protocol=Protocol();raw=bytearray();events=[];result=None
-    with serial.Serial(args.port,115200,timeout=.05,write_timeout=1) as port:
+    with serial.Serial(args.port,args.baud,timeout=.05,write_timeout=1) as port:
         req=int(time.time())%60000+100
         def read_until(predicate,seconds):
             nonlocal result
@@ -44,8 +44,11 @@ def main():
     intervals=[(b['t0_us']-a['t0_us'])&0xffffffff for a,b in zip(result.rows,result.rows[1:])]
     extra={'port':args.port,'purpose':'formal_candidate' if args.target or args.formal else 'hardware_smoke','formal_sample_count_met':result.counters['accepted']>=30,
         'press_spacing_met':all(x>=500000 for x in intervals),'press_min_interval_us':min(intervals) if intervals else None}
-    build=Path('firmware/build/Release/build.json')
-    if build.exists():extra['host_build']=json.loads(build.read_text())
+    if args.build:
+        build=json.loads(args.build.read_text())
+        if result.protocol=='PROTO3' and (build.get('variant')!=result.metadata['variant'] or build.get('baud')!=result.metadata['baud']):raise RuntimeError('Build kimliği kart profiliyle uyuşmuyor')
+        extra['host_build']=build
+        extra['build_identity_source']='operator-supplied flashed build metadata'
     folder=save_dump(result,args.output,raw,False,extra)
     print(f'SAVED {folder}',flush=True)
     print(json.dumps({'accepted':result.counters['accepted'],'metadata':result.metadata,'counters':result.counters},indent=2),flush=True)

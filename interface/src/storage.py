@@ -6,11 +6,12 @@ from .protocol import CSV_FIELDS, stages
 
 def save_dump(dump, root, raw, synthetic=False, extra=None):
     root=Path(root)
+    if dump.protocol=='PROTO3':root=root/'v2'/dump.metadata['variant']
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S_%fZ')
     folder=root/('demo' if synthetic else 'runs')/f'{stamp}_{dump.scenario}_run{dump.run}'
     folder.mkdir(parents=True,exist_ok=False)
     (folder/'serial_raw.bin').write_bytes(raw)
-    metadata={'protocol':'PROTO2','run_id':dump.run,'scenario':dump.scenario,'source':'synthetic' if synthetic else 'hardware',
+    metadata={'protocol':dump.protocol,'run_id':dump.run,'scenario':dump.scenario,'source':'synthetic' if synthetic else 'hardware',
         'dump_complete':True,'MET':dump.metadata,'SUM':dump.counters,'host_python':platform.python_version(),
         'host_platform':platform.platform(),'captured_utc':stamp,**(extra or {})}
     (folder/'metadata.json').write_text(json.dumps(metadata,indent=2,ensure_ascii=False),encoding='utf-8')

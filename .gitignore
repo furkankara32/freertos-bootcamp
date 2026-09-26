@@ -9,3 +9,5 @@ measurements/demo/
 tests/output/
 tests/gui-output/
 analysis/demo_results/
+measurements/v2/*/demo/
+interface/BootcampMonitorV2.spec

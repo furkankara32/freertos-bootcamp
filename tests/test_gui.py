@@ -15,11 +15,13 @@ def test_gui_demo_roundtrip_and_screenshot(tmp_path):
         assert predicate()
     try:
         wait_for(lambda:w.ready and w.pending is None)
+        assert w.protocol_version=='PROTO3' and w.deadline_us==10000
         w.request('CFG','S0');wait_for(lambda:w.state=='CONFIGURED' and w.pending is None)
         w.request('START');wait_for(lambda:w.state=='ARMED',8)
         w.worker.send('!PRESS');wait_for(lambda:w.btn_count==1)
         w.request('STOP');wait_for(lambda:w.folder is not None,5)
         assert (w.folder/'events.csv').exists() and w.table.rowCount()==1
+        assert 'v2' in w.folder.parts and 'QWB' in w.folder.parts
         assert 'SENTETİK' in w.source.text()
         app.processEvents();w.grab().save(str(tmp_path/'gui.png'))
     finally:w.close();app.processEvents()
@@ -60,4 +62,16 @@ def test_reconnect_can_stop_unknown_active_run(tmp_path):
     try:
         w.is_connected=True;w.state='CONNECTED';w.pending=None;w.update_controls()
         assert w.stop_btn.isEnabled() and not w.start.isEnabled()
+    finally:w.close();app.processEvents()
+
+
+def test_gui_v1_handshake_keeps_old_deadline(tmp_path):
+    app=QApplication.instance() or QApplication([]);w=Window(tmp_path)
+    try:
+        w.baud.setCurrentIndex(w.baud.findData(115200))
+        w.receive('SYS',['SYS','RTOSLAT','FW03','PROTO2'])
+        assert w.deadline_us==20000 and '115200' in w.source.text()
+        assert '20 ms' in w.result_label.text()
+        w.receive('SYS',['SYS','RTOSLAT','FW2-QWB','PROTO3'])
+        assert w.deadline_us==10000
     finally:w.close();app.processEvents()

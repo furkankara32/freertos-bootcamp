@@ -7,6 +7,6 @@ try {
     # different exports and causes QtCore import to fail in the frozen app.
     $basePython = & ./.venv/Scripts/python.exe -c "import sys; print(sys.base_prefix)"
     $env:PATH = "$PSScriptRoot/.venv/Scripts;$basePython;$env:SystemRoot/System32;$env:SystemRoot"
-    & ./.venv/Scripts/python.exe -m PyInstaller --noconfirm --clean --onedir --windowed --name BootcampMonitor --paths .. launch.py
+    & ./.venv/Scripts/python.exe -m PyInstaller --noconfirm --clean --onedir --windowed --name BootcampMonitorV2 --paths .. launch.py
     if ($LASTEXITCODE) { throw 'Paketleme başarısız' }
 } finally { $env:PATH = $previousBuildPath; Pop-Location }

@@ -1,9 +1,10 @@
 """Explicitly synthetic protocol peer, NOT an RTOS scheduling simulator."""
 import time,zlib
-from .protocol import frame,SUM_KEYS
+from .protocol import frame,SUM_KEYS,V3_SUM_KEYS
 
 class Simulator:
-    def __init__(self, clock=time.monotonic):
+    def __init__(self, clock=time.monotonic, version="PROTO2", variant="QWB"):
+        self.version=version;self.variant=variant
         self.clock=clock;self.state='IDLE';self.run=0;self.scenario='S0';self.rows=[];self.selected='S0'
         self.started=0;self.last_tel=0;self.tel=0;self.saved=None;self.cache={};self.last_press=None
     def command(self,text):
@@ -12,7 +13,7 @@ class Simulator:
             old,answer=self.cache[req]
             return [] if self.state in {'ARMED','WARMUP'} else ([frame(f'ERR,{req},BAD_ARG')] if old!=text else answer)
         result=[]
-        if cmd=='HELLO':result=[frame('SYS,RTOSLAT,FW03,PROTO2'),frame(f'ACK,{req},HELLO,{self.run}'),frame(f'EXP,{self.run},{self.state},{self.scenario}')]
+        if cmd=='HELLO':result=[frame('SYS,RTOSLAT,FW03,PROTO2' if self.version=='PROTO2' else f'SYS,RTOSLAT,FW2-{self.variant},PROTO3'),frame(f'ACK,{req},HELLO,{self.run}'),frame(f'EXP,{self.run},{self.state},{self.scenario}')]
         elif cmd=='CFG' and self.state in {'IDLE','CONFIGURED','DONE'} and len(fields)==3 and fields[2] in {f'S{i}' for i in range(6)}:
             self.selected=fields[2];self.state='CONFIGURED';result=[frame(f'ACK,{req},CFG,{self.run}'),frame(f'EXP,{self.run},CONFIGURED,{self.selected}')]
         elif cmd=='START' and self.state=='CONFIGURED':
@@ -41,6 +42,7 @@ class Simulator:
         if self.last_press is not None and now-self.last_press<.5:return []
         self.last_press=now;i=len(self.rows)+1;s=int(self.scenario[1]);t0=int((now-self.started)*1e6)+1000000
         d1=80+(i*137%(1+[0,200,500,1200,2600,5600][s]));d2=40;d3=60+(i*719%(1+[0,500,2200,5000,6500,8500][s]));d4=5600
+        if self.version=='PROTO3':d1=80+i*137%900;d3=60+i*719%2000;d4=1400 if self.variant in {'QB','QWB'} else 5600
         t=[t0,t0+d1,t0+d1+d2,t0+d1+d2+d3,t0+d1+d2+d3+d4];self.rows.append((i,t))
         return [frame(f'BTN,{self.run},{self.scenario},{i},PRESSED')]
     def dump(self,result='COMPLETE'):
@@ -51,6 +53,17 @@ class Simulator:
             period_min_us=period*1000 if self.tel>=2 else '-',period_max_us=period*1000 if self.tel>=2 else '-',period_sum_us=max(0,self.tel-1)*period*1000,period_n=max(0,self.tel-1),
             fw_sha_a='synthetic',fw_sha_b='synthetic',build_config='SYNTHETIC',opt_level='none',kernel_version='V10.3.1',result=result)
         counters=dict.fromkeys(SUM_KEYS,0);counters.update(accepted=n,ok=n,late_completed=sum(t[4]-t[0]>20000 for _,t in self.rows),tel_generated=self.tel,tel_enqueued=self.tel,tel_completed=self.tel,txq_hwm=1 if n or self.tel else 0,buttonq_hwm=1 if n else 0)
+        if self.version=='PROTO3':
+            baud=460800 if self.variant in {'QB','QWB'} else 115200;brr=91 if baud==460800 else 365
+            sliced=self.variant in {'QW','QWB'};target=meta['work_target_us'];slices=(target//1000 if sliced else 1) if target else 0
+            meta.pop('txq_len')
+            meta.update(design_version=2,variant=self.variant,deadline_us=10000,baud=baud,baud_actual=42000000//brr,uart_brr=brr,uart_pclk_hz=42000000,
+                baud_error_ppm=abs(42000000//brr-baud)*1000000//baud,queue_policy='btn_first',btn_txq_len=8,tel_txq_len=16,
+                work_mode='sliced' if sliced else 'monolithic',slice_target_us=target//slices if slices else 0,slice_count=slices,slice_gap_ticks=int(sliced and slices>1),
+                cal_slice_max_us=target//slices if slices else 0,cpu_work_mean_us=target,cpu_work_max_us=target,slice_max_us=target//slices if slices else 0,
+                activation_wall_max_us=target+max(0,slices-1)*1000,work_min_us=target,work_mean_us=target,work_max_us=target)
+            counters.pop('txq_hwm');counters.pop('late_completed')
+            counters.update(btn_txq_hwm=int(n>0),tel_txq_hwm=int(self.tel>0),late_10ms=sum(t[4]-t[0]>10000 for _,t in self.rows),late_20ms=sum(t[4]-t[0]>20000 for _,t in self.rows))
         out=[frame(f'BEGIN,{self.run},{self.scenario},{n},{n}')]
         out += [frame(f'MET,{self.run},{k},{v}') for k,v in meta.items()]
         out += [frame(f'SUM,{self.run},{k},{v}') for k,v in sorted(counters.items())]

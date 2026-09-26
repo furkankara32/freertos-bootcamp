@@ -1,0 +1,13 @@
+{
+  "design_version": 2,
+  "variant": "QW",
+  "protocol": "PROTO3",
+  "baud": 115200,
+  "source_sha": "b74863a3a27ebeb14ca932737005b68d9eee1945",
+  "git_dirty": true,
+  "config": "Release",
+  "optimization": "-Os",
+  "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+  "elf_sha256": "a07af1b9b5dc09adacdcae976cfc17e541f772685a8dd38d7edee51553de4465",
+  "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  29284\t    104\t  43296\t  72684\t  11bec\tD:\\freertos-bootcamp\\hafta-01\\firmware\\build\\v2\\QW\\Release\\Homework_001.elf\n"
+}
