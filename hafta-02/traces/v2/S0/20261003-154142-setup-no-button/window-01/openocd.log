@@ -1,0 +1,1208 @@
+Open On-Chip Debugger 0.12.0+dev-00664-g72f14cee6 (2026-04-16-14:04) [https://github.com/STMicroelectronics/OpenOCD]
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+hla_swd
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+DEPRECATED! use 'swj_newdap' not 'hla newtap'
+embedded:startup.tcl:1520: Error: Infinite eval recursion
+in procedure 'script' 
+at file "embedded:startup.tcl", line 28
+in procedure 'swj_newdap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/stm32f4x.cfg", line 69
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'hla newtap' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 28
+in procedure 'swj_newdap' called at file "embedded:startup.tcl", line 324
+in procedure 'using_hla' called at file "C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.debug.openocd_2.3.400.202606220929\resources\openocd\st_scripts/target/swj-dp.tcl", line 27
+at file "embedded:startup.tcl", line 1520

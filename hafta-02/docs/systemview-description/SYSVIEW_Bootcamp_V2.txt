@@ -1,0 +1,17 @@
+0 RUN_CONFIG run=%u scenario=%u tim5_us=%u baud=%u
+1 RUN_ARMED run=%u scenario=%u tim5_us=%u detail=%u
+2 RUN_STOP run=%u scenario=%u tim5_us=%u detail=%u
+3 BTN_ACCEPT run=%u id=%u tim5_us=%u detail=%u
+4 BTN_TASK run=%u id=%u tim5_us=%u detail=%u
+5 BTN_READY run=%u id=%u tim5_us=%u detail=%u
+6 BTN_ENQUEUE run=%u id=%u tim5_us=%u depth=%u
+7 BTN_DROP run=%u id=%u tim5_us=%u reason=%u
+8 BTN_TX_START run=%u id=%u tim5_us=%u detail=%u
+9 BTN_TX_TC run=%u id=%u tim5_us=%u detail=%u
+10 TEL_ENQUEUE run=%u id=%u tim5_us=%u depth=%u
+11 TEL_DROP run=%u id=%u tim5_us=%u reason=%u
+12 TEL_TX_START run=%u id=%u tim5_us=%u detail=%u
+13 TEL_TX_TC run=%u id=%u tim5_us=%u detail=%u
+14 WORK_BEGIN run=%u id=%u tim5_us=%u slice=%u
+15 WORK_END run=%u id=%u tim5_us=%u slice=%u
+16 TX_ERROR run=%u id=%u tim5_us=%u hal_status=%u

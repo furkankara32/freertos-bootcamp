@@ -1,0 +1,8 @@
+   text	   data	    bss	    dec	    hex	filename
+  27752	    104	  43248	  71104	  115c0	D:\freertos-bootcamp\hafta-02\projects\v1\firmware\build\v1\Release\none\Homework_001.elf
+
+D:\freertos-bootcamp\hafta-02\projects\v1\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:948:60: warning: unused parameter 'Banks' [-Wunused-parameter]
+D:\freertos-bootcamp\hafta-02\projects\v1\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:1027:74: warning: unused parameter 'Banks' [-Wunused-parameter]
+D:\freertos-bootcamp\hafta-02\projects\v1\firmware\Homework_001\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c:1063:75: warning: unused parameter 'Banks' [-Wunused-parameter]
+Build OK: D:\freertos-bootcamp\hafta-02\projects\v1\firmware\build\v1\Release\none\Homework_001.elf
+Warnings: 3

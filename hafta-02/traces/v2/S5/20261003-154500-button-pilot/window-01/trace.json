@@ -1,0 +1,10 @@
+{
+  "rtt_control_block": "0x2000a754",
+  "buffer": "0x2000a91c",
+  "capacity": 32768,
+  "bytes": 32766,
+  "capture_complete": true,
+  "read_offset": 0,
+  "trace_sha256": "d85f46e0ae4e6520b3751ab539cb96e5ad7819729f01c0b0a4d69baf649af3cf",
+  "method": "ST-LINK: read SRAM only after firmware stopped recording; core resumes after export"
+}

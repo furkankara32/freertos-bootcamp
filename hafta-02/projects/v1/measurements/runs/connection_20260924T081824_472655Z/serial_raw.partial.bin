@@ -1,0 +1,7 @@
+SYS,RTOSLAT,FW03,PROTO2                                        
+ACK,0,HELLO,15                                                 
+EXP,15,CONFIGURED,S1                                           
+ACK,6,CFG,15                                                   
+EXP,15,CONFIGURED,S1                                           
+ACK,7,CFG,15                                                   
+EXP,15,CONFIGURED,S3                                           

@@ -1,0 +1,106 @@
+SYS ['SYS', 'RTOSLAT', 'FW03', 'PROTO2']
+ACK ['ACK', '0', 'HELLO', '8']
+EXP ['EXP', '8', 'DONE', 'S1']
+ACK ['ACK', '16546', 'CFG', '8']
+EXP ['EXP', '8', 'CONFIGURED', 'S2']
+ACK ['ACK', '16547', 'START', '9']
+EXP ['EXP', '9', 'WARMUP', 'S2']
+EXP ['EXP', '9', 'ARMED', 'S2']
+ARMED: 110 saniye fiziksel butona basabilirsiniz.
+BTN ['BTN', '9', 'S2', '1', 'PRESSED']
+BTN ['BTN', '9', 'S2', '2', 'PRESSED']
+BTN ['BTN', '9', 'S2', '3', 'PRESSED']
+BTN ['BTN', '9', 'S2', '4', 'PRESSED']
+BTN ['BTN', '9', 'S2', '5', 'PRESSED']
+BTN ['BTN', '9', 'S2', '6', 'PRESSED']
+BTN ['BTN', '9', 'S2', '7', 'PRESSED']
+BTN ['BTN', '9', 'S2', '8', 'PRESSED']
+BTN ['BTN', '9', 'S2', '9', 'PRESSED']
+BTN ['BTN', '9', 'S2', '10', 'PRESSED']
+BTN ['BTN', '9', 'S2', '11', 'PRESSED']
+BTN ['BTN', '9', 'S2', '12', 'PRESSED']
+BTN ['BTN', '9', 'S2', '13', 'PRESSED']
+BTN ['BTN', '9', 'S2', '14', 'PRESSED']
+BTN ['BTN', '9', 'S2', '15', 'PRESSED']
+BTN ['BTN', '9', 'S2', '16', 'PRESSED']
+BTN ['BTN', '9', 'S2', '17', 'PRESSED']
+BTN ['BTN', '9', 'S2', '18', 'PRESSED']
+BTN ['BTN', '9', 'S2', '19', 'PRESSED']
+BTN ['BTN', '9', 'S2', '20', 'PRESSED']
+BTN ['BTN', '9', 'S2', '21', 'PRESSED']
+BTN ['BTN', '9', 'S2', '22', 'PRESSED']
+BTN ['BTN', '9', 'S2', '23', 'PRESSED']
+BTN ['BTN', '9', 'S2', '24', 'PRESSED']
+BTN ['BTN', '9', 'S2', '25', 'PRESSED']
+BTN ['BTN', '9', 'S2', '26', 'PRESSED']
+BTN ['BTN', '9', 'S2', '27', 'PRESSED']
+BTN ['BTN', '9', 'S2', '28', 'PRESSED']
+BTN ['BTN', '9', 'S2', '29', 'PRESSED']
+BTN ['BTN', '9', 'S2', '30', 'PRESSED']
+ACK ['ACK', '16548', 'STOP', '9']
+EXP ['EXP', '9', 'DUMPING', 'S2']
+DUMP 30 records
+SAVED measurements\runs\20260924T075549_283285Z_S2_run9
+{
+  "accepted": 30,
+  "metadata": {
+    "sysclk_hz": 168000000,
+    "timer_hz": 1000000,
+    "tick_hz": 1000,
+    "baud": 115200,
+    "frame_bytes": 64,
+    "prio_tel": 3,
+    "prio_btn": 2,
+    "prio_tx": 1,
+    "buttonq_len": 8,
+    "txq_len": 16,
+    "record_capacity": 128,
+    "telemetry_hz": 50,
+    "period_ms": 20,
+    "work_target_us": 0,
+    "work_iters": 0,
+    "work_min_us": 0,
+    "work_mean_us": 0,
+    "work_max_us": 0,
+    "run_start_us": 646044323,
+    "run_stop_us": 742683554,
+    "tel_first_us": 646044325,
+    "tel_last_us": 742663525,
+    "period_min_us": 19198,
+    "period_max_us": 20001,
+    "period_sum_us": 96619200,
+    "period_n": 4831,
+    "heap_min_bytes": "21344",
+    "stack_tx_words": "532",
+    "stack_tel_words": "498",
+    "fw_sha_a": "7c6c83fbb21885d30aa8",
+    "fw_sha_b": "2b25f9bd0821291346b4",
+    "build_config": "Release",
+    "opt_level": "Os",
+    "kernel_version": "V10.3.1",
+    "result": "COMPLETE"
+  },
+  "counters": {
+    "accepted": 30,
+    "debounce_reject": 6,
+    "button_q_drop": 0,
+    "btn_tx_drop": 0,
+    "tel_q_drop": 0,
+    "uart_tx_error": 0,
+    "tx_timeout": 0,
+    "drain_timeout": 0,
+    "record_overflow": 0,
+    "unrecorded_events": 0,
+    "txq_hwm": 1,
+    "buttonq_hwm": 1,
+    "tel_generated": 4832,
+    "tel_enqueued": 4832,
+    "tel_completed": 4832,
+    "rx_error": 0,
+    "control_drop": 0,
+    "format_error": 0,
+    "period_overrun": 0,
+    "ok": 30,
+    "late_completed": 0
+  }
+}

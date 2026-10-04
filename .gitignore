@@ -1,13 +1,22 @@
-interface/.venv/
-interface/build/
-interface/dist/
+# Local runtimes, caches and IDE build output
+**/.venv/
 **/__pycache__/
-.pytest_cache/
-firmware/build/
-measurements/demo/
+**/.pytest_cache/
 *.pyc
-tests/output/
-tests/gui-output/
-analysis/demo_results/
-measurements/v2/*/demo/
-interface/BootcampMonitorV2.spec
+**/firmware/build/
+**/Homework_001/Debug/
+**/Homework_001/Release/
+**/.metadata/
+# Downloaded tools and their independent Git repositories stay local
+/hafta-02/tools/cubeide-workspace/
+/hafta-02/tools/SystemView-4.10a/
+/hafta-02/tools/SystemView-source/
+/hafta-02/tools/RTT-source/
+/hafta-02/tools/*.zip
+/hafta-02/projects/v1-download/
+/hafta-02/provenance/v1-github.zip
+/hafta-02/provenance/before-v2-flash.bin
+# Full RAM images remain local; decoded traces and metadata are published
+/hafta-02/traces/**/ram.bin
+# Old inspection draft; current Week 2 specification is hafta-02/specs.md
+/hafta-01/specs.md

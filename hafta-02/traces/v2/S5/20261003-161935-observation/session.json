@@ -1,0 +1,37 @@
+{
+  "purpose": "setup pilot, NOT formal timing acceptance",
+  "scenario": "S5",
+  "build": {
+    "design_version": 2,
+    "variant": "QWB",
+    "protocol": "PROTO3",
+    "baud": 460800,
+    "source_sha": "32f7e1dfeb69075d02084f08b4596d8febdccfb4",
+    "git_dirty": true,
+    "config": "Release",
+    "optimization": "-Os",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "eda9c5f3ffbf3d8d0d19daa549b7a09b745e5e7a185fcf51c13ff821cc584849",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  36928\t    124\t 110568\t 147620\t  240a4\tD:\\freertos-bootcamp\\hafta-02\\projects\\v2\\firmware\\build\\v2\\QWB\\Release\\systemview\\Homework_001.elf\n",
+    "trace_backend": "systemview",
+    "source_manifest_sha256": "bf7c62a999d43eefa5d8ad473ab729c9c16d87c6eabae869ad8e6845e0f9cf36",
+    "kernel": "10.3.1",
+    "timestamp_hz": 168000000,
+    "trace_buffer_bytes": 65536
+  },
+  "trace_files": [
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-01\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-02\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-03\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-04\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-05\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-06\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-07\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-161935-observation\\window-08\\recording.SVDat"
+  ],
+  "decoder_errors": [],
+  "accepted": 78,
+  "measurement_folder": "D:\\freertos-bootcamp\\hafta-02\\measurements\\pilots\\v2\\QWB\\runs\\20261003T132025_210598Z_S5_run3",
+  "cpu_halted": false,
+  "warning": "Setup pilot; trace-window preparation and SWD readout overhead must be considered in formal experiments."
+}

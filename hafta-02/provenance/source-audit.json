@@ -1,0 +1,16 @@
+{
+  "original_file_count": 392,
+  "original_changed": [],
+  "v2_modified_tracked_files": [
+    "firmware/Homework_001/.cproject",
+    "firmware/Homework_001/.settings/language.settings.xml",
+    "firmware/Homework_001/Inc/FreeRTOSConfig.h",
+    "firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h",
+    "firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c",
+    "firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/tasks.c",
+    "firmware/Homework_001/Src/app.c",
+    "firmware/Homework_001/Src/main.c",
+    "firmware/Homework_001/Src/stm32f4xx_it.c",
+    "firmware/build.py"
+  ]
+}

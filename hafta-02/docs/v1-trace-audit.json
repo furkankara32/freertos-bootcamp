@@ -1,0 +1,33 @@
+{
+  "event_counts": {
+    "Start": 1,
+    "Init": 1,
+    "System Time (us)": 1,
+    "System Description": 2,
+    "Resource Name": 3,
+    "Task Info": 4,
+    "Stack Info": 4,
+    "Num Modules": 1,
+    "Module Description": 18,
+    "Task Run": 100,
+    "ISR Enter": 1150,
+    "ISR Exit": 1150,
+    "RUN_CONFIG": 1,
+    "xQueueGenericReceive": 100,
+    "WORK_BEGIN": 50,
+    "TEL_TX_TC": 50,
+    "xTaskGenericNotifyFromISR": 50,
+    "Task Ready": 100,
+    "WORK_END": 50,
+    "xQueueGenericSend": 50,
+    "TEL_ENQUEUE": 50,
+    "vTaskDelayUntil": 50,
+    "Task Block": 100,
+    "xTaskNotifyWait": 100,
+    "TEL_TX_START": 50,
+    "System Idle": 50,
+    "Stop": 1
+  },
+  "button_chain_verified": false,
+  "purpose": "preparation only"
+}

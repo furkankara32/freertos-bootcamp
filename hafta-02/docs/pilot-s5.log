@@ -1,0 +1,50 @@
+CAPTURE 1/6: press USER now (window 700 ms)
+Saved 32766 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-01\recording.SVDat
+CAPTURE 2/6: press USER now (window 700 ms)
+Saved 32767 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-02\recording.SVDat
+CAPTURE 3/6: press USER now (window 700 ms)
+Saved 32767 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-03\recording.SVDat
+CAPTURE 4/6: press USER now (window 700 ms)
+Saved 32767 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-04\recording.SVDat
+CAPTURE 5/6: press USER now (window 700 ms)
+Saved 32767 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-05\recording.SVDat
+CAPTURE 6/6: press USER now (window 700 ms)
+Saved 32767 bytes: D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot\window-06\recording.SVDat
+{
+  "purpose": "setup pilot, NOT formal timing acceptance",
+  "scenario": "S5",
+  "build": {
+    "design_version": 2,
+    "variant": "QWB",
+    "protocol": "PROTO3",
+    "baud": 460800,
+    "source_sha": "32f7e1dfeb69075d02084f08b4596d8febdccfb4",
+    "git_dirty": true,
+    "config": "Release",
+    "optimization": "-Os",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "10a1bf93a2f464da30c17c126d60e157535aeed66a72cb4f0129438344d0b866",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  36884\t    124\t  77800\t 114808\t  1c078\tD:\\freertos-bootcamp\\hafta-02\\projects\\v2\\firmware\\build\\v2\\QWB\\Release\\systemview\\Homework_001.elf\n",
+    "trace_backend": "systemview",
+    "source_manifest_sha256": "a633b648eb5a7c0cc6e47dcc4909aeb8e9c9a81b345357272c122a5f768ea33b",
+    "kernel": "10.3.1",
+    "timestamp_hz": 168000000,
+    "trace_buffer_bytes": 32768
+  },
+  "trace_files": [
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-01\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-02\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-03\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-04\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-05\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S5\\20261003-154500-button-pilot\\window-06\\recording.SVDat"
+  ],
+  "decoder_errors": [
+    "LF/\u00e7er\u00e7eve s\u0131n\u0131r\u0131 kay\u0131p",
+    "LF/\u00e7er\u00e7eve s\u0131n\u0131r\u0131 kay\u0131p",
+    "Bozuk ASCII/64 bayt \u00e7er\u00e7eve"
+  ],
+  "accepted": 0,
+  "warning": "Target halted between trace windows to export SRAM; do not use whole-run statistics as formal comparison."
+}
+OUTPUT=D:\freertos-bootcamp\hafta-02\traces\v2\S5\20261003-154500-button-pilot

@@ -1,0 +1,35 @@
+{
+  "purpose": "setup pilot, NOT formal timing acceptance",
+  "scenario": "S0",
+  "build": {
+    "design_version": 1,
+    "variant": "V1",
+    "protocol": "PROTO2",
+    "baud": 115200,
+    "source_sha": "b74863a3a27ebeb14ca932737005b68d9eee1945",
+    "git_dirty": true,
+    "config": "Release",
+    "optimization": "-Os",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "be46f2bc32457d98a5350b87b4f37e43d55121cf0e91c612b5a66b6cf52fe6c6",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  35256\t    124\t 110516\t 145896\t  239e8\tD:\\freertos-bootcamp\\hafta-02\\projects\\v1\\firmware\\build\\v1\\Release\\systemview\\Homework_001.elf\n",
+    "trace_backend": "systemview",
+    "source_manifest_sha256": "59ec9ac952dbe98682d16f29692ac8dc9d5821d953f4432affc8aae4825da21f",
+    "kernel": "10.3.1",
+    "timestamp_hz": 168000000,
+    "trace_buffer_bytes": 65536
+  },
+  "trace_files": [
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-01\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-02\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-03\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-04\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-05\\recording.SVDat",
+    "D:\\freertos-bootcamp\\hafta-02\\traces\\v1\\S0\\20261004-151001-observation\\window-06\\recording.SVDat"
+  ],
+  "decoder_errors": [],
+  "accepted": 73,
+  "measurement_folder": "D:\\freertos-bootcamp\\hafta-02\\measurements\\pilots\\v1\\runs\\20261004T121054_920333Z_S0_run1",
+  "cpu_halted": false,
+  "warning": "Setup pilot; trace-window preparation and SWD readout overhead must be considered in formal experiments."
+}

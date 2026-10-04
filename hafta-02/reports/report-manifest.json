@@ -1,0 +1,102 @@
+[
+  {
+    "version": "V1",
+    "scenario": "S0",
+    "session": "20261004-151001-observation",
+    "dump_sha256": "b3783a8c743e02297a2f2d7c64223f8719be0d83d6ae1bc3d02c374991cd2087",
+    "elf_sha256": "be46f2bc32457d98a5350b87b4f37e43d55121cf0e91c612b5a66b6cf52fe6c6",
+    "stats": {
+      "n": 73,
+      "accepted": 73,
+      "min": 5627,
+      "mean": 5635.534246575343,
+      "median": 5633,
+      "p95": 5655,
+      "max": 5659,
+      "late10": 0,
+      "late20": 0,
+      "duration": 35.236205
+    },
+    "stage_means_us": [
+      18.273972602739725,
+      26.534246575342465,
+      34.57534246575342,
+      5556.1506849315065
+    ]
+  },
+  {
+    "version": "V1",
+    "scenario": "S5",
+    "session": "20261004-151332-observation",
+    "dump_sha256": "fbaa35760e326b59daac9fce80a22a254ff3efc96ccab5c80c19eb7aff0c4d3f",
+    "elf_sha256": "be46f2bc32457d98a5350b87b4f37e43d55121cf0e91c612b5a66b6cf52fe6c6",
+    "stats": {
+      "n": 64,
+      "accepted": 108,
+      "min": 17888,
+      "mean": 144948.515625,
+      "median": 161944.0,
+      "p95": 165217,
+      "max": 165562,
+      "late10": 64,
+      "late20": 63,
+      "duration": 41.579579
+    },
+    "stage_means_us": [
+      430.1875,
+      26.390625,
+      138935.328125,
+      5556.609375
+    ]
+  },
+  {
+    "version": "V2",
+    "scenario": "S0",
+    "session": "20261003-160814-observation",
+    "dump_sha256": "a524337474a3ff37fa118e8157ba369f8946d3f0cfe10954e606308f1da1bbc3",
+    "elf_sha256": "eda9c5f3ffbf3d8d0d19daa549b7a09b745e5e7a185fcf51c13ff821cc584849",
+    "stats": {
+      "n": 62,
+      "accepted": 62,
+      "min": 1471,
+      "mean": 1476.983870967742,
+      "median": 1473.0,
+      "p95": 1494,
+      "max": 1498,
+      "late10": 0,
+      "late20": 0,
+      "duration": 33.569858
+    },
+    "stage_means_us": [
+      17.887096774193548,
+      26.548387096774192,
+      38.88709677419355,
+      1393.6612903225807
+    ]
+  },
+  {
+    "version": "V2",
+    "scenario": "S5",
+    "session": "20261003-161935-observation",
+    "dump_sha256": "fb34218ed0606179c282d6ba9f5658c3dfe2b7addae6406f130cc1ff6f914873",
+    "elf_sha256": "eda9c5f3ffbf3d8d0d19daa549b7a09b745e5e7a185fcf51c13ff821cc584849",
+    "stats": {
+      "n": 78,
+      "accepted": 78,
+      "min": 1471,
+      "mean": 1864.320512820513,
+      "median": 1619.5,
+      "p95": 2761,
+      "max": 3256,
+      "late10": 0,
+      "late20": 0,
+      "duration": 39.859907
+    },
+    "stage_means_us": [
+      257.7564102564103,
+      39.42307692307692,
+      160.67948717948718,
+      1406.4615384615386
+    ]
+  }
+]

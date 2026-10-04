@@ -1,0 +1,512 @@
+--- original/firmware/build.py
++++ instrumented/firmware/build.py
+@@ -8,6 +8,8 @@
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument('--config', choices=['Debug', 'Release'], default='Release')
++    ap.add_argument('--variant', choices=['V1'], default='V1')
++    ap.add_argument('--trace', choices=['systemview','none'], default='systemview')
+     ap.add_argument('--toolchain', help='Directory containing arm-none-eabi-gcc.exe')
+     args = ap.parse_args()
+     gcc = shutil.which('arm-none-eabi-gcc')
+@@ -17,28 +19,35 @@
+         choices = sorted(Path('C:/ST').glob('**/arm-none-eabi-gcc.exe'))
+         if not choices: ap.error('ARM GCC bulunamadı; --toolchain <bin> kullanın')
+         gcc = str(choices[-1])
+-    out = ROOT/'firmware/build'/args.config
++    out = ROOT/'firmware/build/v1'/args.config/args.trace
+     out.mkdir(parents=True, exist_ok=True)
+     opt = '-Os' if args.config == 'Release' else '-O0'
+-    sha = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+-    dirty = bool(subprocess.check_output(['git','status','--porcelain','--','firmware'],cwd=ROOT,text=True).strip())
++    provenance = json.loads((ROOT.parents[1]/'provenance/v1-source.json').read_text(encoding='utf-8-sig'))
++    sha = provenance['commit']
++    manifest = {str(p.relative_to(PROJECT)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest()
++                for p in sorted(PROJECT.rglob('*')) if p.is_file() and p.suffix in {'.c','.h','.s','.ld'}}
++    original = {f['path'].removeprefix('firmware/Homework_001/'):f['sha256'] for f in provenance['files']}
++    dirty = any(original.get(p)!=h for p,h in manifest.items())
+     includes = ['Inc','Drivers/STM32F4xx_HAL_Driver/Inc','Drivers/STM32F4xx_HAL_Driver/Inc/Legacy',
+         'Drivers/CMSIS/Include','Drivers/CMSIS/Device/ST/STM32F4xx/Include',
+         'Middlewares/Third_Party/FreeRTOS/Source/include','Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2',
+         'Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F']
++    includes += ['Middlewares/SEGGER/'+d for d in ['Config','SYSVIEW','SEGGER','RTT','FreeRTOS']]
+     common = ['-mcpu=cortex-m4','-mthumb','-mfpu=fpv4-sp-d16','-mfloat-abi=hard',opt,'-g3',
+         '-ffunction-sections','-fdata-sections','-Wall','-Wextra','--specs=nano.specs']
+     sources = sorted(PROJECT.glob('Src/*.c')) + sorted(PROJECT.glob('Drivers/STM32F4xx_HAL_Driver/Src/*.c'))
+     kernel = PROJECT/'Middlewares/Third_Party/FreeRTOS/Source'
+     sources += sorted(kernel.glob('*.c')) + [kernel/'CMSIS_RTOS_V2/cmsis_os2.c',kernel/'portable/GCC/ARM_CM4F/port.c',kernel/'portable/MemMang/heap_4.c']
+     sources += sorted(PROJECT.glob('Startup/*.s'))
++    if args.trace == 'systemview':
++        sources += sorted((PROJECT/'Middlewares/SEGGER').rglob('*.c'))
+     objects = [out/(str(s.relative_to(PROJECT)).replace(os.sep,'_').replace('/','_')+'.o') for s in sources]
+     def compile_one(pair):
+         src,obj=pair
+         cmd=[gcc,*common,'-c',str(src),'-o',str(obj)]
+         if src.suffix=='.c':
+             cmd+=['-std=gnu11','-fstack-usage','-DSTM32F407xx','-DUSE_HAL_DRIVER',
+-                f'-DAPP_GIT_SHA="{sha}"',f'-DAPP_BUILD_CONFIG="{args.config}"',f'-DAPP_OPT_LEVEL="{opt[1:]}"']
++                f'-DAPP_TRACE={int(args.trace=="systemview")}',f'-DAPP_GIT_SHA="{sha}"',f'-DAPP_BUILD_CONFIG="{args.config}"',f'-DAPP_OPT_LEVEL="{opt[1:]}"']
+             cmd += [f'-I{PROJECT/i}' for i in includes]
+         r=subprocess.run(cmd,capture_output=True,text=True)
+         return r.returncode, ' '.join(cmd)+'\n'+r.stdout+r.stderr
+@@ -57,9 +66,13 @@
+     size=subprocess.check_output([str(bindir/'arm-none-eabi-size.exe'),str(elf)],text=True)
+     subprocess.run([str(bindir/'arm-none-eabi-objcopy.exe'),'-O','binary',str(elf),str(out/'Homework_001.bin')],check=True)
+     version=subprocess.check_output([gcc,'--version'],text=True).splitlines()[0]
+-    meta={'source_sha':sha,'git_dirty':dirty,'config':args.config,'optimization':opt,'gcc':version,
++    meta={'design_version':1,'variant':'V1','protocol':'PROTO2','baud':115200,'source_sha':sha,'git_dirty':dirty,'config':args.config,'optimization':opt,'gcc':version,
+           'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest(),'size':size}
+     (out/'build.json').write_text(json.dumps(meta,indent=2))
++    meta.update(trace_backend=args.trace, source_manifest_sha256=hashlib.sha256(json.dumps(manifest,sort_keys=True).encode()).hexdigest(),
++                kernel='10.3.1', timestamp_hz=168000000, trace_buffer_bytes=65536 if args.trace=='systemview' else 0)
++    (out/'build.json').write_text(json.dumps(meta,indent=2))
++    (out/'source-manifest.json').write_text(json.dumps(manifest,indent=2))
+     warnings=[line for line in log.splitlines() if 'warning:' in line]
+     print(size);print('\n'.join(warnings)); print(f'Build OK: {elf}\nWarnings: {len(warnings)}')
+ 
+--- original/firmware/Homework_001/.cproject
++++ instrumented/firmware/Homework_001/.cproject
+@@ -53,6 +53,11 @@
+ 									<listOptionValue builtIn="false" value="STM32F407xx"/>
+ 								</option>
+ 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.507239193" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" valueType="includePath">
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/Config"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/SYSVIEW"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/SEGGER"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/RTT"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/FreeRTOS"/>
+ 									<listOptionValue builtIn="false" value="../Inc"/>
+ 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc"/>
+ 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+@@ -144,6 +149,11 @@
+ 									<listOptionValue builtIn="false" value="STM32F407xx"/>
+ 								</option>
+ 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.332959392" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" valueType="includePath">
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/Config"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/SYSVIEW"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/SEGGER"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/RTT"/>
++                                    <listOptionValue builtIn="false" value="../Middlewares/SEGGER/FreeRTOS"/>
+ 									<listOptionValue builtIn="false" value="../Inc"/>
+ 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc"/>
+ 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+--- original/firmware/Homework_001/Inc/FreeRTOSConfig.h
++++ instrumented/firmware/Homework_001/Inc/FreeRTOSConfig.h
+@@ -172,4 +172,13 @@
+ /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
+ /* USER CODE END Defines */
+ 
++/* Week 2: retain kernel 10.3.1, add legacy SystemView hooks. */
++#ifndef APP_TRACE
++#define APP_TRACE 1
++#endif
++#if APP_TRACE
++#define INCLUDE_xTaskGetIdleTaskHandle 1
++#define USE_LEGACY_TRACE_API 1
++#include "SEGGER_SYSVIEW_FreeRTOS.h"
++#endif
+ #endif /* FREERTOS_CONFIG_H */
+--- original/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
++++ instrumented/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+@@ -414,6 +414,28 @@
+ 
+ #ifndef tracePOST_MOVED_TASK_TO_READY_STATE
+ 	#define tracePOST_MOVED_TASK_TO_READY_STATE( pxTCB )
++#endif
++
++#ifndef traceREADDED_TASK_TO_READY_STATE
++#define traceREADDED_TASK_TO_READY_STATE(pxTCB)
++#endif
++#ifndef traceMOVED_TASK_TO_DELAYED_LIST
++#define traceMOVED_TASK_TO_DELAYED_LIST()
++#endif
++#ifndef traceMOVED_TASK_TO_OVERFLOW_DELAYED_LIST
++#define traceMOVED_TASK_TO_OVERFLOW_DELAYED_LIST()
++#endif
++#ifndef traceMOVED_TASK_TO_SUSPENDED_LIST
++#define traceMOVED_TASK_TO_SUSPENDED_LIST(pxTCB)
++#endif
++#ifndef traceISR_ENTER
++#define traceISR_ENTER()
++#endif
++#ifndef traceISR_EXIT
++#define traceISR_EXIT()
++#endif
++#ifndef traceISR_EXIT_TO_SCHEDULER
++#define traceISR_EXIT_TO_SCHEDULER()
+ #endif
+ 
+ #ifndef traceQUEUE_CREATE
+--- original/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
++++ instrumented/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
+@@ -32,6 +32,7 @@
+ /* Scheduler includes. */
+ #include "FreeRTOS.h"
+ #include "task.h"
++#include "app_trace.h"
+ 
+ #ifndef __VFP_FP__
+ 	#error This port can only be used when the project options are configured to enable hardware floating point support.
+@@ -492,6 +493,7 @@
+ 	save and then restore the interrupt mask value as its value is already
+ 	known. */
+ 	portDISABLE_INTERRUPTS();
++	traceISR_ENTER();
+ 	{
+ 		/* Increment the RTOS tick. */
+ 		if( xTaskIncrementTick() != pdFALSE )
+@@ -501,6 +503,9 @@
+ 			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 		}
+ 	}
++	if (portNVIC_INT_CTRL_REG & portNVIC_PENDSVSET_BIT) { traceISR_EXIT_TO_SCHEDULER(); }
++	else { traceISR_EXIT(); }
++	AppTrace_Tick();
+ 	portENABLE_INTERRUPTS();
+ }
+ /*-----------------------------------------------------------*/
+--- original/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
++++ instrumented/firmware/Homework_001/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+@@ -217,6 +217,12 @@
+  */
+ #define prvAddTaskToReadyList( pxTCB )																\
+ 	traceMOVED_TASK_TO_READY_STATE( pxTCB );														\
++	taskRECORD_READY_PRIORITY( ( pxTCB )->uxPriority );												\
++	vListInsertEnd( &( pxReadyTasksLists[ ( pxTCB )->uxPriority ] ), &( ( pxTCB )->xStateListItem ) ); \
++	tracePOST_MOVED_TASK_TO_READY_STATE( pxTCB )
++/* SystemView: reprioritizing an already-ready task is not a wakeup. */
++#define prvReaddTaskToReadyList( pxTCB )																\
++	traceREADDED_TASK_TO_READY_STATE( pxTCB );														\
+ 	taskRECORD_READY_PRIORITY( ( pxTCB )->uxPriority );												\
+ 	vListInsertEnd( &( pxReadyTasksLists[ ( pxTCB )->uxPriority ] ), &( ( pxTCB )->xStateListItem ) ); \
+ 	tracePOST_MOVED_TASK_TO_READY_STATE( pxTCB )
+@@ -1672,7 +1678,7 @@
+ 					{
+ 						mtCOVERAGE_TEST_MARKER();
+ 					}
+-					prvAddTaskToReadyList( pxTCB );
++					prvReaddTaskToReadyList( pxTCB );
+ 				}
+ 				else
+ 				{
+@@ -1733,6 +1739,8 @@
+ 			{
+ 				mtCOVERAGE_TEST_MARKER();
+ 			}
++
++			traceMOVED_TASK_TO_SUSPENDED_LIST(pxTCB);
+ 
+ 			vListInsertEnd( &xSuspendedTaskList, &( pxTCB->xStateListItem ) );
+ 
+@@ -4056,7 +4064,7 @@
+ 
+ 					/* Inherit the priority before being moved into the new list. */
+ 					pxMutexHolderTCB->uxPriority = pxCurrentTCB->uxPriority;
+-					prvAddTaskToReadyList( pxMutexHolderTCB );
++					prvReaddTaskToReadyList( pxMutexHolderTCB );
+ 				}
+ 				else
+ 				{
+@@ -4146,7 +4154,7 @@
+ 					any other purpose if this task is running, and it must be
+ 					running to give back the mutex. */
+ 					listSET_LIST_ITEM_VALUE( &( pxTCB->xEventListItem ), ( TickType_t ) configMAX_PRIORITIES - ( TickType_t ) pxTCB->uxPriority ); /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
+-					prvAddTaskToReadyList( pxTCB );
++					prvReaddTaskToReadyList( pxTCB );
+ 
+ 					/* Return true to indicate that a context switch is required.
+ 					This is only actually required in the corner case whereby
+@@ -4258,7 +4266,7 @@
+ 							mtCOVERAGE_TEST_MARKER();
+ 						}
+ 
+-						prvAddTaskToReadyList( pxTCB );
++						prvReaddTaskToReadyList( pxTCB );
+ 					}
+ 					else
+ 					{
+@@ -5208,6 +5216,7 @@
+ 			/* Add the task to the suspended task list instead of a delayed task
+ 			list to ensure it is not woken by a timing event.  It will block
+ 			indefinitely. */
++			traceMOVED_TASK_TO_SUSPENDED_LIST(pxCurrentTCB);
+ 			vListInsertEnd( &xSuspendedTaskList, &( pxCurrentTCB->xStateListItem ) );
+ 		}
+ 		else
+@@ -5224,12 +5233,14 @@
+ 			{
+ 				/* Wake time has overflowed.  Place this item in the overflow
+ 				list. */
++				traceMOVED_TASK_TO_OVERFLOW_DELAYED_LIST();
+ 				vListInsert( pxOverflowDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
+ 			}
+ 			else
+ 			{
+ 				/* The wake time has not overflowed, so the current block list
+ 				is used. */
++				traceMOVED_TASK_TO_DELAYED_LIST();
+ 				vListInsert( pxDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
+ 
+ 				/* If the task entering the blocked state was placed at the
+@@ -5259,11 +5270,13 @@
+ 		if( xTimeToWake < xConstTickCount )
+ 		{
+ 			/* Wake time has overflowed.  Place this item in the overflow list. */
++			traceMOVED_TASK_TO_OVERFLOW_DELAYED_LIST();
+ 			vListInsert( pxOverflowDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
+ 		}
+ 		else
+ 		{
+ 			/* The wake time has not overflowed, so the current block list is used. */
++			traceMOVED_TASK_TO_DELAYED_LIST();
+ 			vListInsert( pxDelayedTaskList, &( pxCurrentTCB->xStateListItem ) );
+ 
+ 			/* If the task entering the blocked state was placed at the head of the
+--- original/firmware/Homework_001/Src/app.c
++++ instrumented/firmware/Homework_001/Src/app.c
+@@ -6,6 +6,7 @@
+ #include "FreeRTOS.h"
+ #include "task.h"
+ #include "queue.h"
++#include "app_trace.h"
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <string.h>
+@@ -56,6 +57,9 @@
+ static volatile enum State state = IDLE;
+ static volatile uint8_t accepting, stopping, tx_active;
+ static volatile uint16_t active_index = NO_RECORD;
++#if APP_TRACE
++static uint32_t trace_tel_id, trace_tel_run;
++#endif
+ static uint32_t run_id, selected, scenario, record_count, last_press;
+ static uint8_t first_press = 1, have_snapshot, sync_failed;
+ static uint32_t run_start, run_stop, stop_start, sequence;
+@@ -140,6 +144,9 @@
+     button_q=xQueueCreate(8,sizeof(ButtonEvent)); tx_q=xQueueCreate(16,sizeof(TxMsg));
+     control_q=xQueueCreate(4,sizeof(Command));
+     if (!button_q || !tx_q || !control_q) Error_Handler();
++    AppTrace_NameQueue(button_q,"button_q");
++    AppTrace_NameQueue(tx_q,"shared_tx_q");
++    AppTrace_NameQueue(control_q,"command_q");
+ }
+ 
+ /* Called at EXTI0 entry after the hardware pending flag is cleared. */
+@@ -153,6 +160,7 @@
+     uint16_t index=(uint16_t)record_count++;
+     records[index].id=id; records[index].t[0]=now; records[index].mask=1;
+     records[index].status=PENDING;
++    AppTrace_Event(TR_BTN_ACCEPT,run_id,id,now,0);
+     BaseType_t wake=pdFALSE;
+     if (index>=CAPACITY) {
+         records[index].status=OVERFLOW; ++counters[RECORD_OVERFLOW]; accepting=0;
+@@ -160,7 +168,7 @@
+     } else {
+         ButtonEvent e={.index=index,.barrier=0};
+         if (xQueueSendFromISR(button_q,&e,&wake)!=pdPASS) {
+-            records[index].status=BUTTON_DROP; ++counters[BQ_DROP];
++            records[index].status=BUTTON_DROP; ++counters[BQ_DROP]; AppTrace_Event(TR_BTN_DROP,run_id,id,now,BUTTON_DROP);
+         } else {
+             UBaseType_t n=uxQueueMessagesWaitingFromISR(button_q);
+             if(n>counters[BQ_HWM]) counters[BQ_HWM]=n;
+@@ -189,14 +197,16 @@
+         if(pending) { records[i].t[1]=t1; records[i].mask|=2; }
+         taskEXIT_CRITICAL();
+         if(!pending) continue;
++        AppTrace_Event(TR_BTN_TASK,run_id,records[i].id,t1,0);
+         if((uint32_t)(t1-records[i].t[0])>=BUDGET) {terminal(i,TIMEOUT);continue;}
+         TxMsg m={.kind=BTN,.index=i};
+         if(!format(m.bytes,"BTN,%lu,S%lu,%lu,PRESSED",(unsigned long)run_id,(unsigned long)scenario,(unsigned long)records[i].id)) {terminal(i,TX_ERROR);continue;}
+         taskENTER_CRITICAL();
+         if(records[i].status==PENDING) { records[i].t[2]=App_Now(); records[i].mask|=4; }
+         else {taskEXIT_CRITICAL();continue;}
+-        if(xQueueSend(tx_q,&m,0)!=pdPASS) { records[i].status=TX_DROP; ++counters[BTX_DROP]; }
+-        else {UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;}
++        AppTrace_Event(TR_BTN_READY,run_id,records[i].id,records[i].t[2],0);
++        if(xQueueSend(tx_q,&m,0)!=pdPASS) { records[i].status=TX_DROP; ++counters[BTX_DROP]; AppTrace_Event(TR_BTN_DROP,run_id,records[i].id,App_Now(),TX_DROP); }
++        else {UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;AppTrace_Event(TR_BTN_ENQUEUE,run_id,records[i].id,App_Now(),n);}
+         taskEXIT_CRITICAL();
+     }
+ }
+@@ -210,8 +220,12 @@
+     if(i!=NO_RECORD && records[i].status==PENDING) {
+         if((uint32_t)(now-records[i].t[0])<=BUDGET) {
+             records[i].t[4]=now;records[i].mask|=16;records[i].status=OK;
++            AppTrace_Event(TR_BTN_TX_TC,run_id,records[i].id,now,0);
+         } else records[i].status=TIMEOUT;
+     }
++#if APP_TRACE
++    if(i==NO_RECORD && trace_tel_id) AppTrace_Event(TR_TEL_TX_TC,trace_tel_run,trace_tel_id,now,0);
++#endif
+     taskEXIT_CRITICAL_FROM_ISR(mask);
+     BaseType_t wake=pdFALSE; xTaskNotifyFromISR(uart_task,TX_DONE,eSetBits,&wake);portYIELD_FROM_ISR(wake);
+ }
+@@ -265,7 +279,12 @@
+     active_index=index;tx_active=1;
+     if(index!=NO_RECORD) {records[index].t[3]=App_Now();records[index].mask|=8;}
+     taskEXIT_CRITICAL();
++    if(index!=NO_RECORD) AppTrace_Event(TR_BTN_TX_START,run_id,records[index].id,records[index].t[3],0);
++#if APP_TRACE
++    else if(trace_tel_id) AppTrace_Event(TR_TEL_TX_START,trace_tel_run,trace_tel_id,App_Now(),0);
++#endif
+     HAL_StatusTypeDef rc=HAL_UART_Transmit_DMA(&huart2,dma_bytes,64);
++    if(rc!=HAL_OK) AppTrace_Event(TR_TX_ERROR,run_id,index!=NO_RECORD?records[index].id:0,App_Now(),rc);
+     int success=0, timedout=0;
+     if(rc==HAL_OK) {
+         for(;;) {
+@@ -353,6 +372,17 @@
+         TxMsg m;if(xQueueReceive(tx_q,&m,portMAX_DELAY)!=pdPASS)continue;
+         if(m.kind==BARRIER) {xTaskNotify(control_task,CTRL_DONE,eSetBits);continue;}
+         if(m.kind==DUMP) {sync_failed=!dump_records();xTaskNotify(control_task,CTRL_DONE,eSetBits);continue;}
++#if APP_TRACE
++        trace_tel_id=trace_tel_run=0;
++        if(m.kind==TEL) {
++            unsigned field=0;uint32_t value=0;
++            for(unsigned j=4;j<FRAME;j++) {
++                uint8_t c=m.bytes[j];
++                if(c>='0' && c<='9')value=value*10U+(c-'0');
++                else if(c==',') {if(field==0)trace_tel_run=value;if(field==2){trace_tel_id=value;break;}field++;value=0;}
++            }
++        }
++#endif
+         int success=transmit(m.bytes,m.index,m.kind==TEL||m.kind==BTN);
+         if(m.kind==TEL&&success&&state!=WARMUP)count(TEL_COMPLETED);
+         if(m.kind==CONTROL){sync_failed=!success;xTaskNotify(control_task,CTRL_DONE,eSetBits);}
+@@ -386,12 +416,14 @@
+         else tel_first=now;
+         tel_last=now;count(TEL_GENERATED);
+     }
++    AppTrace_Event(TR_WORK_BEGIN,run_id,sequence+1,App_Now(),0);
+     workload(iterations);
++    AppTrace_Event(TR_WORK_END,run_id,sequence+1,App_Now(),0);
+     TxMsg m={.kind=TEL,.index=NO_RECORD};
+     if(!format(m.bytes,"TEL,%lu,S%lu,%lu,%lu",(unsigned long)run_id,(unsigned long)scenario,(unsigned long)++sequence,(unsigned long)work_sink))return;
+     taskENTER_CRITICAL();
+-    if(xQueueSend(tx_q,&m,0)!=pdPASS){if(state==RUNNING)++counters[TEL_DROP];}
+-    else if(state==RUNNING){++counters[TEL_ENQUEUED];UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;}
++    if(xQueueSend(tx_q,&m,0)!=pdPASS){if(state==RUNNING)++counters[TEL_DROP];AppTrace_Event(TR_TEL_DROP,run_id,sequence,App_Now(),TX_DROP);}
++    else if(state==RUNNING){++counters[TEL_ENQUEUED];UBaseType_t n=uxQueueMessagesWaiting(tx_q);if(n>counters[TX_HWM])counters[TX_HWM]=n;AppTrace_Event(TR_TEL_ENQUEUE,run_id,sequence,App_Now(),n);}
+     taskEXIT_CRITICAL();
+ }
+ static int drain(void)
+@@ -415,6 +447,7 @@
+ }
+ static void finish(uint32_t req,int cancelled)
+ {
++    AppTrace_Event(TR_RUN_STOP,run_id,scenario,App_Now(),cancelled);
+     if(cancelled)result="CANCELLED";
+     if(!drain())return;
+     if(counters[RECORD_OVERFLOW]||counters[UNRECORDED])result="INCOMPLETE";
+@@ -438,6 +471,15 @@
+     if(!comma){reply("ERR,0,BAD_CMD");return;}*comma++=0;
+     char *arg=strchr(comma,',');if(arg)*arg++=0;
+     if(!number(comma,&req)||(!req&&strcmp(cmd->bytes,"HELLO"))){reply("ERR,0,BAD_ARG");return;}
++#if APP_TRACE
++    if(!strcmp(cmd->bytes,"TRACE")) {
++        uint32_t duration;
++        if(!arg || !number(arg,&duration) || duration>2000U){reply("ERR,0,BAD_TRACE");return;}
++        if(duration) { AppTrace_Start(duration);AppTrace_Event(TR_RUN_CONFIG,run_id,scenario,App_Now(),115200); }
++        else AppTrace_Stop();
++        return;
++    }
++#endif
+     char error[64];snprintf(error,64,"ERR,%lu,BAD_ARG",(unsigned long)req);
+     if(req&&req==last_req){if(strcmp(original,last_command))reply(error);else reply(last_ack);return;}
+     int cfg=!strcmp(cmd->bytes,"CFG"), hello=!strcmp(cmd->bytes,"HELLO"), start=!strcmp(cmd->bytes,"START"), stop=!strcmp(cmd->bytes,"STOP"), dump=!strcmp(cmd->bytes,"DUMP");
+--- original/firmware/Homework_001/Src/main.c
++++ instrumented/firmware/Homework_001/Src/main.c
+@@ -27,6 +27,7 @@
+ /* Private includes ----------------------------------------------------------*/
+ /* USER CODE BEGIN Includes */
+ #include "app.h"
++#include "app_trace.h"
+ 
+ /* USER CODE END Includes */
+ 
+@@ -101,6 +102,7 @@
+ 
+   /* Init scheduler */
+   osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
++  AppTrace_Init();
+   MX_FREERTOS_Init();
+ 
+   /* Start scheduler */
+--- original/firmware/Homework_001/Src/stm32f4xx_it.c
++++ instrumented/firmware/Homework_001/Src/stm32f4xx_it.c
+@@ -23,6 +23,8 @@
+ /* Private includes ----------------------------------------------------------*/
+ /* USER CODE BEGIN Includes */
+ #include "app.h"
++#include "FreeRTOS.h"
++#include "app_trace.h"
+ /* USER CODE END Includes */
+ 
+ /* Private typedef -----------------------------------------------------------*/
+@@ -169,10 +171,12 @@
+ void DMA1_Stream5_IRQHandler(void)
+ {
+   /* USER CODE BEGIN DMA1_Stream5_IRQn 0 */
++  AppTrace_IsrEnter();
+ 
+   /* USER CODE END DMA1_Stream5_IRQn 0 */
+   HAL_DMA_IRQHandler(&hdma_usart2_rx);
+   /* USER CODE BEGIN DMA1_Stream5_IRQn 1 */
++  AppTrace_IsrExit();
+ 
+   /* USER CODE END DMA1_Stream5_IRQn 1 */
+ }
+@@ -183,10 +187,12 @@
+ void DMA1_Stream6_IRQHandler(void)
+ {
+   /* USER CODE BEGIN DMA1_Stream6_IRQn 0 */
++  AppTrace_IsrEnter();
+ 
+   /* USER CODE END DMA1_Stream6_IRQn 0 */
+   HAL_DMA_IRQHandler(&hdma_usart2_tx);
+   /* USER CODE BEGIN DMA1_Stream6_IRQn 1 */
++  AppTrace_IsrExit();
+ 
+   /* USER CODE END DMA1_Stream6_IRQn 1 */
+ }
+@@ -197,10 +203,12 @@
+ void TIM3_IRQHandler(void)
+ {
+   /* USER CODE BEGIN TIM3_IRQn 0 */
++  AppTrace_IsrEnter();
+ 
+   /* USER CODE END TIM3_IRQn 0 */
+   HAL_TIM_IRQHandler(&htim3);
+   /* USER CODE BEGIN TIM3_IRQn 1 */
++  AppTrace_IsrExit();
+ 
+   /* USER CODE END TIM3_IRQn 1 */
+ }
+@@ -211,10 +219,12 @@
+ void USART2_IRQHandler(void)
+ {
+   /* USER CODE BEGIN USART2_IRQn 0 */
++  AppTrace_IsrEnter();
+ 
+   /* USER CODE END USART2_IRQn 0 */
+   HAL_UART_IRQHandler(&huart2);
+   /* USER CODE BEGIN USART2_IRQn 1 */
++  AppTrace_IsrExit();
+ 
+   /* USER CODE END USART2_IRQn 1 */
+ }
+@@ -223,6 +233,7 @@
+ {
+   /* USER CODE BEGIN EXTI0_IRQn 0 */
+   uint32_t now = App_Now();
++  AppTrace_IsrEnter();
+   if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_0)) {
+     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
+     App_ButtonIRQ(now);
+@@ -230,6 +241,7 @@
+   /* USER CODE END EXTI0_IRQn 0 */
+   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+   /* USER CODE BEGIN EXTI0_IRQn 1 */
++  AppTrace_IsrExit();
+   /* USER CODE END EXTI0_IRQn 1 */
+ }
+ /* USER CODE BEGIN 1 */

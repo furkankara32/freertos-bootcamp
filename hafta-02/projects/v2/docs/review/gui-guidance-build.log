@@ -1,0 +1,113 @@
+686 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.7
+688 INFO: Python: 3.12.10
+753 INFO: Platform: Windows-11-10.0.26200-SP0
+753 INFO: Python environment: D:\freertos-bootcamp\hafta-01\interface\.venv
+760 INFO: wrote D:\freertos-bootcamp\hafta-01\interface\BootcampMonitor.spec
+762 INFO: Removing temporary files and cleaning cache in C:\Users\furkan\AppData\Local\pyinstaller
+789 INFO: Module search paths (PYTHONPATH):
+['D:\\freertos-bootcamp\\hafta-01\\interface',
+ 'C:\\Users\\furkan\\AppData\\Local\\Programs\\Python\\Python312\\python312.zip',
+ 'C:\\Users\\furkan\\AppData\\Local\\Programs\\Python\\Python312\\DLLs',
+ 'C:\\Users\\furkan\\AppData\\Local\\Programs\\Python\\Python312\\Lib',
+ 'C:\\Users\\furkan\\AppData\\Local\\Programs\\Python\\Python312',
+ 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv',
+ 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages',
+ 'D:\\freertos-bootcamp\\hafta-01']
+2558 INFO: checking Analysis
+2558 INFO: Building Analysis because Analysis-00.toc is non existent
+2558 INFO: Looking for Python shared library...
+2558 INFO: Using Python shared library: C:\Users\furkan\AppData\Local\Programs\Python\Python312\python312.dll
+2558 INFO: Running Analysis Analysis-00.toc
+2558 INFO: Target bytecode optimization level: 0
+2558 INFO: Initializing module dependency graph...
+2565 INFO: Initializing module graph hook caches...
+2598 INFO: Analyzing modules for base_library.zip ...
+7247 INFO: Processing standard module hook 'hook-encodings.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+8901 INFO: Processing standard module hook 'hook-math.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+11961 INFO: Processing standard module hook 'hook-pickle.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+14695 INFO: Processing standard module hook 'hook-heapq.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+16087 INFO: Caching module dependency graph...
+16266 INFO: Analyzing D:\freertos-bootcamp\hafta-01\interface\launch.py
+16484 INFO: Processing standard module hook 'hook-PySide6.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+17486 INFO: Processing standard module hook 'hook-shiboken6.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+17784 INFO: Processing standard module hook 'hook-PySide6.QtNetwork.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+24994 INFO: Processing standard module hook 'hook-PySide6.QtCore.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+32758 INFO: Processing standard module hook 'hook-PySide6.QtGui.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+53312 INFO: Processing standard module hook 'hook-PySide6.QtWidgets.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+56888 INFO: Processing standard module hook 'hook-matplotlib.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+57554 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+57554 INFO: SetuptoolsInfo: initializing cached setuptools info...
+58679 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+58749 INFO: Processing standard module hook 'hook-difflib.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+58881 INFO: Processing standard module hook 'hook-numpy.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+59735 INFO: Processing standard module hook 'hook-platform.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+59957 INFO: Processing standard module hook 'hook-sysconfig.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+60491 INFO: Processing standard module hook 'hook-webbrowser.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+61297 INFO: Processing standard module hook 'hook-_ctypes.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+62137 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+62255 INFO: Processing standard module hook 'hook-xml.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+64477 INFO: Processing standard module hook 'hook-matplotlib.backend_bases.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+64692 INFO: Processing standard module hook 'hook-PIL.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+64817 INFO: Processing standard module hook 'hook-PIL.Image.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+65504 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+65720 INFO: Processing standard module hook 'hook-PIL.ImageFilter.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+67153 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+67356 INFO: Processing standard module hook 'hook-matplotlib.pyplot.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+67594 INFO: Processing standard module hook 'hook-matplotlib.figure.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+68633 INFO: Processing standard module hook 'hook-dateutil.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+68828 INFO: Processing pre-safe-import-module hook 'hook-six.moves.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+71295 INFO: Processing pre-safe-import-module hook 'hook-gi.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+71322 INFO: Processing standard module hook 'hook-matplotlib.backends.backend_qtagg.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+71331 INFO: Processing standard module hook 'hook-matplotlib.backends.qt_compat.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+71331 INFO: hook-matplotlib.backends.qt_compat: selected 'PySide6' as Qt bindings because hook for 'PySide6' has been run before.
+71346 INFO: Processing standard module hook 'hook-PySide6.QtSvg.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+72718 INFO: Processing module hooks (post-graph stage)...
+72732 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+72732 INFO: Matplotlib backend selection method: automatic discovery of used backends
+73385 INFO: Trying determine the default backend as first importable candidate from the list: ['QtAgg', 'Qt5Agg', 'Gtk4Agg', 'Gtk3Agg', 'TkAgg', 'WxAgg']
+75245 INFO: Selected matplotlib backends: ['QtAgg']
+75245 INFO: Extra dists for selected matplotlib backends: []
+75600 INFO: Processing standard module hook 'hook-PIL.SpiderImagePlugin.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+75745 INFO: Performing binary vs. data reclassification (327 entries)
+75870 INFO: Looking for ctypes DLLs
+75912 WARNING: Ignoring /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation imported from D:\freertos-bootcamp\hafta-01\interface\.venv\Lib\site-packages\serial\tools\list_ports_osx.py - only basenames are supported with ctypes imports!
+75912 WARNING: Ignoring /System/Library/Frameworks/IOKit.framework/IOKit imported from D:\freertos-bootcamp\hafta-01\interface\.venv\Lib\site-packages\serial\tools\list_ports_osx.py - only basenames are supported with ctypes imports!
+75947 INFO: Analyzing run-time hooks ...
+75954 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+75961 INFO: Including run-time hook 'pyi_rth_mplconfig.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+75961 INFO: Processing pre-find-module-path hook 'hook-_pyi_rth_utils.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+75966 INFO: Processing standard module hook 'hook-_pyi_rth_utils.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+75975 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+75981 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+75981 INFO: Including run-time hook 'pyi_rth_pyside6.py' from 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+76113 INFO: Creating base_library.zip...
+76172 INFO: Looking for dynamic libraries
+78120 INFO: Extra DLL search directories (AddDllDirectory): ['D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\shiboken6', 'D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\numpy.libs']
+78120 INFO: Extra DLL search directories (PATH): ['D:\\freertos-bootcamp\\hafta-01\\interface\\.venv\\Lib\\site-packages\\PySide6']
+80418 INFO: Warnings written to D:\freertos-bootcamp\hafta-01\interface\build\BootcampMonitor\warn-BootcampMonitor.txt
+80501 INFO: Graph cross-reference written to D:\freertos-bootcamp\hafta-01\interface\build\BootcampMonitor\xref-BootcampMonitor.html
+80550 INFO: checking PYZ
+80550 INFO: Building PYZ because PYZ-00.toc is non existent
+80550 INFO: Building PYZ (ZlibArchive) D:\freertos-bootcamp\hafta-01\interface\build\BootcampMonitor\PYZ-00.pyz
+81557 INFO: Building PYZ (ZlibArchive) D:\freertos-bootcamp\hafta-01\interface\build\BootcampMonitor\PYZ-00.pyz completed successfully.
+81578 INFO: checking PKG
+81578 INFO: Building PKG because PKG-00.toc is non existent
+81578 INFO: Building PKG (CArchive) BootcampMonitor.pkg
+81612 INFO: Building PKG (CArchive) BootcampMonitor.pkg completed successfully.
+81612 INFO: Bootloader D:\freertos-bootcamp\hafta-01\interface\.venv\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\runw.exe
+81612 INFO: checking EXE
+81612 INFO: Building EXE because EXE-00.toc is non existent
+81612 INFO: Building EXE from EXE-00.toc
+81612 INFO: Copying bootloader EXE to D:\freertos-bootcamp\hafta-01\interface\build\BootcampMonitor\BootcampMonitor.exe
+81675 INFO: Copying icon to EXE
+81723 INFO: Copying 0 resources to EXE
+81723 INFO: Embedding manifest in EXE
+81772 INFO: Appending PKG archive to EXE
+81862 INFO: Fixing EXE headers
+82286 INFO: Building EXE from EXE-00.toc completed successfully.
+82293 INFO: checking COLLECT
+82293 INFO: Building COLLECT because COLLECT-00.toc is non existent
+82293 INFO: Removing dir D:\freertos-bootcamp\hafta-01\interface\dist\BootcampMonitor
+82487 INFO: Building COLLECT COLLECT-00.toc
+84174 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+84195 INFO: Build complete! The results are available in: D:\freertos-bootcamp\hafta-01\interface\dist

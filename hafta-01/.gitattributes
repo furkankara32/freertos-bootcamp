@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Preserve raw capture bytes
+*.bin -text
+*.SVDat -text

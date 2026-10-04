@@ -1,0 +1,48 @@
+{
+  "session": "D:\\freertos-bootcamp\\hafta-02\\traces\\v2\\S0\\20261003-160814-observation",
+  "selected_event": {
+    "scenario": "S0",
+    "event_id": 3,
+    "t0_us": 1092094450,
+    "t1_us": 1092094474,
+    "t2_us": 1092094501,
+    "t3_us": 1092094549,
+    "t4_us": 1092095943,
+    "status": "ok"
+  },
+  "latencies_us": {
+    "t1-t0": 24,
+    "t2-t1": 27,
+    "t3-t2": 48,
+    "t4-t3": 1394
+  },
+  "total_us": 1493,
+  "clean_windows": 6,
+  "counters": {
+    "accepted": 62,
+    "debounce_reject": 10,
+    "button_q_drop": 0,
+    "btn_tx_drop": 0,
+    "tel_q_drop": 0,
+    "uart_tx_error": 0,
+    "tx_timeout": 0,
+    "drain_timeout": 0,
+    "record_overflow": 0,
+    "unrecorded_events": 0,
+    "tel_txq_hwm": 0,
+    "buttonq_hwm": 1,
+    "tel_generated": 0,
+    "tel_enqueued": 0,
+    "tel_completed": 0,
+    "rx_error": 0,
+    "control_drop": 0,
+    "format_error": 0,
+    "period_overrun": 0,
+    "btn_txq_hwm": 1,
+    "ok": 62,
+    "late_10ms": 0,
+    "late_20ms": 0
+  },
+  "status": "First joint S0 observation; not final V2 acceptance",
+  "systemview_sequence": 1071
+}
