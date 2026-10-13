@@ -20,3 +20,11 @@
 /hafta-02/traces/**/ram.bin
 # Old inspection draft; current Week 2 specification is hafta-02/specs.md
 /hafta-01/specs.md
+
+# GUI capture RAM and automated test fixtures stay local
+/hafta-02/measurements/**/ram.bin
+/hafta-02/tmp/
+
+# Local packaged Week 2 application
+/hafta-02/Arayuz/
+/hafta-02/Hafta-02 Arayuz.lnk

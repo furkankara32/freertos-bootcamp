@@ -295,20 +295,3 @@
 # Task States
 #
 TaskState 0xFF 4=Delayed, 27=Suspended
-512 RUN_CONFIG run=%u scenario=%u tim5_us=%u baud=%u
-513 RUN_ARMED run=%u scenario=%u tim5_us=%u detail=%u
-514 RUN_STOP run=%u scenario=%u tim5_us=%u detail=%u
-515 BTN_ACCEPT run=%u id=%u tim5_us=%u detail=%u
-516 BTN_TASK run=%u id=%u tim5_us=%u detail=%u
-517 BTN_READY run=%u id=%u tim5_us=%u detail=%u
-518 BTN_ENQUEUE run=%u id=%u tim5_us=%u depth=%u
-519 BTN_DROP run=%u id=%u tim5_us=%u reason=%u
-520 BTN_TX_START run=%u id=%u tim5_us=%u detail=%u
-521 BTN_TX_TC run=%u id=%u tim5_us=%u detail=%u
-522 TEL_ENQUEUE run=%u id=%u tim5_us=%u depth=%u
-523 TEL_DROP run=%u id=%u tim5_us=%u reason=%u
-524 TEL_TX_START run=%u id=%u tim5_us=%u detail=%u
-525 TEL_TX_TC run=%u id=%u tim5_us=%u detail=%u
-526 WORK_BEGIN run=%u id=%u tim5_us=%u slice=%u
-527 WORK_END run=%u id=%u tim5_us=%u slice=%u
-528 TX_ERROR run=%u id=%u tim5_us=%u hal_status=%u

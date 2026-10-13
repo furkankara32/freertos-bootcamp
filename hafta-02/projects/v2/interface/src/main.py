@@ -1,4 +1,4 @@
-import argparse,json,sys,time
+import argparse,json,sys,time,uuid
 from pathlib import Path
 from PySide6.QtCore import QSettings,QTimer,Qt,QUrl
 from PySide6.QtGui import QDesktopServices,QFontDatabase
@@ -9,20 +9,22 @@ import matplotlib
 from serial.tools import list_ports
 from .serial_worker import SerialWorker
 from .protocol import stages
+from .systemview import SystemViewPanel, WEEK
 
 ROOT=Path(__file__).resolve().parents[2] if not getattr(sys,'frozen',False) else Path(sys.executable).resolve().parent
-PROJECT=ROOT
+PROJECT=WEEK/'projects/v2'
 
 class Window(QMainWindow):
     def __init__(self,output=None):
-        super().__init__();self.setWindowTitle('FreeRTOS Bootcamp • Hafta 01');self.resize(1240,850)
+        super().__init__();self.setWindowTitle('FreeRTOS Bootcamp • Hafta 02 / SystemView');self.resize(1240,850)
         # Bundle a known Unicode font; the offscreen Windows Qt platform otherwise
         # renders boxes when it cannot discover the native system font directory.
         QFontDatabase.addApplicationFont(str(Path(matplotlib.get_data_path())/'fonts/ttf/DejaVuSans.ttf'))
         self.settings=QSettings('FreeRTOSBootcamp','Hafta01');self.worker=None;self.state='DISCONNECTED';self.pending=None
         self.folder=None;self.btn_count=0;self.tel_count=0;self.current_run=None;self.demo=False;self.is_connected=False;self.ready=False
         self.unsaved_run=False;self.saved_run_id=None;self.deadline_us=10000;self.protocol_version=None;self.build_metadata=None
-        self.output=Path(output or PROJECT/'measurements');self.last_traffic=time.monotonic();self.started_at=0
+        self.connection_id='';self.active_scenario='S0'
+        self.output=Path(output or PROJECT.parents[1]/'measurements');self.last_traffic=time.monotonic();self.started_at=0
         root=QWidget();self.setCentralWidget(root);layout=QVBoxLayout(root);layout.setContentsMargins(24,20,24,20);layout.setSpacing(12)
         title=QLabel('FreeRTOS  /  Yanıt süresi laboratuvarı');title.setObjectName('title');layout.addWidget(title)
         self.source=QLabel('Kart bağlantısı bekleniyor • STM32F407 • Baud seçip bağlanın');layout.addWidget(self.source)
@@ -40,12 +42,13 @@ class Window(QMainWindow):
         for w in [self.status_label,self.count_label,self.tel_label,self.result_label]:w.setObjectName('card');cards.addWidget(w)
         self.message=QLabel('Port seçip bağlanın. Donanım yoksa SENTETİK DEMO seçeneğini kullanabilirsiniz.');self.message.setWordWrap(True);layout.addWidget(self.message)
         splitter=QSplitter(Qt.Orientation.Horizontal);layout.addWidget(splitter,1)
-        self.figure=Figure(figsize=(7,4),facecolor='#101d2d');self.canvas=FigureCanvasQTAgg(self.figure);self.axes=self.figure.add_subplot(111);splitter.addWidget(self.canvas)
+        self.figure=Figure(figsize=(7,4),facecolor='#101d2d',layout='constrained');self.canvas=FigureCanvasQTAgg(self.figure);self.axes=self.figure.add_subplot(111);splitter.addWidget(self.canvas)
         self.table=QTableWidget(0,7);self.table.setHorizontalHeaderLabels(['Olay','Durum','d1 ms','d2 ms','d3 ms','d4 ms','R ms']);self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch);splitter.addWidget(self.table);splitter.setSizes([650,500])
         self.draw([])
         self.log=QPlainTextEdit();self.log.setReadOnly(True);self.log.setMaximumBlockCount(200);self.log.setMaximumHeight(125);layout.addWidget(self.log)
         self.build_btn=QPushButton('Yüklenen firmware build.json seç');self.build_btn.clicked.connect(self.choose_build);layout.addWidget(self.build_btn)
         self.location=QLabel(f'Kayıt: {self.output}');self.location.setWordWrap(True);layout.addWidget(self.location)
+        self.systemview=SystemViewPanel(self);layout.insertWidget(4,self.systemview)
         self.refresh_ports();self.update_controls();self.timer=QTimer(self);self.timer.timeout.connect(self.tick);self.timer.start(100)
         self.setStyleSheet('''QMainWindow,QWidget{background:#0a1422;color:#e5edf7;font-family:"DejaVu Sans";font-size:13px} QLabel#title{font-size:26px;font-weight:600} QLabel#card{background:#172a3f;border:1px solid #29435e;border-radius:8px;padding:16px;font-size:17px} QPushButton{background:#1b3951;border:1px solid #34536a;border-radius:5px;padding:9px 14px} QPushButton:hover{background:#25506b} QPushButton:disabled{color:#65788b;background:#152334} QComboBox{background:#172a3f;padding:8px;border:1px solid #34536a} QGroupBox{border:1px solid #29435e;border-radius:6px;margin-top:12px;padding-top:12px} QGroupBox::title{subcontrol-origin:margin;left:12px} QTableWidget,QPlainTextEdit{background:#101d2d;gridline-color:#29435e;border:1px solid #29435e} QHeaderView::section{background:#172a3f;padding:6px;border:0}''')
     def refresh_ports(self):
@@ -60,32 +63,45 @@ class Window(QMainWindow):
     def load_build(self,path):
         try:
             data=json.loads(Path(path).read_text(encoding='utf-8'))
+            if not isinstance(data,dict):raise ValueError('build.json bir JSON nesnesi olmalı')
             if not isinstance(data.get('elf_sha256'),str) or len(data['elf_sha256'])!=64:raise ValueError('ELF SHA256 eksik')
+            candidate=Path(path).with_name('Homework_001.elf')
+            if data.get('trace_backend')=='systemview' and candidate.is_file():
+                self.systemview.elf=candidate;self.systemview.protocol=data.get('protocol');self.systemview.explicit_elf=True
+                self.systemview.identity.setText('Seçili ELF: '+str(candidate))
             self.build_metadata=data;self.build_btn.setText(f"Firmware kimliği: {data.get('variant','V1')} / {data['elf_sha256'][:12]} (seçilen build)")
         except (OSError,ValueError,TypeError) as exc:self.problem(str(exc))
     def open_folder(self):
         if self.folder:QDesktopServices.openUrl(QUrl.fromLocalFile(str(self.folder)))
     def toggle_connection(self):
         if self.worker and self.worker.isRunning():self.worker.stop();return
+        self.connection_id=uuid.uuid4().hex
         self.pending=None;self.ready=False;self.saved_run_id=None;self.demo=self.ports.currentData()=='DEMO';self.btn_count=self.tel_count=0;self.current_run=None
-        self.worker=SerialWorker(self.ports.currentData(),self.output,self,baud=self.baud.currentData(),build_metadata=self.build_metadata);self.worker.received.connect(self.receive);self.worker.problem.connect(self.problem);self.worker.connected.connect(self.connection_changed);self.worker.start()
+        self.worker=SerialWorker(self.ports.currentData(),self.output,self,baud=self.baud.currentData(),build_metadata=self.build_metadata);self.worker.received.connect(self.receive);self.worker.problem.connect(self.problem);self.worker.connected.connect(self.connection_changed);self.worker.command_sent.connect(self.systemview.command_sent);self.worker.start()
     def connection_changed(self,yes):
         self.is_connected=yes;self.connect_btn.setText('Bağlantıyı kes' if yes else 'Bağlan')
         self.state='CONNECTED' if yes else 'DISCONNECTED'
         self.source.setText('SENTETİK DEMO • Bu veriler gerçek kart ölçümü değildir' if self.demo else 'GERÇEK DONANIM • STM32F407 • Baud seçip bağlanın')
         if yes:self.worker.send('HELLO,0');self.pending=(0,'HELLO',time.monotonic(),False)
-        else:self.pending=None;self.ready=False
+        else:
+            self.pending=None;self.ready=False
+            self.systemview.invalidate('Kart bağlantısı kesildi; kayıt doğrulanamadı.')
         self.update_controls()
-    def request(self,cmd,arg=None):
-        if not self.worker or self.pending:return
+    def next_request_id(self):
         key='request/'+str(self.ports.currentData());req=int(self.settings.value(key,0))+1
-        if req>65535:self.problem('İstek kimliği sınırı: RAM kaydını kurtarıp cihaz oturumunu yenileyin.');return
+        if req>65535:raise ValueError('İstek kimliği sınırı: RAM kaydını kurtarıp cihaz oturumunu yenileyin.')
         self.settings.setValue(key,req);self.settings.sync()
+        return req
+    def request(self,cmd,arg=None):
+        if not self.worker or self.pending or self.systemview.busy:return
+        try:req=self.next_request_id()
+        except ValueError as exc:self.problem(str(exc));return
         text=f'{cmd},{req}'+(f',{arg}' if arg is not None else '')
         self.pending=(req,cmd,time.monotonic(),False);self.worker.send(text);self.log.appendPlainText('→ '+text);self.update_controls()
-    def problem(self,text):self.log.appendPlainText('HATA: '+text);self.message.setText(text)
+    def problem(self,text):self.systemview.invalidate(text);self.log.appendPlainText('HATA: '+text);self.message.setText(text)
     def receive(self,kind,data):
         self.last_traffic=time.monotonic()
+        self.systemview.on_receive(kind,data)
         if kind=='SYS':
             self.ready=True;self.protocol_version=data[3];self.deadline_us=10000 if data[3]=='PROTO3' else 20000
             label='SENTETİK DEMO' if self.demo else 'GERÇEK DONANIM'
@@ -105,7 +121,7 @@ class Window(QMainWindow):
         elif kind=='ERR':
             self.problem('MCU komut hatası: '+','.join(data[1:]));self.pending=None
         elif kind=='EXP':
-            self.state=data[2]
+            self.state=data[2];self.active_scenario=data[3]
             if self.state=='IDLE':self.unsaved_run=False
             if self.state in {'WARMUP','ARMED'}:
                 if self.current_run!=int(data[1]):self.btn_count=self.tel_count=0
@@ -139,8 +155,8 @@ class Window(QMainWindow):
         ax.axhline(self.deadline_us/1000,color='#ff8e99',linestyle='--',label=f'Deadline: {self.deadline_us/1000:g} ms')
         if self.deadline_us==10000:ax.axhline(20,color='#a5aab5',linestyle=':',label='V1 sınırı: 20 ms')
         ax.set_ylim(bottom=-2 if failed else 0,top=max(24,max((v for _,v in ok),default=0)*1.2))
-        ax.set_xlabel('Olay kimliği',color='#bbcbdc');ax.set_ylabel('MCU yanıt süresi [ms]',color='#bbcbdc');ax.grid(alpha=.12);ax.legend(facecolor='#172a3f',labelcolor='#e5edf7',fontsize=9)
-        self.figure.tight_layout();self.canvas.draw_idle()
+        ax.set_xlabel('Olay kimliği',color='#bbcbdc');ax.set_ylabel('Yanıt [ms]',color='#bbcbdc');ax.grid(alpha=.12);ax.legend(facecolor='#172a3f',labelcolor='#e5edf7',fontsize=9)
+        self.canvas.draw_idle()
     def update_controls(self):
         busy=self.pending is not None;calm=self.state in {'IDLE','CONFIGURED','DONE','INCOMPLETE','CANCELLED'}
         self.cfg.setEnabled(self.is_connected and self.ready and calm and not busy);self.start.setEnabled(self.is_connected and self.state=='CONFIGURED' and not busy and not self.unsaved_run)
@@ -157,6 +173,14 @@ class Window(QMainWindow):
             elif self.state=='IDLE':
                 self.message.setText('Bağlantı hazır. Senaryo seçin → Senaryoyu uygula → Başlat → 5 saniye bekleyin → kartın USER butonuna basın → Durdur ve aktar.')
         self.build_btn.setEnabled(not self.is_connected);self.baud.setEnabled(not self.is_connected);self.ports.setEnabled(not self.is_connected);self.refresh.setEnabled(not self.is_connected);self.path_btn.setEnabled(not self.is_connected);self.open_btn.setEnabled(self.folder is not None)
+        if self.systemview.busy:
+            for control in [self.cfg,self.start,self.stop_btn,self.dump_btn,self.connect_btn,
+                            self.scenario,self.build_btn,self.baud,self.ports,self.refresh,self.path_btn]:
+                control.setEnabled(False)
+        else:
+            self.connect_btn.setEnabled(True)
+            self.scenario.setEnabled(self.state not in {'WARMUP','ARMED','DUMPING'})
+        self.systemview.update_controls()
         self.status_label.setText(self.state)
     def tick(self):
         self.count_label.setText(f'Alınan BTN: {self.btn_count}');self.tel_label.setText(f'Alınan TEL: {self.tel_count}')
@@ -165,6 +189,9 @@ class Window(QMainWindow):
             if time.monotonic()-start>limit:
                 self.pending=None;self.problem(f'{cmd} yanıt zaman aşımı. COM, TX/RX/GND ve baud seçimini kontrol edin (V1: 115200, V2 QWB: 460800). Yeni START gönderilmedi.');self.update_controls()
     def closeEvent(self,event):
+        if self.systemview.busy:
+            self.systemview.status.setText('Kayıt/aktarım sürüyor. Dosya tamamlandıktan sonra pencereyi kapatabilirsiniz.')
+            event.ignore();return
         if self.worker and self.worker.isRunning():self.worker.stop();self.worker.wait(2500)
         event.accept()
 

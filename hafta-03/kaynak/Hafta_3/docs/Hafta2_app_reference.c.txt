@@ -1,0 +1,376 @@
+/* Week 2 reference: three application tasks, one UART owner, native FreeRTOS. */
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h>
+
+#define RECORDS 256U
+#define TX_CAPACITY 16U
+#define NO_RECORD UINT16_MAX
+#define DEADLINE_US 20000U
+#define TX_TIMEOUT_MS 1000U
+#define MAX_RUN_MS 120000U
+#define WAKE_WORK 1U
+#define WAKE_RX 2U
+typedef enum { IDLE, WARMUP, RUNNING, DRAINING, EXPORTING } Phase;
+typedef enum { PENDING, OK, BUTTON_DROP, TX_DROP, TX_ERROR, TIMEOUT, FORMAT_ERROR } Status;
+typedef struct {
+    uint32_t id, t[5];
+    uint8_t valid, status, depth;
+} Record;
+typedef struct { uint16_t record; } ButtonEvent;
+typedef struct {
+    char bytes[64];
+    uint32_t generated;
+    uint16_t record;
+} TxMessage;
+typedef struct {
+    uint32_t accepted, bounce, record_overflow, button_drop, tx_drop;
+    uint32_t tel_generated, tel_drop, tel_ok, tel_error, tel_timeout;
+    uint32_t tel_wait_max, tel_wait_count, rx_drop, rx_error, format_error;
+    uint64_t tel_wait_sum;
+    uint32_t tel_first, tel_last, tel_activations, work_wall_max;
+    uint32_t queue_high;
+} Counters;
+static QueueHandle_t button_q, tx_q, urgent_q, rx_q;
+static TaskHandle_t button_task, telemetry_task, uart_task;
+static Record records[RECORDS];
+static volatile uint16_t record_count;
+static volatile Phase phase = IDLE;
+static volatile int active_record = -1;
+static volatile uint8_t button_busy, telemetry_busy;
+static volatile uint32_t last_edge;
+static volatile uint8_t have_edge;
+static Counters stats;
+static uint32_t iterations_ms, run_number, telemetry_id;
+static volatile unsigned scenario;
+static char variant = 'A';
+static uint8_t injected_run;
+static unsigned injected_count;
+static TickType_t next_injection;
+static uint8_t rx_byte;
+static volatile uint8_t rx_needs_rearm;
+static TickType_t phase_tick, run_start_tick;
+static const unsigned periods_ms[] = {100, 100, 20, 10, 10, 10, 100};
+static const unsigned load_ms[] = {0, 0, 0, 0, 2, 5, 0};
+static const char *status_names[] = {"pending", "ok", "button_drop", "tx_drop", "tx_error", "timeout", "format_error"};
+
+static void wake_uart(void) { xTaskNotify(uart_task, WAKE_WORK, eSetBits); }
+static void timestamp(uint16_t n, unsigned pos, uint32_t value) {
+    records[n].t[pos] = value;
+    records[n].valid |= (uint8_t)(1U << pos);
+}
+static unsigned queued(void) {
+    return (unsigned)(uxQueueMessagesWaiting(tx_q) + uxQueueMessagesWaiting(urgent_q));
+}
+static BaseType_t enqueue(TxMessage *msg) {
+    BaseType_t result = pdFAIL;
+    /* Shared admission limit stays 16 in A/B/C. No blocking inside critical. */
+    taskENTER_CRITICAL();
+    unsigned depth = queued();
+    if (depth < TX_CAPACITY) {
+        QueueHandle_t q = (variant == 'C' && msg->record != NO_RECORD) ? urgent_q : tx_q;
+        result = xQueueSend(q, msg, 0);
+        if (result == pdPASS) {
+            if (depth + 1U > stats.queue_high) stats.queue_high = depth + 1U;
+            if (msg->record != NO_RECORD) records[msg->record].depth = (uint8_t)depth;
+        }
+    }
+    taskEXIT_CRITICAL();
+    if (result == pdPASS) wake_uart();
+    return result;
+}
+static int make_frame(TxMessage *msg, const char *kind, uint32_t id) {
+    char tmp[64];
+    int n = snprintf(tmp, sizeof tmp, "%s,%lu,%c,S%u,%lu", kind,
+                     (unsigned long)id, variant, scenario, (unsigned long)run_number);
+    if (n < 0 || n > 63) { stats.format_error++; return 0; }
+    memset(msg->bytes, ' ', 63);
+    memcpy(msg->bytes, tmp, (size_t)n); msg->bytes[63] = '\n';
+    return 1;
+}
+
+void app_button_isr(uint32_t now) {
+    if (phase != RUNNING) return;
+    if (have_edge && (uint32_t)(now - last_edge) < 30000U) { stats.bounce++; return; }
+    last_edge = now; have_edge = 1;
+    stats.accepted++;
+    if (record_count >= RECORDS) { stats.record_overflow++; return; }
+    uint16_t n = record_count++;
+    records[n] = (Record){.id = stats.accepted, .t = {now}, .valid = 1, .status = PENDING};
+    ButtonEvent e = {.record = n};
+    BaseType_t woken = pdFALSE;
+    if (xQueueSendFromISR(button_q, &e, &woken) != pdPASS) {
+        records[n].status = BUTTON_DROP; stats.button_drop++;
+    }
+    xTaskNotifyFromISR(uart_task, WAKE_WORK, eSetBits, &woken);
+    portYIELD_FROM_ISR(woken);
+}
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *uart) {
+    if (uart != &huart2) return;
+    BaseType_t woken = pdFALSE;
+    if (xQueueSendFromISR(rx_q, &rx_byte, &woken) != pdPASS) stats.rx_drop++;
+    xTaskNotifyFromISR(uart_task, WAKE_RX, eSetBits, &woken);
+    if (HAL_UART_Receive_IT(&huart2, &rx_byte, 1) != HAL_OK) rx_needs_rearm = 1;
+    portYIELD_FROM_ISR(woken);
+}
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *uart) {
+    if (uart == &huart2) { stats.rx_error++; rx_needs_rearm = 1; }
+}
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *uart) {
+    if (uart != &huart2) return;
+    uint32_t now = timer_us(); /* IT callback runs on UART TC, not TXE. */
+    if (active_record >= 0) {
+        timestamp((uint16_t)active_record, 4, now);
+        records[active_record].status = OK;
+    }
+    BaseType_t woken = pdFALSE;
+    vTaskNotifyGiveIndexedFromISR(uart_task, 1, &woken);
+    portYIELD_FROM_ISR(woken);
+}
+static int transmit(const char *bytes, size_t length, int record) {
+    ulTaskNotifyTakeIndexed(1, pdTRUE, 0); /* Isolated completion channel. */
+    active_record = record;
+    if (record >= 0) timestamp((uint16_t)record, 3, timer_us());
+    if (HAL_UART_Transmit_IT(&huart2, (uint8_t *)bytes, (uint16_t)length) != HAL_OK) {
+        active_record = -1;
+        if (record >= 0) records[record].status = TX_ERROR;
+        return -1;
+    }
+    if (!ulTaskNotifyTakeIndexed(1, pdTRUE, pdMS_TO_TICKS(TX_TIMEOUT_MS))) {
+        /* Stop the peripheral before the stack buffer can be reused. */
+        taskENTER_CRITICAL();
+        HAL_UART_AbortTransmit(&huart2);
+        active_record = -1;
+        if (record >= 0) { records[record].status = TIMEOUT; records[record].valid &= 15U; }
+        taskEXIT_CRITICAL();
+        return 0;
+    }
+    active_record = -1;
+    return 1;
+}
+static void send_text(const char *fmt, ...) {
+    char line[384]; va_list args;
+    va_start(args, fmt); int n = vsnprintf(line, sizeof line, fmt, args); va_end(args);
+    if (n > 0 && n < (int)sizeof line) (void)transmit(line, (size_t)n, -1);
+}
+
+static void ButtonTask(void *unused) {
+    (void)unused; ButtonEvent e;
+    for (;;) {
+        if (xQueueReceive(button_q, &e, portMAX_DELAY) != pdPASS) continue;
+        button_busy = 1;
+        timestamp(e.record, 1, timer_us());
+        TxMessage msg = {.record = e.record, .generated = records[e.record].t[0]};
+        if (!make_frame(&msg, "BTN", records[e.record].id)) records[e.record].status = FORMAT_ERROR;
+        else {
+            timestamp(e.record, 2, timer_us());
+            if (enqueue(&msg) != pdPASS) { records[e.record].status = TX_DROP; stats.tx_drop++; }
+        }
+        button_busy = 0; wake_uart();
+    }
+}
+static void TelemetryTask(void *unused) {
+    (void)unused;
+    for (;;) {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        TickType_t next = xTaskGetTickCount();
+        uint32_t generation = run_number;
+        while (generation == run_number && (phase == WARMUP || phase == RUNNING)) {
+            if (scenario == 0) break; /* S0 blocks, never spins. */
+            telemetry_busy = 1;
+            uint32_t generated = timer_us();
+            if (stats.tel_activations++ == 0) stats.tel_first = generated;
+            stats.tel_last = generated;
+            uint32_t start = timer_us();
+            work_iterations(iterations_ms * load_ms[scenario]);
+            uint32_t wall = timer_us() - start;
+            if (wall > stats.work_wall_max) stats.work_wall_max = wall;
+            for (unsigned b = 0; b < (scenario == 6 ? 4U : 1U); ++b) {
+                if (phase != WARMUP && phase != RUNNING) break;
+                TxMessage msg = {.record = NO_RECORD, .generated = generated};
+                stats.tel_generated++;
+                if (!make_frame(&msg, "TEL", ++telemetry_id) || enqueue(&msg) != pdPASS) stats.tel_drop++;
+            }
+            telemetry_busy = 0; wake_uart();
+            xTaskDelayUntil(&next, pdMS_TO_TICKS(periods_ms[scenario]));
+        }
+    }
+}
+
+static void export_run(void) {
+    phase = EXPORTING;
+    send_text("#BEGIN,%lu,%c,S%u,%s\n", (unsigned long)run_number, variant, scenario,
+              injected_run ? "hardware_injected" : "hardware");
+    send_text("#CONFIG,clock_hz=%lu,tick_hz=1000,baud=%lu,bytes=64,deadline_us=20000,iterations_ms=%lu\n",
+              (unsigned long)SystemCoreClock, (unsigned long)huart2.Init.BaudRate, (unsigned long)iterations_ms);
+    send_text("#FIELDS,event_id,t0_us,t1_us,t2_us,t3_us,t4_us,status,queue_depth\n");
+    for (uint16_t i = 0; i < record_count; ++i) {
+        Record *r = &records[i]; char times[5][12];
+        for (unsigned t = 0; t < 5; ++t) {
+            times[t][0] = 0;
+            if (r->valid & (1U << t)) snprintf(times[t], sizeof times[t], "%lu", (unsigned long)r->t[t]);
+        }
+        send_text("#REC,%lu,%s,%s,%s,%s,%s,%s,%u\n", (unsigned long)r->id,
+                  times[0], times[1], times[2], times[3], times[4], status_names[r->status], r->depth);
+    }
+    send_text("#COUNT,accepted=%lu,bounce=%lu,record_overflow=%lu,button_drop=%lu,tx_drop=%lu,queue_high=%lu\n",
+              (unsigned long)stats.accepted, (unsigned long)stats.bounce, (unsigned long)stats.record_overflow,
+              (unsigned long)stats.button_drop, (unsigned long)stats.tx_drop, (unsigned long)stats.queue_high);
+    send_text("#TEL,generated=%lu,drop=%lu,ok=%lu,error=%lu,timeout=%lu,wait_mean_us=%lu,wait_max_us=%lu\n",
+              (unsigned long)stats.tel_generated, (unsigned long)stats.tel_drop, (unsigned long)stats.tel_ok,
+              (unsigned long)stats.tel_error, (unsigned long)stats.tel_timeout,
+              (unsigned long)(stats.tel_wait_count ? stats.tel_wait_sum / stats.tel_wait_count : 0), (unsigned long)stats.tel_wait_max);
+    send_text("#HEALTH,rx_drop=%lu,rx_error=%lu,format_error=%lu,work_wall_max_us=%lu,free_heap=%lu,stack_btn=%lu,stack_tel=%lu,stack_tx=%lu\n",
+              (unsigned long)stats.rx_drop, (unsigned long)stats.rx_error, (unsigned long)stats.format_error,
+              (unsigned long)stats.work_wall_max, (unsigned long)xPortGetFreeHeapSize(),
+              (unsigned long)uxTaskGetStackHighWaterMark(button_task), (unsigned long)uxTaskGetStackHighWaterMark(telemetry_task),
+              (unsigned long)uxTaskGetStackHighWaterMark(uart_task));
+    send_text("#RATE,activations=%lu,span_us=%lu,scope=warmup_and_run\n", (unsigned long)stats.tel_activations,
+              (unsigned long)(stats.tel_last - stats.tel_first));
+    send_text("#END,%lu\n", (unsigned long)run_number);
+    EXTI->FTSR1 |= GPIO_PIN_13; /* Restore physical button after integration test. */
+    phase = IDLE; HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+}
+static void begin_run(char mode, unsigned s, uint8_t inject) {
+    /* The previous run has drained, exported, and no producer can write. */
+    taskENTER_CRITICAL();
+    memset(&stats, 0, sizeof stats); memset(records, 0, sizeof records);
+    record_count = 0; have_edge = 0; telemetry_id = 0;
+    variant = mode; scenario = s; run_number++;
+    injected_run = inject; injected_count = 0;
+    /* Isolate the integration test from accidental physical presses. SWIER
+       still triggers EXTI while falling-edge detection is disabled. */
+    if (inject) EXTI->FTSR1 &= ~GPIO_PIN_13;
+    else EXTI->FTSR1 |= GPIO_PIN_13;
+    taskEXIT_CRITICAL();
+    vTaskPrioritySet(button_task, variant == 'A' ? 2 : 4);
+    send_text("#RUN,%lu,%c,S%u,WARMUP\n", (unsigned long)run_number, variant, scenario);
+    phase_tick = xTaskGetTickCount(); phase = WARMUP;
+    xTaskNotifyGive(telemetry_task);
+}
+static void command(const char *line) {
+    char mode, extra; unsigned s;
+    unsigned baud;
+    if (sscanf(line, "BAUD %u %c", &baud, &extra) == 1) {
+        if (phase != IDLE) { send_text("#ERROR,busy\n"); return; }
+        if (baud != 9600 && baud != 57600 && baud != 115200 && baud != 230400) {
+            send_text("#ERROR,unsupported_baud\n"); return;
+        }
+        /* Acknowledge at the OLD speed, wait for host, then reconfigure RX/TX. */
+        send_text("#BAUD,%u\n", baud);
+        vTaskDelay(pdMS_TO_TICKS(150));
+        HAL_UART_AbortReceive(&huart2);
+        huart2.Init.BaudRate = baud;
+        if (HAL_UART_Init(&huart2) != HAL_OK) fatal(__FILE__, __LINE__);
+        xQueueReset(rx_q);
+        rx_needs_rearm = 0;
+        if (HAL_UART_Receive_IT(&huart2, &rx_byte, 1) != HAL_OK) fatal(__FILE__, __LINE__);
+        return;
+    }
+    if (sscanf(line, "RUN %c %u %c", &mode, &s, &extra) == 2 && mode >= 'A' && mode <= 'C' && s <= 6) {
+        if (phase != IDLE) send_text("#ERROR,busy\n");
+        else begin_run(mode, s, 0);
+    } else if (sscanf(line, "TEST %c %u %c", &mode, &s, &extra) == 2 && mode >= 'A' && mode <= 'C' && s <= 6) {
+        if (phase != IDLE) send_text("#ERROR,busy\n");
+        else begin_run(mode, s, 1);
+    } else if (!strcmp(line, "STOP")) {
+        if (phase == WARMUP || phase == RUNNING) { phase = DRAINING; phase_tick = xTaskGetTickCount(); }
+        else if (phase == IDLE) send_text("#ERROR,idle\n");
+    } else if (!strcmp(line, "HELLO")) {
+        send_text("#READY,RTOS-W2,1,NUCLEO-L476RG,baud=%lu,phase=%u\n", (unsigned long)huart2.Init.BaudRate, (unsigned)phase);
+    } else send_text("#ERROR,command_expected_RUN_A_0_or_STOP\n");
+}
+static void drain_rx(void) {
+    static char line[48]; static unsigned used; static int discard;
+    uint8_t ch;
+    while (xQueueReceive(rx_q, &ch, 0) == pdPASS) {
+        if (ch == '\r') continue;
+        if (ch == '\n') {
+            if (!discard) { line[used] = 0; if (used) command(line); }
+            else send_text("#ERROR,command_too_long\n");
+            used = 0; discard = 0;
+        } else if (used < sizeof line - 1) line[used++] = (char)ch;
+        else discard = 1;
+    }
+    if (rx_needs_rearm) {
+        HAL_UART_AbortReceive(&huart2);
+        if (HAL_UART_Receive_IT(&huart2, &rx_byte, 1) == HAL_OK) rx_needs_rearm = 0;
+    }
+}
+static void UartTxTask(void *unused) {
+    (void)unused; TxMessage msg;
+    HAL_UART_Receive_IT(&huart2, &rx_byte, 1);
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+    send_text("#READY,RTOS-W2,1,NUCLEO-L476RG,baud=%lu,phase=0\n", (unsigned long)huart2.Init.BaudRate);
+    for (;;) {
+        drain_rx();
+        TickType_t now = xTaskGetTickCount();
+        if (phase == WARMUP && (TickType_t)(now - phase_tick) >= pdMS_TO_TICKS(5000)) {
+            /* Emit control traffic before opening the measured button window. */
+            send_text("#STATE,RUNNING\n");
+            run_start_tick = xTaskGetTickCount(); phase = RUNNING;
+            next_injection = run_start_tick + pdMS_TO_TICKS(600);
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+            now = xTaskGetTickCount();
+        }
+        if (phase == RUNNING && (TickType_t)(now - run_start_tick) >= pdMS_TO_TICKS(MAX_RUN_MS)) {
+            phase = DRAINING; phase_tick = now;
+        }
+        if (phase == RUNNING && injected_run && (int32_t)(now - next_injection) >= 0) {
+            if (injected_count >= 30) { phase = DRAINING; phase_tick = now; }
+            else {
+                /* Integration test only: software-triggered EXTI, NOT a physical edge.
+                   Selection by this low-priority task biases event phase; never use
+                   these results as the manual-button timing acceptance experiment. */
+                EXTI->SWIER1 = GPIO_PIN_13;
+                next_injection = now + pdMS_TO_TICKS(503 + (injected_count * 37U) % 197U);
+                injected_count++;
+            }
+        }
+        BaseType_t got = pdFAIL;
+        taskENTER_CRITICAL();
+        if (variant == 'C') got = xQueueReceive(urgent_q, &msg, 0);
+        if (got != pdPASS) got = xQueueReceive(tx_q, &msg, 0);
+        taskEXIT_CRITICAL();
+        if (got == pdPASS) {
+            uint32_t wait = timer_us() - msg.generated;
+            int result = transmit(msg.bytes, sizeof msg.bytes, msg.record == NO_RECORD ? -1 : msg.record);
+            if (msg.record == NO_RECORD) {
+                stats.tel_wait_sum += wait; stats.tel_wait_count++;
+                if (wait > stats.tel_wait_max) stats.tel_wait_max = wait;
+                if (result > 0) stats.tel_ok++;
+                else if (!result) stats.tel_timeout++;
+                else stats.tel_error++;
+            }
+        }
+        if (phase == DRAINING && !telemetry_busy && !button_busy && !uxQueueMessagesWaiting(button_q)) {
+            if ((TickType_t)(xTaskGetTickCount() - phase_tick) > pdMS_TO_TICKS(2000)) {
+                /* Bounded recovery: count every queued message we abandon. */
+                while (xQueueReceive(tx_q, &msg, 0) == pdPASS || xQueueReceive(urgent_q, &msg, 0) == pdPASS) {
+                    if (msg.record != NO_RECORD) records[msg.record].status = TIMEOUT;
+                    else stats.tel_timeout++;
+                }
+            }
+            if (!queued()) { export_run(); continue; }
+        }
+        if (got != pdPASS) {
+            uint32_t bits;
+            xTaskNotifyWait(0, UINT32_MAX, &bits, pdMS_TO_TICKS(10));
+        }
+    }
+}
+void app_init(void) {
+    iterations_ms = calibrate_work();
+    button_q = xQueueCreate(8, sizeof(ButtonEvent));
+    tx_q = xQueueCreate(TX_CAPACITY, sizeof(TxMessage));
+    urgent_q = xQueueCreate(TX_CAPACITY, sizeof(TxMessage));
+    rx_q = xQueueCreate(128, 1);
+    configASSERT(button_q && tx_q && urgent_q && rx_q);
+    configASSERT(xTaskCreate(ButtonTask, "Button", 512, NULL, 2, &button_task) == pdPASS);
+    configASSERT(xTaskCreate(TelemetryTask, "Telemetry", 512, NULL, 3, &telemetry_task) == pdPASS);
+    configASSERT(xTaskCreate(UartTxTask, "UartTx", 1024, NULL, 1, &uart_task) == pdPASS);
+}

@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "source": "hardware_serial",
+  "assembly": "Existing individually captured runs; verified CSV cells against raw transcript before indexing. Not a new matrix execution.",
+  "runs": [
+    "A_NORMAL_trace1.json",
+    "B_NORMAL_trace1.json",
+    "C_NORMAL_trace1.json",
+    "A_BURST_trace1.json",
+    "B_BURST_trace1.json",
+    "C_BURST_trace1.json",
+    "A_BURST_trace0.json"
+  ]
+}

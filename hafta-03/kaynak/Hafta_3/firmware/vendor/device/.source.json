@@ -1,0 +1,7 @@
+{
+  "name": "device",
+  "repository": "STMicroelectronics/cmsis-device-l4",
+  "tag": "v1.7.4",
+  "url": "https://codeload.github.com/STMicroelectronics/cmsis-device-l4/zip/refs/tags/v1.7.4",
+  "sha256": "714f47900ccbbba1efeb27be3a868cf5ffc71636d9416f33dc815adb5066cec5"
+}

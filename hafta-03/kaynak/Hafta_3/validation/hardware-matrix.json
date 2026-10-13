@@ -1,0 +1,304 @@
+[
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "A",
+    "load": "NORMAL",
+    "run_id": 1,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "result": [
+      "#RESULT",
+      "1",
+      "A",
+      "NORMAL",
+      "44",
+      "44",
+      "0",
+      "44",
+      "1",
+      "12069",
+      "0"
+    ],
+    "trace": {
+      "bytes": 12069,
+      "fnv1a": "2313C93F",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "ef1fea658d2a455b18d7d2878867bd1c09317f9f1600fa26b48f64a2b14b177e"
+    },
+    "max_latency_us": 136,
+    "max_send_us": 48,
+    "stack_words": [
+      "708",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "B",
+    "load": "NORMAL",
+    "run_id": 2,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "result": [
+      "#RESULT",
+      "2",
+      "B",
+      "NORMAL",
+      "44",
+      "44",
+      "0",
+      "44",
+      "1",
+      "12070",
+      "0"
+    ],
+    "trace": {
+      "bytes": 12070,
+      "fnv1a": "C3E02931",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "745d839c20da5a07639cc0caef99499b699c64728052f96ad0fac0b536e13960"
+    },
+    "max_latency_us": 136,
+    "max_send_us": 48,
+    "stack_words": [
+      "708",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "C",
+    "load": "NORMAL",
+    "run_id": 3,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "result": [
+      "#RESULT",
+      "3",
+      "C",
+      "NORMAL",
+      "44",
+      "44",
+      "0",
+      "44",
+      "1",
+      "12070",
+      "0"
+    ],
+    "trace": {
+      "bytes": 12070,
+      "fnv1a": "15B99E27",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "922a80a5cb1903685dca151cda0fd6069fda66e90e9c8a4fc1520043951ef7c0"
+    },
+    "max_latency_us": 136,
+    "max_send_us": 48,
+    "stack_words": [
+      "708",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "A",
+    "load": "BURST",
+    "run_id": 4,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 24,
+    "failed": 20,
+    "consumed": 24,
+    "result": [
+      "#RESULT",
+      "4",
+      "A",
+      "BURST",
+      "44",
+      "24",
+      "20",
+      "24",
+      "1",
+      "12908",
+      "0"
+    ],
+    "trace": {
+      "bytes": 12908,
+      "fnv1a": "60DD7DE7",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "100cf2aa268d105b3e159502482de3ed42e94310345839727c1de56e82cea305"
+    },
+    "max_latency_us": 60870,
+    "max_send_us": 48,
+    "stack_words": [
+      "708",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "B",
+    "load": "BURST",
+    "run_id": 5,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 36,
+    "failed": 8,
+    "consumed": 36,
+    "result": [
+      "#RESULT",
+      "5",
+      "B",
+      "BURST",
+      "44",
+      "36",
+      "8",
+      "36",
+      "1",
+      "12544",
+      "0"
+    ],
+    "trace": {
+      "bytes": 12544,
+      "fnv1a": "318700AE",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "a7a840897d1cb5d8bc5bd948d49e0bae201b6d94284fdf45fdc9ed8bd8d75064"
+    },
+    "max_latency_us": 300425,
+    "max_send_us": 55,
+    "stack_words": [
+      "708",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "C",
+    "load": "BURST",
+    "run_id": 6,
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 34,
+    "failed": 10,
+    "consumed": 34,
+    "result": [
+      "#RESULT",
+      "6",
+      "C",
+      "BURST",
+      "44",
+      "34",
+      "10",
+      "34",
+      "1",
+      "15963",
+      "0"
+    ],
+    "trace": {
+      "bytes": 15963,
+      "fnv1a": "30DD0C72",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "03c72bae4f11d3ad07b9ecbd2f1dbc5aa341589ed0dc1e282937f746c505a3f3"
+    },
+    "max_latency_us": 80367,
+    "max_send_us": 19775,
+    "stack_words": [
+      "704",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  },
+  {
+    "source": "hardware_serial",
+    "port": "COM4",
+    "variant": "A",
+    "load": "BURST",
+    "run_id": 7,
+    "trace_enabled": false,
+    "attempted": 44,
+    "accepted": 24,
+    "failed": 20,
+    "consumed": 24,
+    "result": [
+      "#RESULT",
+      "7",
+      "A",
+      "BURST",
+      "44",
+      "24",
+      "20",
+      "24",
+      "0",
+      "0",
+      "0"
+    ],
+    "trace": null,
+    "max_latency_us": 59936,
+    "max_send_us": 30,
+    "stack_words": [
+      "704",
+      "710",
+      "772"
+    ],
+    "rx_errors_drops": [
+      "0",
+      "0"
+    ],
+    "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+  }
+]

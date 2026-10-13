@@ -1,0 +1,9 @@
+{
+  "base_commit": "96fa636cc4c832b03523362757935c9d04d117fe",
+  "note": "Existing weeks left unchanged; working tree contained user changes. No whole-tree commit created.",
+  "lesson_zip_sha256": "6341ef2a7d8938c75b4758042ae6a3d89825b2a000c660688b19b7256425c106",
+  "sources": {
+    "app_and_freertos11": "kaynak/Hafta_3/firmware",
+    "f407_hal_cmsis_startup": "../hafta-01/firmware/Homework_001"
+  }
+}

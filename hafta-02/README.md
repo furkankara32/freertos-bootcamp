@@ -1,5 +1,7 @@
 # Hafta 02 — V2 SystemView hazırlığı
 
+**Yeni: [Arayüzden SystemView kaydı](docs/ARAYUZ_SYSTEMVIEW.md)** — `tools/open-interface.ps1` ile açın; V1/V2-QWB için senaryoyu başlatıp kayıt alın ve `.SVDat` dosyasını SystemView’da açın.
+
 **Güncel durum (4 Ekim 2026):** S0/S5 ölçümleri ve üç rapor tamamlandı:
 
 - [V1 raporu](reports/V1_S0_S5.md)

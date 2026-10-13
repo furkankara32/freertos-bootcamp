@@ -1,0 +1,15 @@
+{
+  "source": "hardware_connection",
+  "port": "COM5",
+  "build_id": "e3e19bc3a4a179e411f6acb7d828a5866b1f70b3d5692b42ba430a6e39b231d6",
+  "valid": true,
+  "scenario_started": false,
+  "startup_lines": [
+    "#ERROR,BAD_COMMAND",
+    "#HELLO,WEEK3,1,STM32F407VG,230400,168000000"
+  ],
+  "lines": [
+    "#HELLO,WEEK3,1,STM32F407VG,230400,168000000",
+    "#BUILD,e3e19bc3a4a179e411f6acb7d828a5866b1f70b3d5692b42ba430a6e39b231d6"
+  ]
+}

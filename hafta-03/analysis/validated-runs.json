@@ -1,0 +1,443 @@
+[
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 3,
+    "variant": "A",
+    "load": "NORMAL",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "stack_words": [
+      700,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 11704,
+      "fnv1a": "89598390",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "6aac3af8173d40ee9c853a44bda0128097ea8c60d9c7e12494b271d675a793b3",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_success_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_failed_us": {
+        "n": 0,
+        "mean": null,
+        "max": null
+      },
+      "generation_to_receive_us": {
+        "n": 44,
+        "mean": 33.81818181818182,
+        "max": 52
+      }
+    },
+    "file": "A_NORMAL_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 5,
+    "variant": "B",
+    "load": "NORMAL",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "stack_words": [
+      700,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 11704,
+      "fnv1a": "F7BA014C",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "9bc4f56e575a41b8e7e24bfced9562890be85ba71536e95a15bd025d594a7b59",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_success_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_failed_us": {
+        "n": 0,
+        "mean": null,
+        "max": null
+      },
+      "generation_to_receive_us": {
+        "n": 44,
+        "mean": 33.81818181818182,
+        "max": 52
+      }
+    },
+    "file": "B_NORMAL_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 7,
+    "variant": "C",
+    "load": "NORMAL",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 44,
+    "failed": 0,
+    "consumed": 44,
+    "stack_words": [
+      700,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 11704,
+      "fnv1a": "05DBCEAF",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "fc85815e53f582b72f533ae5d667d88c1f1985814ab19eb1933d52a203f13bef",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_success_us": {
+        "n": 44,
+        "mean": 12.159090909090908,
+        "max": 19
+      },
+      "send_failed_us": {
+        "n": 0,
+        "mean": null,
+        "max": null
+      },
+      "generation_to_receive_us": {
+        "n": 44,
+        "mean": 33.81818181818182,
+        "max": 52
+      }
+    },
+    "file": "C_NORMAL_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 4,
+    "variant": "A",
+    "load": "BURST",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 24,
+    "failed": 20,
+    "consumed": 24,
+    "stack_words": [
+      700,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 12514,
+      "fnv1a": "FBEADD30",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "c17003adce5a9c19208433ea0d76cd1219a49289c3d89ddc2e73eb1ce2a9bd6a",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 11.909090909090908,
+        "max": 19
+      },
+      "send_success_us": {
+        "n": 24,
+        "mean": 12.416666666666666,
+        "max": 19
+      },
+      "send_failed_us": {
+        "n": 20,
+        "mean": 11.3,
+        "max": 12
+      },
+      "generation_to_receive_us": {
+        "n": 24,
+        "mean": 5036.375,
+        "max": 59929
+      }
+    },
+    "file": "A_BURST_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 6,
+    "variant": "B",
+    "load": "BURST",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 36,
+    "failed": 8,
+    "consumed": 36,
+    "stack_words": [
+      700,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 12202,
+      "fnv1a": "E9892322",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "53eb4057069430336695f257eeaf57dc23cb4ec5676afdeb8197bc3ba41e6af1",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 11.795454545454545,
+        "max": 19
+      },
+      "send_success_us": {
+        "n": 36,
+        "mean": 11.916666666666666,
+        "max": 19
+      },
+      "send_failed_us": {
+        "n": 8,
+        "mean": 11.25,
+        "max": 12
+      },
+      "generation_to_receive_us": {
+        "n": 36,
+        "mean": 78299.52777777778,
+        "max": 299765
+      }
+    },
+    "file": "B_BURST_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 8,
+    "variant": "C",
+    "load": "BURST",
+    "trace_enabled": true,
+    "attempted": 44,
+    "accepted": 34,
+    "failed": 10,
+    "consumed": 34,
+    "stack_words": [
+      690,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": {
+      "bytes": 15326,
+      "fnv1a": "9CB462AC",
+      "drops": 0,
+      "stop_reason": 1,
+      "sha256": "fac34f55134a41a677d248bcddfab3b14ff09767465307b9c0f0b4e1d4bd8f90",
+      "clean": true
+    },
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 4548.636363636364,
+        "max": 19914
+      },
+      "send_success_us": {
+        "n": 34,
+        "mean": 31.794117647058822,
+        "max": 80
+      },
+      "send_failed_us": {
+        "n": 10,
+        "mean": 19905.9,
+        "max": 19914
+      },
+      "generation_to_receive_us": {
+        "n": 34,
+        "mean": 27112.558823529413,
+        "max": 80140
+      }
+    },
+    "file": "C_BURST_trace1.json"
+  },
+  {
+    "source": "hardware_serial",
+    "board": "STM32F407G-DISC1",
+    "mcu": "STM32F407VG",
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "run_id": 9,
+    "variant": "A",
+    "load": "BURST",
+    "trace_enabled": false,
+    "attempted": 44,
+    "accepted": 24,
+    "failed": 20,
+    "consumed": 24,
+    "stack_words": [
+      690,
+      702,
+      736
+    ],
+    "rx_errors_drops": [
+      0,
+      0
+    ],
+    "trace": null,
+    "valid": true,
+    "rx_before_run": [
+      0,
+      0
+    ],
+    "rx_lifetime_total": [
+      0,
+      0
+    ],
+    "rx_scope": "run_start_to_report",
+    "statistics": {
+      "send_all_us": {
+        "n": 44,
+        "mean": 9.409090909090908,
+        "max": 12
+      },
+      "send_success_us": {
+        "n": 24,
+        "mean": 11.333333333333334,
+        "max": 12
+      },
+      "send_failed_us": {
+        "n": 20,
+        "mean": 7.1,
+        "max": 8
+      },
+      "generation_to_receive_us": {
+        "n": 24,
+        "mean": 5034.75,
+        "max": 59973
+      }
+    },
+    "file": "A_BURST_trace0.json"
+  }
+]

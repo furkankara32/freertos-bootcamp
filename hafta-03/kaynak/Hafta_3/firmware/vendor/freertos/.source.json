@@ -1,0 +1,7 @@
+{
+  "name": "freertos",
+  "repository": "FreeRTOS/FreeRTOS-Kernel",
+  "tag": "V11.1.0",
+  "url": "https://codeload.github.com/FreeRTOS/FreeRTOS-Kernel/zip/refs/tags/V11.1.0",
+  "sha256": "d5875acad2479817b35b2031dc1c7c22d100f45c7f3c9f6039cb217437a298a2"
+}

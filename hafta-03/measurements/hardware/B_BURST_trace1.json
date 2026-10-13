@@ -1,0 +1,87 @@
+{
+  "source": "hardware_serial",
+  "board": "STM32F407G-DISC1",
+  "mcu": "STM32F407VG",
+  "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+  "run_id": 6,
+  "variant": "B",
+  "load": "BURST",
+  "trace_enabled": true,
+  "attempted": 44,
+  "accepted": 36,
+  "failed": 8,
+  "consumed": 36,
+  "stack_words": [
+    700,
+    702,
+    736
+  ],
+  "rx_errors_drops": [
+    0,
+    0
+  ],
+  "trace": {
+    "bytes": 12202,
+    "fnv1a": "E9892322",
+    "drops": 0,
+    "stop_reason": 1,
+    "sha256": "53eb4057069430336695f257eeaf57dc23cb4ec5676afdeb8197bc3ba41e6af1",
+    "clean": true
+  },
+  "valid": true,
+  "rx_before_run": [
+    0,
+    0
+  ],
+  "rx_lifetime_total": [
+    0,
+    0
+  ],
+  "rx_scope": "run_start_to_report",
+  "port": "COM5",
+  "local_build": {
+    "build_id": "81f84d3135e5bc8a88101ae85466e23d0009cc9ff12c5d22767f9200c2d6b1c6",
+    "target": "STM32F407VG",
+    "board": "STM32F407G-DISC1",
+    "clock_hz": 168000000,
+    "tick_hz": 1000,
+    "timer_hz": 1000000,
+    "baud": 230400,
+    "freertos": "11.1.0",
+    "config": "Release",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "197db69721eae4aa8a2c52d24a596f4f809527c090a14d6a28e608060897dc94",
+    "bin_sha256": "0ef614c2c2d92c386c9bdb2e10676b58cb9ee44b0a66c58cc7d391cefdc26417",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  27488\t    132\t  62276\t  89896\t  15f28\tD:\\freertos-bootcamp\\hafta-03\\firmware\\build\\Release\\week3_f407.elf\n",
+    "hardware_tested": false
+  },
+  "statistics": {
+    "send_all_us": {
+      "n": 44,
+      "mean": 11.795454545454545,
+      "max": 19
+    },
+    "send_success_us": {
+      "n": 36,
+      "mean": 11.916666666666666,
+      "max": 19
+    },
+    "send_failed_us": {
+      "n": 8,
+      "mean": 11.25,
+      "max": 12
+    },
+    "generation_to_receive_us": {
+      "n": 36,
+      "mean": 78299.52777777778,
+      "max": 299765
+    }
+  },
+  "startup_lines": [
+    "#ERROR,BAD_COMMAND",
+    "#HELLO,WEEK3,1,STM32F407VG,230400,168000000"
+  ],
+  "captured_utc": "2026-10-13T13:42:52Z",
+  "raw_sha256": "e47e8c64daca21f3922cc8bc4deac0aa8b1d0aaa2af89ccc5653fe9eef66bea9",
+  "csv_sha256": "ba1a7f4e2388564c6932cd580599aee753f6bef5a56f29d933fb63fec816a1e7"
+}

@@ -1,0 +1,12 @@
+{
+  "rtt_control_block": "0x20000550",
+  "buffer": "0x20000718",
+  "capacity": 65536,
+  "bytes": 20980,
+  "capture_complete": true,
+  "dropped_events": 0,
+  "clean": true,
+  "read_offset": 0,
+  "trace_sha256": "cf31616cc0ffea524f215d7f0b83658880a009185d2f2d0a19c7609497f0d46a",
+  "method": "ST-LINK: read frozen trace from SRAM with CPU running; no halt/reset/resume command"
+}

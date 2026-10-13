@@ -1,0 +1,19 @@
+Opening 'RTOS_Hafta_3_L476RG'.
+20:15:57 **** Build of configuration Debug for project RTOS_Hafta_3_L476RG ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app_trace.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L476xx -DUSE_HAL_DRIVER -c -I../include -I../vendor/hal/Inc -I../vendor/device/Include -I../vendor/cmsis/CMSIS/Core/Include -I../vendor/freertos/include -I../vendor/freertos/portable/GCC/ARM_CM4F -I../vendor/systemview/SYSVIEW -I../vendor/systemview/SEGGER -I../vendor/systemview/Sample/FreeRTOSV11 -I../vendor/rtt/RTT -Og -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app_trace.d" -MT"src/app_trace.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app_trace.o"
+arm-none-eabi-gcc -o "RTOS_Hafta_3_L476RG.elf" @"objects.list"   -mcpu=cortex-m4 -T"F:\2026_Eylül_RTOS_Bootcamp\Hafta_3\firmware\STM32L476RG.ld" --specs=nosys.specs -Wl,-Map="RTOS_Hafta_3_L476RG.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTOS_Hafta_3_L476RG.elf
+ 
+arm-none-eabi-size  RTOS_Hafta_3_L476RG.elf 
+arm-none-eabi-objdump -h -S RTOS_Hafta_3_L476RG.elf  > "RTOS_Hafta_3_L476RG.list"
+   text	   data	    bss	    dec	    hex	filename
+  31736	    132	  65404	  97272	  17bf8	RTOS_Hafta_3_L476RG.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTOS_Hafta_3_L476RG.list
+ 
+
+20:15:59 Build Finished. 0 errors, 0 warnings. (took 1s.907ms)
+
+Saving workspace.

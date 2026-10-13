@@ -1,0 +1,74 @@
+{
+  "source": "hardware_serial",
+  "board": "STM32F407G-DISC1",
+  "mcu": "STM32F407VG",
+  "build_id": "e3e19bc3a4a179e411f6acb7d828a5866b1f70b3d5692b42ba430a6e39b231d6",
+  "run_id": 1,
+  "variant": "A",
+  "load": "NORMAL",
+  "trace_enabled": true,
+  "attempted": 44,
+  "accepted": 44,
+  "failed": 0,
+  "consumed": 44,
+  "stack_words": [
+    700,
+    702,
+    736
+  ],
+  "rx_errors_drops": [
+    0,
+    0
+  ],
+  "trace": {
+    "bytes": 11702,
+    "fnv1a": "9B3CEB42",
+    "drops": 0,
+    "stop_reason": 1,
+    "sha256": "f5a767ab82d8b1e444356e74588637a5770e35694cde4ae9dde23c9b66be89f4",
+    "clean": true
+  },
+  "valid": true,
+  "port": "COM5",
+  "local_build": {
+    "build_id": "e3e19bc3a4a179e411f6acb7d828a5866b1f70b3d5692b42ba430a6e39b231d6",
+    "target": "STM32F407VG",
+    "board": "STM32F407G-DISC1",
+    "clock_hz": 168000000,
+    "tick_hz": 1000,
+    "timer_hz": 1000000,
+    "baud": 230400,
+    "freertos": "11.1.0",
+    "config": "Release",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "15100d23e2ed76af50bb989adfdd44fc92bff0213b7f15f17257abe0e83bf8f8",
+    "bin_sha256": "6877baa81123be5f54d5921799c6b2b828edb80249059a5207d2df3f10fe1bfc",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  27340\t    132\t  62268\t  89740\t  15e8c\tD:\\freertos-bootcamp\\hafta-03\\firmware\\build\\Release\\week3_f407.elf\n",
+    "hardware_tested": false
+  },
+  "statistics": {
+    "send_all_us": {
+      "n": 44,
+      "mean": 12.159090909090908,
+      "max": 18
+    },
+    "send_success_us": {
+      "n": 44,
+      "mean": 12.159090909090908,
+      "max": 18
+    },
+    "send_failed_us": {
+      "n": 0,
+      "mean": null,
+      "max": null
+    },
+    "generation_to_receive_us": {
+      "n": 44,
+      "mean": 32.86363636363637,
+      "max": 52
+    }
+  },
+  "captured_utc": "2026-10-12T14:40:11Z",
+  "raw_sha256": "64b3ad1aa0e66c03e5eacfc1a1a81df4e04762493f42f329a290f41cb78f574b",
+  "csv_sha256": "a3cd71786dc8ac706040695fa12cca42e113b48a2a20ec17e0dc4304f621d3be"
+}

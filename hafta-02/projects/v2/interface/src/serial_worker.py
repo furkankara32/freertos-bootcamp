@@ -11,6 +11,7 @@ from .storage import save_dump
 
 class SerialWorker(QThread):
     received=Signal(str,object)
+    command_sent=Signal(str)
     problem=Signal(str)
     connected=Signal(bool)
     def __init__(self, port, output, parent=None, baud=460800, build_metadata=None):
@@ -31,7 +32,8 @@ class SerialWorker(QThread):
                     while True:
                         cmd=self.commands.get_nowait()
                         if demo:incoming.extend(sim.press() if cmd=='!PRESS' else sim.command(cmd))
-                        elif cmd!='!PRESS':handle.write((cmd+'\n').encode('ascii'))
+                        elif cmd!='!PRESS':
+                            handle.write((cmd+'\n').encode('ascii'));handle.flush();self.command_sent.emit(cmd)
                 except Empty:pass
                 if demo:incoming.extend(sim.poll());time.sleep(.01)
                 else:

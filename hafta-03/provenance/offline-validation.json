@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-12",
+  "hardware_tested": false,
+  "unit_tests": {
+    "runner": "python -m unittest discover -s tests -v",
+    "passed": 31,
+    "failed": 0,
+    "fixtures": "synthetic, temporary directories only"
+  },
+  "builds": {
+    "Release": {
+      "build_id": "e3e19bc3a4a179e411f6acb7d828a5866b1f70b3d5692b42ba430a6e39b231d6",
+      "elf_sha256": "15100d23e2ed76af50bb989adfdd44fc92bff0213b7f15f17257abe0e83bf8f8",
+      "bin_sha256": "6877baa81123be5f54d5921799c6b2b828edb80249059a5207d2df3f10fe1bfc",
+      "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+      "warnings": 0,
+      "errors": 0,
+      "vector_validation": "passed; Reset HardFault SVC PendSV SysTick USART2"
+    },
+    "Debug": {
+      "build_id": "765af499c119d8b9f3102f7f1e46043b12a6ccce03ad84464c395667a829fcbf",
+      "elf_sha256": "5aa47aaa15c00e769fb33f76be94285cc23a516e3eaf8d803253d8c24cf327a5",
+      "bin_sha256": "467b269eb3f72cc2f94d1bc8af1fe12d1491335e9a41d8859b88f933fdcfebdb",
+      "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+      "warnings": 0,
+      "errors": 0,
+      "vector_validation": "passed; Reset HardFault SVC PendSV SysTick USART2"
+    }
+  }
+}

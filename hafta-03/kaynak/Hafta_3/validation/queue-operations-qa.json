@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "slide": 11,
+  "errors": [],
+  "cases": [
+    "front/back order",
+    "front-front reverses insertion order",
+    "receive removes head",
+    "peek preserves head",
+    "full does not overwrite",
+    "empty preserves output",
+    "guided demo",
+    "reset/navigation during animation",
+    "reduced motion",
+    "mobile no page overflow"
+  ],
+  "updated": "2026-10-06"
+}

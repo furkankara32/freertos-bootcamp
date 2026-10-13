@@ -1,0 +1,5 @@
+tmp/
+firmware/build/
+__pycache__/
+*.pyc
+.venv/

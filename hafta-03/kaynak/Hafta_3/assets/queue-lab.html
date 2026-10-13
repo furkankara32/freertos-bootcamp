@@ -1,0 +1,19 @@
+<section id="queueOperations" class="q-lab" aria-label="Etkileşimli FreeRTOS queue işlemleri">
+  <div class="q-toolbar"><label>Yeni mesajın değeri <input id="qValue" type="number" min="0" max="999" step="1" value="10"></label><span class="tag">Kapasite: 6 mesaj</span><span class="tag">Bekleme: 0 tick</span><span id="qCount" class="q-count">0 / 6 dolu</span></div>
+  <div class="q-canvas"><svg id="qDiagram" viewBox="0 0 1100 300" role="img" aria-labelledby="qDiagramTitle qDiagramDesc">
+    <title id="qDiagramTitle">Queue'nun önüne veya arkasına gönder; önünden al</title><desc id="qDiagramDesc">Mesajlar soldan sağa okunma sırasıyla gösterilir. Receive soldaki front elemanını çıkarır. Peek aynı elemanın kopyasını verir, queue'da bırakır.</desc>
+    <defs><marker id="qArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/></marker></defs>
+    <text x="235" y="27" class="q-end front">FRONT / ÖN</text><text x="800" y="27" text-anchor="end" class="q-end back">BACK / ARKA</text>
+    <text x="235" y="49" class="q-label">Bir sonraki Receive buradan alır</text>
+    <path id="qFrontPath" class="q-route front" d="M 119 216 L 119 103 L 216 103" marker-end="url(#qArrow)"/>
+    <path id="qBackPath" class="q-route back" d="M 165 247 L 840 247 L 840 103 L 812 103" marker-end="url(#qArrow)"/>
+    <path id="qReceivePath" class="q-route receive" d="M 277 145 L 277 187 L 970 187 L 970 216" marker-end="url(#qArrow)"/>
+    <g id="qSlots"></g><g id="qMessages"></g>
+    <rect x="52" y="216" width="135" height="68" rx="10" class="q-pod"/><text x="119" y="239" text-anchor="middle" class="q-label">ÜRETİCİ / msg</text><text id="qProducerValue" x="119" y="270" text-anchor="middle" class="q-payload">10</text>
+    <rect x="915" y="216" width="135" height="68" rx="10" class="q-pod"/><text x="982" y="239" text-anchor="middle" class="q-label">TÜKETİCİ / out</text><text id="qOut" x="982" y="270" text-anchor="middle" class="q-payload">—</text>
+    <text x="545" y="284" text-anchor="middle" class="q-label">Ekran mantıksal sırayı gösterir; fiziksel RAM yerleşimini değil.</text><g id="qTransient"></g>
+  </svg></div>
+  <div class="q-actions"><button id="qFront" class="q-front">↗ Send to Front</button><button id="qBack" class="q-back">↖ Send to Back</button><button id="qReceive" class="primary">Receive →</button><button id="qPeek">Peek / çıkarma</button><button id="qReset">Sıfırla</button></div>
+  <div class="q-feedback"><div><span class="eyebrow">Son API çağrısı</span><pre id="qCode">Bir işlem seçin.</pre><p id="qStatus" role="status">Boş kuyruk. Önce 10 ve 20’yi arkaya, sonra 99’u öne gönderin.</p></div><div><span class="eyebrow">Okunma sırası · front → back</span><p id="qOrder" class="q-order">[ boş ]</p><p id="qBefore" class="mini">Her işlemin önceki ve sonraki sırası burada karşılaştırılır.</p><button id="qDemo">Rehberli örnek: başlat</button></div></div>
+  <p class="mini q-caption">Öğretim modeli · Task bağlamındaki API’ler · İşlemler elle tetiklenir · Animasyon süresi gerçek RTOS süresi değildir.</p>
+</section>

@@ -1,0 +1,7 @@
+{
+  "name": "hal",
+  "repository": "STMicroelectronics/stm32l4xx-hal-driver",
+  "tag": "v1.13.5",
+  "url": "https://codeload.github.com/STMicroelectronics/stm32l4xx-hal-driver/zip/refs/tags/v1.13.5",
+  "sha256": "57482a557cc505ed6d85caee86e6fd619153ac02b8466bd470fe9920d2dcaeea"
+}

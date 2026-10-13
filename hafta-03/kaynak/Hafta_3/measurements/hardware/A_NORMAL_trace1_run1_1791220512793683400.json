@@ -1,0 +1,44 @@
+{
+  "source": "hardware_serial",
+  "port": "COM4",
+  "variant": "A",
+  "load": "NORMAL",
+  "run_id": 1,
+  "trace_enabled": true,
+  "attempted": 44,
+  "accepted": 44,
+  "failed": 0,
+  "consumed": 44,
+  "result": [
+    "#RESULT",
+    "1",
+    "A",
+    "NORMAL",
+    "44",
+    "44",
+    "0",
+    "44",
+    "1",
+    "12069",
+    "0"
+  ],
+  "trace": {
+    "bytes": 12069,
+    "fnv1a": "2313C93F",
+    "drops": 0,
+    "stop_reason": 1,
+    "sha256": "ef1fea658d2a455b18d7d2878867bd1c09317f9f1600fa26b48f64a2b14b177e"
+  },
+  "max_latency_us": 136,
+  "max_send_us": 48,
+  "stack_words": [
+    "708",
+    "710",
+    "772"
+  ],
+  "rx_errors_drops": [
+    "0",
+    "0"
+  ],
+  "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+}

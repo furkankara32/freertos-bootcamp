@@ -1,0 +1,161 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SystemView_Kurulum</title><link rel="stylesheet" href="../assets/style.css"><style>main{max-width:1100px}h2{margin-top:40px}h1{font-size:42px}li{margin:8px 0}pre{margin:20px 0}table{margin:20px 0}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><header><a href="../index.html">HAFTA 03 / İÇERİK MERKEZİ</a><span>KURULUM VE DOĞRULAMA</span></header><main><h1>Hafta 3 — ST-LINK ile SystemView ve canlı anlatım</h1>
+<p>Bu paket <code>Hafta_2/firmware</code> board/HAL/FreeRTOS altyapısından türetilen ayrı bir <strong>RTOS_Hafta_3_L476RG</strong> projesidir. Hafta 2 dosyaları değiştirilmedi. Hafta 3 uygulaması kontrollü queue deneyidir; eski buton/telemetri A/B/C protokolü bu firmware'de kullanılmaz. Önceki app.c, <code>Hafta2_app_reference.c.txt</code> dosyasında başvuru için saklandı.</p>
+<h2>1. Ne indireceksiniz?</h2>
+<p><a href="https://www.segger.com/downloads/systemview/">SEGGER SystemView masaüstü uygulamasını resmî sayfadan indirin</a>. Kurulum ve kullanım koşulları SEGGER'e aittir. Hedef tarafı SystemView ve RTT kaynakları pakette lisanslarıyla bulunur; firmware derlemek için SystemView masaüstü uygulamasının kurulması gerekmez.</p>
+<p>Bu paketin bağlantısı <strong>RAM single-shot → ST-LINK Virtual COM Port → .SVDat → SystemView</strong> şeklindedir. SystemView'in J-Link canlı recorder bağlantısını veya UART Recorder modunu seçmeyin. USB üzerinden taşınan, deney bittikten sonra alınan bir dosyadır. ST-LINK firmware'ini J-Link'e dönüştürmeyin.</p>
+<h2>2. Kart ve bağlantı</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ayar</th>
+<th>Değer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kart</td>
+<td>NUCLEO-L476RG / STM32L476RGT6</td>
+</tr>
+<tr>
+<td>Programlama</td>
+<td>ST-LINK, SWD</td>
+</tr>
+<tr>
+<td>Komut / sonuç portu</td>
+<td>ST-LINK VCP, USART2 PA2/PA3</td>
+</tr>
+<tr>
+<td>Seri ayarlar</td>
+<td><strong>230400 baud, 8N1</strong>, flow control yok</td>
+</tr>
+<tr>
+<td>CPU / ölçüm</td>
+<td>80 MHz / TIM2 1 MHz</td>
+</tr>
+<tr>
+<td>FreeRTOS</td>
+<td>11.1.0, tick 1 kHz</td>
+</tr>
+<tr>
+<td>Yük</td>
+<td>Yazılımla oluşturulur; B1'e basmak gerekmez</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>LD2 deney boyunca yanar</td>
+</tr>
+</tbody>
+</table></div>
+<p>5 Ekim 2026 doğrulamasında kart COM4 üzerinde görüldü. Başka bilgisayarda port değişebilir. Tek portu aynı anda yalnız bir program açabilir; CubeIDE seri terminali ve diğer terminalleri kapatın. CubeIDE SWD debug bağlantısı ile VCP ayrı arayüzlerdir; normal çalışmada breakpoint'e takılı kalmayın.</p>
+<h2>3. CubeIDE ile derleme ve yükleme</h2>
+<ol>
+<li>File → Import → General → Existing Projects into Workspace.</li>
+<li>Kök klasör olarak bu paketteki <code>firmware</code> klasörünü seçin.</li>
+<li>Proje adı <strong>RTOS_Hafta_3_L476RG</strong> olmalıdır.</li>
+<li>Debug konfigürasyonunu seçip Build Project çalıştırın.</li>
+<li>Debug As → STM32 C/C++ Application; ST-LINK/SWD ve STM32L476RG hedefini seçin.</li>
+<li>Main'de durursa Resume yapın. Firmware işlemeye devam etmelidir.</li>
+</ol>
+<p>Bu proje elle sürdürülen native CubeIDE projesidir; CubeMX .ioc projesi değildir. <code>vendor</code>, <code>include</code>, <code>src</code>, <code>.project</code> ve <code>.cproject</code> birlikte taşınmalıdır. Linked klasöründeki dosyalar vendor altındaki proje içi bağlantılardır.</p>
+<p>Alternatif derleme:</p>
+<pre><code class="language-powershell">./firmware/build_week3.ps1
+# Veya kurulu CubeIDE ile:
+./firmware/build_cubeide.ps1
+</code></pre>
+<p>CMake yolu Arm GCC, CMake ve Ninja kullanır. <code>-ArmBin</code> parametresiyle Arm GCC bin dizini belirtilebilir. Hazır CMake çıktıları <code>firmware/prebuilt</code> altındadır; ölçülen sürümün hash'i doğrulama raporundadır.</p>
+<h2>4. Derste kayıt alma</h2>
+<ol>
+<li><code>Baslat.ps1</code> çalıştırın; <code>http://localhost:8766/</code> açılır. Alternatif: <code>python tools/serve.py</code>.</li>
+<li>Chrome/Edge'de <strong>Kayıt masası</strong> bağlantısını açın.</li>
+<li><strong>Seri porta bağlan</strong> → ST-LINK Virtual COM Port seçin.</li>
+<li>“Hafta 3 firmware doğrulandı” yazısını bekleyin.</li>
+<li>A + Normal seçip <strong>Deneyi çalıştır</strong> düğmesine basın. Yaklaşık 4–5 saniye sürer.</li>
+<li>Bitişte sayaçları kontrol edin; CSV, ham oturum ve metadata'yı indirin.</li>
+<li><strong>Son izi karttan al</strong> düğmesine basın. Byte sayısı ve FNV-1a checksum kontrol edilir.</li>
+<li>Sonuç kartındaki <strong>.SVDat indir</strong> düğmesini kullanın.</li>
+<li>SystemView'de <strong>File → Open</strong> ile bu dosyayı açın.</li>
+<li>A/Yoğun, B/Yoğun, C/Yoğun koşullarını ayrı ayrı çalıştırın. <strong>Yeni koşudan önce önceki izi indirin.</strong> Kart yalnız son izi tutar; tarayıcı sonuçları sekme açıkken korur.</li>
+</ol>
+<p>Sunumlar doğrudan dosyadan, internet olmadan da açılır. Seri arayüz sorunlarında localhost yöntemi tercih edilir. Sunum kısayolları: oklar, N (notlar), G (içindekiler), F (tam ekran). Kontroller odaktayken alt gezinme düğmeleri kullanılabilir.</p>
+<h2>5. SystemView'de anlatım sırası</h2>
+<ol>
+<li>Task adları: <strong>Producer</strong>, <strong>Consumer</strong>, <strong>Console</strong> ve Idle görünümünü bulun.</li>
+<li>Events ve Timeline pencerelerini birlikte açın. Zaman ölçeğini birkaç milisaniyelik aralığa yakınlaştırın.</li>
+<li><strong>W3 / RUN</strong> olayını bulun. <code>run</code> değeri CSV oturumuyla eşleşmelidir.</li>
+<li>Bir mesajın <code>id</code> değerini seçin: SEND_BEGIN → SEND_OK veya SEND_FAIL → varsa RECEIVE → DONE.</li>
+<li>A/Yoğun'da hızlı başarısız gönderimleri, C/Yoğun'da üreticinin queue üzerinde beklemesini gösterin.</li>
+<li>B/Yoğun'da kabul edilen mesaj sayısını ve CSV'deki gecikmeleri A ile karşılaştırın. 200 ms pencere bütün B kuyruğunun boşalmasını kapsamayabilir.</li>
+</ol>
+<p>Kullanıcı olay açıklamaları firmware tarafından kayda eklenir. FreeRTOS API olay adlarının doğru çözülmesi için kullandığınız SystemView sürümünün FreeRTOS 11 desteğini kontrol edin. İşletim sistemi/API açıklaması bulunamazsa SystemView kurulumunun Description kaynaklarına bakın; kullanıcı olay kimliklerini isim görmeden yorumlamayın.</p>
+<h2>6. Kayıt penceresi ve anlamı</h2>
+<ul>
+<li>RAM tamponu <strong>32768 bayt</strong>, nominal pencere <strong>200 ms</strong>.</li>
+<li>Normal yükte ilk mesajdan, yoğun yükte <strong>11. mesajdan önce</strong> kayıt başlar.</li>
+<li>Task listesi, sistem tanımı ve W3 modülü her kaydın başında tekrar gönderilir.</li>
+<li>DWT CYCCNT, CPU frekansı olan 80 MHz ile trace timestamp üretir. TIM2 ölçümleri 1 MHz'dir. İki saatin mutlak değerlerini birbirinden çıkarmayın.</li>
+<li>SysTick giriş/çıkış olaylarını FreeRTOS ARM_CM4F portu zaten üretir; ikinci kez eklenmedi.</li>
+<li>USART2 ISR girişi ve tek çıkışı board.c içinde kaydedilir. Priority 6, RTT BASEPRI kilidi 0x50 ile korunur.</li>
+<li>Pencere bitince kayıt durur; buffer az kaldığında erken durma kontrolü de vardır. Metadata stop_reason: <strong>1 = süre</strong>, <strong>2 = buffer sınırına yaklaşma</strong>, <strong>0 = diğer durdurma</strong>.</li>
+<li><code>drops &gt; 0</code> eksik izdir. Arayüz bunu görünür biçimde etiketler. Buffer kontrolü kayıp ihtimalini matematiksel olarak ortadan kaldırmaz.</li>
+<li>CSV bütün <strong>44</strong> mesajı kapsar. Trace kısa penceredir; pencerede olmayan olay yok sayılmaz.</li>
+<li><code>TRACE OFF</code>, kaydı kapatır; trace hook kodunu binary'den çıkarmaz. İz açık/kapalı deneyi kayıt etkinliğinin ek yükünü karşılaştırır.</li>
+</ul>
+<h2>7. Deneyin gerçek davranışı</h2>
+<p>Mesaj <code>sequence</code>, <code>generated_us</code>, <code>value</code> olmak üzere 12 bayttır. A: 4 eleman/0 tick; B: 16 eleman/0 tick; C: 4 eleman/20 ms. Her iki kuyruk başlangıçta oluşturulur; koşu başında boş olan seçilir. Üretici P2, tüketici P1, konsol P3'tür.</p>
+<p>Normal yük: 44 mesaj, her girişim sonrasında 100 ms bekleme. Yoğun yük: 10 normal + 24 art arda gönderme girişimi + 10 normal. Bloklayan gönderim C'nin burst süresini uzatabilir. <code>vTaskDelay(20 ms)</code> tüketicinin dış servis beklemesini <strong>modeller</strong>; 20 ms CPU tüketimi değildir. UART'tan mesaj başına trafik üretilmez; sonuçlar deney bittikten sonra çıkarılır. Bu nedenle bu laboratuvar Hafta 2 UART hattının performans testi değildir.</p>
+<p><code>send_call_us</code> duvar saati süresidir; trace işaretleri ve CPU beklemesi dahil olabilir. <code>generation_to_receive_us</code> üretimden consumer'ın mesajı aldığı ana kadardır; C'de queue'ya girmeden önceki bekleme de dahildir. Saf kuyrukta kalış veya tamamlanma süresi olarak adlandırmayın.</p>
+<h2>8. Komut satırı alternatifi</h2>
+<pre><code class="language-powershell">python -m pip install pyserial
+python tools/capture.py --port COM4 --variant A --load BURST
+python tools/capture.py --port COM4 --variant A --load BURST --no-trace
+</code></pre>
+<p>Portu tarayıcıdan ayırın. Araç gerçek veri için sayaç, sıra ve checksum kontrolleri yapar; ham oturum, CSV, metadata ve .SVDat üretir. Başarısız olayın latency alanı boş bırakılır.</p>
+<h2>9. Sorun giderme ve B planı</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Belirti</th>
+<th>Kontrol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bağlantı yok</td>
+<td>Doğru USB soketi, COM portu, 230400 baud ve başka terminal</td>
+</tr>
+<tr>
+<td>Firmware eşleşmiyor</td>
+<td>Hafta 3 ELF yüklü mü? Eski Hafta 2 protokolü kabul edilmez</td>
+</tr>
+<tr>
+<td>Yanıt zaman aşımı</td>
+<td>CPU breakpoint'te mi? Reset/Resume ardından tekrar bağlanın</td>
+</tr>
+<tr>
+<td>İz yok</td>
+<td>İz açık mı? Koşu tamamlandı mı? Yeni koşu önceki buffer'ı sıfırladı mı?</td>
+</tr>
+<tr>
+<td>Checksum hatası</td>
+<td>Aktarımı yeniden alın; reset olduysa yeni koşu gerekir</td>
+</tr>
+<tr>
+<td>Olaylar eksik</td>
+<td>drops ve stop_reason alanlarını, pencerenin sınırlarını kontrol edin</td>
+</tr>
+<tr>
+<td>Görev adları yok</td>
+<td>Dosyanın başlangıcı eksik mi? SystemView sürümü/Description uyumu</td>
+</tr>
+</tbody>
+</table></div>
+<p>Canlı bağlantı düzelmiyorsa <code>measurements/hardware</code> içindeki gerçek .SVDat dosyalarını açın. Hazır kaydı canlı deney olarak sunmayın. C/Yoğun kaydı bloklanmayı anlatmak için, A ve B ise kapasite karşılaştırması için uygundur.</p>
+<h2>10. Kaynaklar</h2>
+<ul>
+<li><a href="https://kb.segger.com/FreeRTOS_with_SystemView">SEGGER FreeRTOS entegrasyonu</a></li>
+<li><a href="https://doc.segger.com/UM08027_SystemView.html">SystemView User Guide</a> — Single-shot recording, dış debugger ile buffer dosyası alma</li>
+<li><a href="https://github.com/SEGGERMicro/SystemView">SEGGER SystemView hedef kaynakları</a></li>
+<li><a href="https://github.com/SEGGERMicro/RTT">SEGGER RTT</a></li>
+<li><a href="https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/02-Queues-mutexes-and-semaphores/01-Queues">FreeRTOS Queue açıklaması</a></li>
+</ul>
+<p>Kaynak kontrolü: 5 Ekim 2026. Sabit commit ve arşiv SHA256 değerleri <code>firmware/segger.lock.json</code> dosyasında; orijinal lisanslar vendor klasörlerinde korunur.</p></main></body></html>

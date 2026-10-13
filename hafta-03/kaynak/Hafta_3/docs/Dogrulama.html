@@ -1,0 +1,127 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dogrulama</title><link rel="stylesheet" href="../assets/style.css"><style>main{max-width:1100px}h2{margin-top:40px}h1{font-size:42px}li{margin:8px 0}pre{margin:20px 0}table{margin:20px 0}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><header><a href="../index.html">HAFTA 03 / İÇERİK MERKEZİ</a><span>KURULUM VE DOĞRULAMA</span></header><main><h1>Hafta 3 — Doğrulama ve gerçek kart sonuçları</h1>
+<p><strong>Tarih:</strong> 5 Ekim 2026. <strong>Kart:</strong> NUCLEO-L476RG, ST-LINK V2J48M35, SWD, COM4. <strong>Firmware:</strong> Hafta 3 queue deneyi.</p>
+<h2>Yapılan kontroller</h2>
+<ul>
+<li>CMake/Ninja ve GNU Arm 14.3.1 ile derleme ve link başarılı.</li>
+<li>STM32CubeIDE 2.2.0 native managed-build Debug derlemesi başarılı: <strong>0 hata, 0 uyarı</strong>. Günlük: <code>../validation/cubeide-build.log</code>.</li>
+<li>Ana flash'ın 1 MB yedeği alındı; ardından CMake ELF yüklendi, programmer verify başarılı oldu. Option bytes değiştirilmedi.</li>
+<li>Gerçek kartta A/B/C × NORMAL/BURST altı koşul ve A/BURST trace kapalı bir koşul tamamlandı.</li>
+<li>Her koşuda 44 girişim; accepted + failed = attempted, consumed = accepted. 44 CSV satırı ve benzersiz olay kimlikleri doğrulandı.</li>
+<li>Altı .SVDat aktarımında boyut ve FNV-1a checksum doğrulandı; trace kayıp sayacı <strong>0</strong>. Kayıtlar süre sınırında durdu (stop_reason=1).</li>
+<li>Tüm koşul sonuçlarında UART RX hata ve RX queue kayıp sayaçları <strong>0</strong>.</li>
+<li>Kaydedilen stack high-water değerleri Producer için en az 708, Consumer için 710, Console için 772 eleman. Cortex-M4F üzerinde eleman 4 bayttır; bunlar yalnız gözlenen koşulara aittir.</li>
+<li>Gerçek yedi ham oturum web arayüzünün ortak parser'ıyla tekrar okundu. Eksik sıra, bozuk hex, checksum, boyut, tekrarlanan satır ve eksik sonuç kontrolleri yapıldı.</li>
+</ul>
+<h2>Gerçek sonuçlar</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Varyant</th>
+<th>Yük</th>
+<th>Trace</th>
+<th style="text-align: right;">Kabul</th>
+<th style="text-align: right;">Başarısız</th>
+<th style="text-align: right;">Tamamlanan</th>
+<th style="text-align: right;">Maks. üretim→alma (ms)</th>
+<th style="text-align: right;">Maks. send (ms)</th>
+<th style="text-align: right;">Trace bayt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>BURST</td>
+<td>Kapalı</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">59.936</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>A</td>
+<td>BURST</td>
+<td>Açık</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">60.870</td>
+<td style="text-align: right;">0.048</td>
+<td style="text-align: right;">12908</td>
+</tr>
+<tr>
+<td>A</td>
+<td>NORMAL</td>
+<td>Açık</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.136</td>
+<td style="text-align: right;">0.048</td>
+<td style="text-align: right;">12069</td>
+</tr>
+<tr>
+<td>B</td>
+<td>BURST</td>
+<td>Açık</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">300.425</td>
+<td style="text-align: right;">0.055</td>
+<td style="text-align: right;">12544</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NORMAL</td>
+<td>Açık</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.136</td>
+<td style="text-align: right;">0.048</td>
+<td style="text-align: right;">12070</td>
+</tr>
+<tr>
+<td>C</td>
+<td>BURST</td>
+<td>Açık</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">80.367</td>
+<td style="text-align: right;">19.775</td>
+<td style="text-align: right;">15963</td>
+</tr>
+<tr>
+<td>C</td>
+<td>NORMAL</td>
+<td>Açık</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.136</td>
+<td style="text-align: right;">0.048</td>
+<td style="text-align: right;">12070</td>
+</tr>
+</tbody>
+</table></div>
+<p>Bu tablo gerçek donanımdan alınan tekil koşuları gösterir; performans garantisi veya istatistiksel üst sınır değildir. Ham veriler, CSV ve özgün .SVDat dosyaları <code>../measurements/hardware/</code> altında eşleşen dosya adlarıyla saklanır. JSON metadata iz durumunu ve ölçüm binary'sinin hash'ini içerir.</p>
+<h2>Derste neyi gösterebilirsiniz?</h2>
+<ul>
+<li>A/Yoğun: 4 eleman dolduğunda 0 tick gönderimlerin başarısızlığı.</li>
+<li>B/Yoğun: kabul sayısı artarken gecikmenin yaklaşık 300 ms'ye çıkması.</li>
+<li>C/Yoğun: 20 ms sınırlı bekleme ile kabul sayısının artması; yine de bazı girişimlerin timeout ile başarısız olması. 20 ms consumer beklemesi ile aynı büyüklükteki send timeout'un faz/scheduler etkilerine duyarlılığını tartışın.</li>
+<li>A/Yoğun iz açık/kapalı: ölçümde görülen küçük farkı bütün sistemler için sabit bir overhead sayısı gibi sunmayın.</li>
+</ul>
+<h2>Kapsam ve kalan kontroller</h2>
+<p><strong>SystemView masaüstü uygulaması bu bilgisayarda kurulu değildi.</strong> Dosyalar gerçek SEGGER recorder çıktısıdır ve taşıma bütünlüğü kontrol edilmiştir; SystemView GUI'de dosya açma, timeline ve FreeRTOS API isimlerinin görünmesi bu çalışmada gözlemlenmemiştir. Kullanıcı uygulamayı kurduktan sonra kurulum rehberindeki adımlarla ilk .SVDat dosyasını açıp bunu doğrulamalıdır. Bu sınır, kartta kaydın alındığı ve dosyanın doğru aktarıldığı testlerden ayrıdır.</p>
+<p>Tarayıcı kontrolleri <code>../validation/browser-qa.json</code> içinde raporlanır. Testler 1440 px ve 390 px genişliklerde sunumları, queue timeout/uyanma davranışını, kopyalama örneğini, gezinmeyi, gerçek ham kayıtların içe aktarımını ve .SVDat indirmeyi kapsar. Tarayıcının işletim sistemi seri port seçicisi test otomasyonuyla açılmadı; fiziksel seri aktarım Python/pyserial yoluyla doğrulandı.</p>
+<h2>Binary ve bellek</h2>
+<p>CMake ELF SHA256:</p>
+<p><code>5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54</code></p>
+<p>CMake boyutları: Flash 31.992 bayt; RAM 65.536 bayt / 98.304 bayt (%66,67). RAM bütçesi 32 KB trace buffer, 24 KB FreeRTOS heap, uygulama verileri ve linker rezervlerini içerir. Heap'in tamamının ayrılmış olması task'ların tamamını kullandığı anlamına gelmez. CubeIDE ELF boyutu derleme seçeneklerindeki farklar nedeniyle küçük miktarda değişir; gerçek deneyler CMake ELF ile yapılmıştır.</p>
+<h2>Yedek ve kartın son durumu</h2>
+<p>Yerel yedek: <code>../validation/flash_before_20261005.bin</code>, 1.048.576 bayt. Dağıtım ZIP'ine dahil edilmez. Yalnız ana flash yedeğidir. Geri dönüş için STM32CubeProgrammer ile doğrulanmış bu BIN, 0x08000000 adresine yüklenebilir; mevcut Hafta 3 firmware'i üzerine yazılır.</p>
+<p>Testler sonunda kartta Hafta 3 firmware'i çalışır. Seri port ve programmer bağlantıları kapatılır; kullanıcı COM4'e bağlanabilir. Son test trace kapalı karşılaştırma olabilir; kayıt masasındaki İz kaydı açık kutusu bir sonraki koşu için TRACE ON gönderir.</p></main></body></html>

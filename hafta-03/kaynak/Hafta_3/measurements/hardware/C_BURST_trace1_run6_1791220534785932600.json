@@ -1,0 +1,44 @@
+{
+  "source": "hardware_serial",
+  "port": "COM4",
+  "variant": "C",
+  "load": "BURST",
+  "run_id": 6,
+  "trace_enabled": true,
+  "attempted": 44,
+  "accepted": 34,
+  "failed": 10,
+  "consumed": 34,
+  "result": [
+    "#RESULT",
+    "6",
+    "C",
+    "BURST",
+    "44",
+    "34",
+    "10",
+    "34",
+    "1",
+    "15963",
+    "0"
+  ],
+  "trace": {
+    "bytes": 15963,
+    "fnv1a": "30DD0C72",
+    "drops": 0,
+    "stop_reason": 1,
+    "sha256": "03c72bae4f11d3ad07b9ecbd2f1dbc5aa341589ed0dc1e282937f746c505a3f3"
+  },
+  "max_latency_us": 80367,
+  "max_send_us": 19775,
+  "stack_words": [
+    "704",
+    "710",
+    "772"
+  ],
+  "rx_errors_drops": [
+    "0",
+    "0"
+  ],
+  "local_elf_sha256": "5863ee03913750f2c91c05b3d64e55bf2597a743c228feb9873eea0f45366f54"
+}

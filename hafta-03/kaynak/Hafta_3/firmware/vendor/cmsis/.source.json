@@ -1,0 +1,7 @@
+{
+  "name": "cmsis",
+  "repository": "ARM-software/CMSIS_5",
+  "tag": "5.9.0",
+  "url": "https://codeload.github.com/ARM-software/CMSIS_5/zip/refs/tags/5.9.0",
+  "sha256": "3d4bfaf8783c633149510d098630a9d2f273dc090ea5e807103cc9b7acbb6708"
+}
