@@ -1,0 +1,93 @@
+{
+  "run_id": 3277759417,
+  "scenario": 4,
+  "variant": 1,
+  "period_ms": 100,
+  "cycles": 1,
+  "baud": 115200,
+  "port": "COM7",
+  "pins": {
+    "rx": "PB11 USART3",
+    "tx": "PA2 USART2"
+  },
+  "identity": {
+    "type": "HELLO",
+    "kind": 128,
+    "seq": 2,
+    "values": [
+      4094099461,
+      1,
+      115200,
+      66855964,
+      876163428,
+      892678453,
+      876045109,
+      892691810,
+      875914853,
+      808477796,
+      959459635,
+      909600305,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "capture_status": "COMPLETE",
+  "trace_mode": "ST-LINK single-shot",
+  "source": "hardware",
+  "trace_window_ms": 1500,
+  "created_at": "2026-10-26T17:48:16.772836+03:00",
+  "task_priorities": {
+    "Parser": 4,
+    "Execute": 3,
+    "Report": 2
+  },
+  "buffers": {
+    "rx_stream": 4096,
+    "tx_stream": 512,
+    "command_queue": 8,
+    "result_queue": 64
+  },
+  "cpu_hz": 168000000,
+  "tick_hz": 1000,
+  "timer_hz": 1000000,
+  "diag_frames": 20,
+  "parser_work_units": 200,
+  "bulk_bytes": 10000,
+  "firmware": {
+    "build_id": "d19451555c74be55ef54dd0031091f765e67ad6bdbd34e666efc484e22ce79de",
+    "target": "STM32F407VG",
+    "board": "STM32F407G-DISC1",
+    "clock_hz": 168000000,
+    "tick_hz": 1000,
+    "timer_hz": 1000000,
+    "baud": 115200,
+    "freertos": "11.1.0",
+    "config": "Release",
+    "gcc": "arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+    "elf_sha256": "21083ae14e14f63b03cd8d09cd3d67f7b3028ade3b3c0970693988df41e3bac2",
+    "bin_sha256": "69f19c88db0b4470f1b9728bdb04f4e9f700d3016d46c13ff2587b91f281cda6",
+    "size": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n  24588\t     48\t 110312\t 134948\t  20f24\tD:\\freertos-bootcamp\\hafta-05\\firmware\\build\\Release\\week5_f407.elf\n",
+    "hardware_tested": false
+  },
+  "trace": {
+    "app_trace_data": 536912824,
+    "app_trace_bytes": 25235,
+    "app_trace_dropped": 0,
+    "app_trace_complete": 1,
+    "app_trace_reason": 1,
+    "run_id": 3277759417,
+    "scenario": 4,
+    "variant": 1,
+    "mode": "ST-LINK RAM single-shot",
+    "size": 25235,
+    "complete_window": true
+  }
+}

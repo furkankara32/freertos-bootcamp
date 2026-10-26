@@ -1,0 +1,6 @@
+# Preserve recorded evidence bytes so report SHA-256 values survive checkout.
+records/** -text
+docs/regression-results.json -text
+docs/protocol-stress.json -text
+docs/interface-smoke.json -text
+*.pdf -text

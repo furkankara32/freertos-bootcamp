@@ -1,0 +1,27 @@
+{
+  "S1": {
+    "run_id": 481409354,
+    "variant": 0,
+    "trace_bytes": 48379,
+    "samples": 4
+  },
+  "S2": {
+    "run_id": 489786714,
+    "variant": 2,
+    "trace_bytes": 23107,
+    "samples": 32
+  },
+  "S3": {
+    "run_id": 1100124027,
+    "variant": 1,
+    "trace_bytes": 17337,
+    "samples": 32
+  },
+  "S4": {
+    "run_id": 4210970712,
+    "variant": 1,
+    "trace_bytes": 22470,
+    "samples": 48
+  },
+  "exe_sha256": "0a096da7918028c24d7a370095d931fd381a7b00936f32f49f19404786afa812"
+}

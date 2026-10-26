@@ -1,0 +1,13 @@
+{
+  "app_trace_data": 536912824,
+  "app_trace_bytes": 25235,
+  "app_trace_dropped": 0,
+  "app_trace_complete": 1,
+  "app_trace_reason": 1,
+  "run_id": 3277759417,
+  "scenario": 4,
+  "variant": 1,
+  "mode": "ST-LINK RAM single-shot",
+  "size": 25235,
+  "complete_window": true
+}

@@ -1,0 +1,9 @@
+{
+  "samples": 12,
+  "min_us": 111,
+  "mean_us": 11265.75,
+  "max_us": 133958,
+  "over_10ms": 1,
+  "decoder_rejected_bytes": 0,
+  "trace_status": "COMPLETE"
+}

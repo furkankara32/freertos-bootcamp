@@ -1,0 +1,7 @@
+{
+  "invalid_parameters_rejected": 6,
+  "busy_start_rejected": true,
+  "stop_clears_active_and_pending": true,
+  "sustained_rx_bytes": 100000,
+  "sustained_rx_loss": 0
+}

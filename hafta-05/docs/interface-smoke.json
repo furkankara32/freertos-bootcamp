@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "runs": [
+    1423199318,
+    481409354
+  ],
+  "replaced_previous": true,
+  "summary": {
+    "samples": 4,
+    "min_us": 866,
+    "mean_us": 869.75,
+    "max_us": 877,
+    "over_10ms": 0,
+    "decoder_rejected_bytes": 0,
+    "trace_status": "COMPLETE"
+  },
+  "packaged_exe": true
+}

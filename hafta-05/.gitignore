@@ -1,0 +1,17 @@
+firmware/build/
+interface/build/
+interface/dist/
+.venv/
+__pycache__/
+.pytest_cache/
+records/*
+!records/S1/
+!records/S2/
+!records/S3/
+!records/S4/
+dist/
+interface/settings.json
+interface/Hafta5Lab.spec
+tmp/
+*.lnk
+docs/interface-preview.png

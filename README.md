@@ -6,6 +6,13 @@ STM32F407 ile FreeRTOS ödevleri, kaynak kodları ve gerçek kart ölçümleri.
 |---|---|
 | [Hafta 01](hafta-01/) | V1/V2 uygulamaları, arayüz, testler ve ilk ölçümler |
 | [Hafta 02](hafta-02/) | SEGGER SystemView entegrasyonu; V1/V2 S0 ve S5 gözlemleri |
+| [Hafta 05](hafta-05/) | StreamBuffer, Event Group, task notification; dört UART/LED deneyi |
+
+## Hafta 05 raporu
+
+- [Deney raporu](hafta-05/reports/Hafta5_Rapor.md)
+- [PDF raporu](hafta-05/reports/Hafta5_Rapor.pdf)
+- [Kurulum, kullanım ve kayıtlar](hafta-05/README.md)
 
 ## Hafta 02 raporları
 
